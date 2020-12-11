@@ -50,7 +50,7 @@ class Member {
 		System.out.println();
 	}
 	
-	int buy(String buyProduct, int price) {
+	int buy(String buyProduct, int price) { 
 		System.out.println("== 구매 ==");
 		if(this.point < price) {
 			System.out.printf("포인트가 부족합니다.\t\t");
