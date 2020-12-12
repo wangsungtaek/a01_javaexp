@@ -55,40 +55,65 @@ class Handphone {
 
 class Computer {
 	String kind;
-	String making;
+	String compnay;
 	Cpu cpu;
+	Ram ram;
 	
-	public Computer(String kind, String making) {
+	public Computer(String kind, String compnay) {
 		this.kind = kind;
-		this.making = making;
+		this.compnay = compnay;
 	}
 	
-	void mountCpu(Cpu cpu) {
+	public void setCpu(Cpu cpu) {
 		this.cpu = cpu;
 	}
-	
-	void computerStatus() {
-		System.out.println("이 "+kind+"는 "+making+"에서 만들었습니다.");
+	public void setRam(Ram ram) {
+		this.ram = ram;
+	}
+
+	void show() {
+		System.out.println("컴퓨터의 종류:"+kind);
+		System.out.println("제조사:"+compnay);
 		if(cpu != null) {
-			System.out.println("== cpu 장착 ==");
-			cpu.cpuInfo();
+			cpu.info();
 		} else {
-			System.out.println("cpu가 존재하지 않습니다.");
+			System.out.println("CPU가 장착되지 않았습니다.");
+		}
+		if(ram != null) {
+			ram.info();
+		} else {
+			System.out.println("RAM이 장착되지 않았습니다.");
 		}
 		System.out.println();
 	}
 } 
 class Cpu {
-	String clockSpeed;
-	String making;
+	double clockSpeed;
+	String compnay;
 
-	public Cpu(String clockSpeed, String making) {
+	public Cpu(double clockSpeed, String compnay) {
 		this.clockSpeed = clockSpeed;
-		this.making = making;
+		this.compnay = compnay;
 	}
-	void cpuInfo() {
-		System.out.println("cpu 클럭속도:"+clockSpeed);
-		System.out.println("cpu 제조사:"+making);
+	void info() {
+		System.out.println("# CPU 정보 #");
+		System.out.println("클럭속도:"+clockSpeed+"GHZ");
+		System.out.println("제조사:"+compnay);
+	}
+}
+class Ram {
+	String compnay;
+	int memory;
+
+	public Ram(String compnay, int memory) {
+		this.compnay = compnay;
+		this.memory = memory;
+	}
+
+	void info() {
+		System.out.println("# RAM 정보 #");
+		System.out.println("메모리 용량:"+memory+"G");
+		System.out.println("제조사:"+compnay);
 	}
 } // ex2 end.
 
@@ -141,11 +166,12 @@ public class A02_Exp {
 	
 		// ex2)
 		System.out.println("ex2)");
-		Computer computer = new Computer("노트북","Apple");
-		computer.computerStatus();
-		computer.mountCpu(new Cpu("1.4GHz","Apple"));
-		computer.computerStatus();
-	
+		Computer c1 = new Computer("데스크탑","MAC");
+		c1.show();
+		c1.setCpu(new Cpu(3.6,"인텔"));
+		c1.setRam(new Ram("삼성전자",16));
+		c1.show();
+		
 		// ex3)
 		System.out.println("ex3)");
 		Person1 sungtaek = new Person1("왕성택");

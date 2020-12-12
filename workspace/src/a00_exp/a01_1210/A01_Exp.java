@@ -49,6 +49,9 @@ package a00_exp.a01_1210;
  -> final로 설정된 값은 딱 한번 값을 할당하면 변경을 할 수 없다. 이를 상수라고 부른다.
  	상수의 이름은 전부 대문자로 표기한다.
  	final이 메서드에 붙으면 오버라이딩을 할 수 없다.
+ 	1) final class{} : 상속이 불가능하다.
+ 	2) final int NUM=25;: 상수가 되어, 다른 데이터 할당이 불가능하다.
+ 	3) final void rinning() : 상속되는 하위 클래스에서 재정의가 불가능하다.
  	
  8. 위에 final 내용 중에 메서드에서 쓰일 때에 예제를 간단하게 코딩해 보세요..
  
@@ -141,7 +144,13 @@ public class A01_Exp {
 		System.out.println(random);
 		return result;
 	}
-	
+	/*
+	 * static String runGame() {
+	 * int random = (int)(Math.random()*3);
+	 * String[] arr = {"가위","바위","보"}
+	 * return arr[random];
+	 * }
+	 */
 	public static void main(String[] args) {
 		//ex5
 		System.out.println("Ex5)");
