@@ -14,7 +14,9 @@ class Person {
 		this.age = age;
 		this.loc = loc;
 	}
-//	3. 기능 메서드 선언..
+	// 1) 클래스는 여러 생성자를 오버로딩 규칙에 의해 선언할 수 있다.
+	//
+	//	3. 기능 메서드 선언..
 	void showInfo() {
 		System.out.println("# Person 객체가 가지는 정보 출력 #");
 		System.out.println("이름:"+name);

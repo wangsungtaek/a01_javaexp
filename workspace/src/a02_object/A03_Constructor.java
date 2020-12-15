@@ -23,10 +23,14 @@ class Person01 {
 	public Person01(String name, int age) {
 		System.out.println(name + ":" + age);
 	}
-}
+}	// 궁극적으로 해당 생성자나 메서드에서는 매개변수를 식벽하는 것이
+	// 데이터를 통해서 가능하기 때문에..
+	// ex) new Personoo01(27); new Person01("홍길동")
 
 
-public class A03_Constructor {
+
+public class A03_Constructor {	// 파일명.java, main() 메서드를 가진
+	// 클래스가 파일단위로 하나만 선언되어야 한다.
 	public static void main(String[] args) {
 		Person01 p01 = new Person01("문자열 호출");	// 에러 없이 호출.
 		System.out.println(p01);

@@ -13,7 +13,14 @@ public class Mart {
 	public Mart(String name) {
 		super();
 		this.name = name;
+		// 물건을 하나씩 담는 처리..
+		// 1. 생성자 객체 ArrayList 선언.
+		plist = new ArrayList<Product>();
 	}
+	public void buy(Product p) {
+		plist.add(p);	// 하나씩 물건 담기..
+	}
+	
 	public Product[] getpArray() {
 		return pArray;
 	}

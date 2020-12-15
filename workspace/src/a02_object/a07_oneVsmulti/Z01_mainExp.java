@@ -34,6 +34,9 @@ public class Z01_mainExp {
 		plist.add(new Product("바나나",4000,2));
 		plist.add(new Product("딸기",12000,4));
 		m1.setPlist(plist);
+		m1.buy(new Product("오렌지",2000,5));
+		m1.buy(new Product("수",12000,1));
 		m1.buyList();
+		
 	}
 }

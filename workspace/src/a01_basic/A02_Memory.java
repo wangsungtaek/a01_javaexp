@@ -81,6 +81,9 @@ ex) 일반 변수 num01과 num02의 사칙 연산 데이터를 할당한 결과�
 /*
  5. 문자열을 동일한 문자열의 비교는 ==를 활용하면, 예외사항때문에 문제가 발생한다.
  6. 문자열의 동등 비교는 문자열이 객체이므로 사용되는 .equals()를 활용하여 비교하여야 한다.
+ 	ex) 파일을 읽거나, console 입력을 통해서 입력 받거나, 데이터베이스를 통해서
+ 		가져오는 데이터는 명시적으로 new String()가 보이진 않지만, 이 처리가 된
+ 		각각의 heap영역의 메모리에 할당되고 할당된 데이터를 호출하여 가져온다.
  */
 		System.out.println("name01.equlas(name2) : " + name01.equals(name02));
 		System.out.println("name01.equlas(name4) : " + name01.equals(name04));

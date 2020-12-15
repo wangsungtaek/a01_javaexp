@@ -50,7 +50,9 @@ public class A07_Loop {
 		System.out.println("# continue문 사용 #");
 		for(int cnt=1;cnt<10;cnt++) {
 			if(cnt == 5) {
-				continue;
+				continue;	// continue 이후, 내용만 수행하지 않다
+				// 다음 반복 step을 진행한다.
+				
 			}
 			System.out.print(" 카운트!! " + cnt);
 		}

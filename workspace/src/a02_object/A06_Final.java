@@ -20,7 +20,7 @@ final class Dragon{
 		System.out.println("용이 불을 발사하며 날아 다니다.");
 	}
 }
-
+//class Dragond2 extends Dragon{} (상속이 불가능하다)
 class Horse{
 	void sound() {
 		System.out.println("말이 소리 내다..");

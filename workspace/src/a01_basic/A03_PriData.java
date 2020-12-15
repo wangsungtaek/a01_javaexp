@@ -8,13 +8,31 @@ public class A03_PriData {
  1. byte
  2. short
  3. int : 정수형 default 데이터 유형..
- 4. char : 문자형 데이터 'a'
+ 4. char : 문자형 데이터 'a' 저장은 정수형으로 되어 있다.
+ 		unicode값에 의해서 문자를 불러온다. int과 type casting으로
+ 		문자와 숫자를 확인할 수 있다.
+ 		==> char[] (문자배열) ==> String (데이터유형 추가)
+ 		ex) id, pass 의 분실 시, 임시패스워드 발송시, 숫자
+ 		문자를 random ==> 알파벳 유니코드값 범위. 64(a) ~ (Z)
+
  5. long : 정수형에서 가장 큰 데이터 유형..
  
  6. float : 실수형 데이터 유형..
  7. double : 실수형 default 데이터 유형..
  8. boolean : true/false로 데이터를 할당하는 데이터 유형.
  */
+		System.out.println("문자 uni 코드 번호");
+		System.out.println("a:"+(int)'a');
+		System.out.println("z:"+(int)'z');
+		System.out.println("A:"+(int)'A');
+		System.out.println("Z:"+(int)'Z');
+		for(int cnt=1; cnt<=8; cnt++) {
+			int ran=(int)(Math.random()*26+65);
+			System.out.print((char)ran);
+		}
+		System.out.println();
+		System.out.println();
+		
 		byte num01 = 25; 	// 1bit ==> 8bits ==> 1byte
 		short num02 = 50;
 		char ch01 = 'A';

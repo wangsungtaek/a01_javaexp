@@ -50,6 +50,7 @@ public class A07_Static {
 	public static void main(String[] args) {
 		// heap영역이 다르고, 클래스는 같지만 다른 멤버(클래스의 구성요소)
 		// 를 가진 객체들이 생성된다.
+		
 		Puppy.cnt++; // static 변수는 객체의 종속이 아니기 때문에 객체 생성없이 클래스명.static변수로 사용할 수 있다.
 		Puppy.cnt++;
 		Puppy.cnt++;
