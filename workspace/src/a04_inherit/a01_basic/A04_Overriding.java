@@ -1,4 +1,9 @@
 package a04_inherit.a01_basic;
+
+import java.util.ArrayList;
+
+import javax.print.attribute.SetOfIntegerSyntax;
+
 /*
 ex) overriding 예제 만들기..
 	Duck 오리클래스 필드 : kind
@@ -29,7 +34,11 @@ NormalDuck(보통) Mallard(청둥)
 	1) 상속을 한다는 것은 상위객체를 통해서 하위 객체가 만들어지는 것이기 때문에
 		모든 하위 객체는 상위객체의 메모리(참조변수)에 할당이 가능하다.
 		ex) 상위 클래스 참조 = new 하위생성자();
-	
+	2) 다형성의 한계
+		다형을 통한 상위클래스의 처리내용은 상위클래스의 변수와 상위클래스에서
+		재정의한 메서드까지 상위클래스의 참조객체로 사용할 수 있다.
+		하위클래스의 추가적인 변수나 메서드를 활용하고자 할 때, 다시 typecasting을
+		하여 처리한다.
 
  */
 public class A04_Overriding {
@@ -49,8 +58,80 @@ public class A04_Overriding {
 		Duck dk1 = new NormalDuck();
 		Duck dk2 = new Mallard();
 		dk1.sound();
+		dk2.sound();
+//		dk1.move(); NormalDuck에 있는 move()메서드를 사용할 수 없다.
+//		다형성의 한계로 하위의 고유의 추가 멤버(필드, 메서드)를 사용할 수는 없다.
+		// 하위클래스 = (타입캐스팅)다형성으로 만든 참조변수;
+		// 하위의 고유 기능을 쓸려면 타입캐스팅이 필요로 하다.
+		NormalDuck nd = (NormalDuck)dk1;
+		nd.running();
+//ex) 상위 Book(필드 - 도서명, 가격, buy()..),
+//	  하위 ITBook(.. 추가메서드 read() @@ 도서를 읽다)
+//	  다형성과 typecasting	을 처리하여 재정의한 메서드와 하위 추가한 메서드를 호출하세요..
+		Book b1 = new ITBook("자바 기초", 28000);
+		b1.buy(); // 다형성은 하위에 재정의된 내용까지 영향을 미친다.
+//		b1.read(); 사용불가능하다. 하위에서만 선언한 내용이기 때문에...
+		ITBook b2 = (ITBook)b1; // 타입캐스팅 처리.
+		b2.read();
+		// 자바의 최상 클래스는 모든 클래스를 다형성으로 할당할 수 있다.
+		Object ob1 = new Book("인문학","서양서",23000);
+		Object ob2 = new ITBook("스프링",28000);
+		// 해당 내용을 구성해서 처리할려면, typecasting을 하여야 한다.
+		Book bk5 = (Book)ob1;
+		ITBook bk6 = (ITBook)ob2;
+		// ArrayList형태에서도 상속관계가 있는 클래스는 모두다 할당이 가능하다.
+		ArrayList<Book> list = new ArrayList<Book>();
+		list.add(new  ITBook("jsp 기초", 32000));
+		list.add(new  HistoryBook("로마사 입문", 32000));
+		for(Book bk : list) {
+			bk.buy();
+		}
 	}
 }
+class Book {
+	private String name;
+	private String title;
+	private int price;
+
+	public Book(String name, String title, int price) {
+		this.name = name;
+		this.title = title;
+		this.price = price;
+	}
+	public void buy() {
+		System.out.println("# 도서구매 #");
+		System.out.println("도서명:"+name);
+		System.out.println("가격:"+price);
+	}
+	public String getTitle() {
+		return title;
+	}
+}
+class HistoryBook extends Book {
+	public HistoryBook(String title, int price) {
+		super("역사", title, price);
+	}
+	@Override
+	public void buy() {
+		System.out.println("# 역사 관련 서적 파트에서 구매");
+		super.buy();
+	}
+}
+class ITBook extends Book{
+	public ITBook(String title, int price) {
+		super("기술",title,price);
+	}
+
+	@Override
+	public void buy() {
+		System.out.println("# IT 관련 서적 파트에서 구매");
+		super.buy();
+	}
+	public void read() {
+		System.out.println(getTitle()+"를 읽다!!");
+	}
+}
+
 class Duck {
 	protected String kind;
 	Duck(String kind) {
@@ -69,6 +150,9 @@ class NormalDuck extends Duck {
 	@Override
 	void sound() {
 		System.out.println(kind + "가 꽉꽉 소리를 낸다.");
+	}
+	public void running() {
+		System.out.println("뛰어 다니다!");
 	}
 }
 
