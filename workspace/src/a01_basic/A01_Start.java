@@ -161,6 +161,11 @@ public class A01_Start {
  	4) String, Wrapper의 내용을 기본적으로 알아야 하고,
  	5) Collection에서 generic개념과 ArrayList을 필수적으로 파악하여야 한다.
  	6) Stream은 파일 업로드 처리시, 활용된다.
+
+# 남은 항복은 jsp전에 나머지 부분 산속하게 진행
+1. 세밀하게 할 내용이 필요한 부분.
+	1) IO의 stream 처리는 웹에서 파일 업로드 처리시 진행.
+		
  
  */
 	}
