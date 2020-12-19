@@ -1,0 +1,56 @@
+# 웹 프로그래밍의 전체 knowlege map #
+1. 웹 프로그래밍에 대한 이해..
+	1) 웹 프로그램의 구성 요소에 대힌 이해.
+		- client
+		- server
+	2) 웹 환경.
+		- network : ip, port, domian
+	3) front end 프로그래밍
+	4) back end 프로그래밍
+	5) 웹프로그래밍에서 front end, back end의 처리 프로세스.
+		1) url 요청
+		2) 서버 자원 확인.
+			- html : 바로 클라이언트에 전달.
+			- jsp : servlet(java+html) ==> html 만들어 전달.
+					DB와 java의 역할.
+		3) 전달 받는 확면 확인.
+		4) 브라우저에서는 html로 받은 내용을 가지고 랜더링(html 코드),
+			js내용 처리..
+
+2. front end
+	1) 개발하는 순서 
+		요구사항 정의
+		화면설계
+		화면구현
+			html의 전체 레이아웃 (구성)
+			구성 내부에 입력/출력/이벤트 세부적인 사항 처리.
+				- css, form태그, js
+	
+	2) 커리 순서
+		전체 html구조와 기본 태그
+		구성 부분 태그 - 테이블, list형태, 이미지..
+		화면 분할 태그 - div.. span..
+		css
+		javascript
+		jquery
+
+3. Back end
+	1) 개발하는 순서
+		요구사항 정의
+		화면설계를 바탕으로 Database로 처리부분을 식별..
+		ERD	다이어그램을 통해서 설계
+		DB서버 구축
+		DB연결 java의 공통 모듈 개발
+		jsp(html, css, java)와 database 연동된 화면 구현..
+		
+	2) 커리 순서
+		java
+		database 기본 sql(조회)
+		database 생성 (테이블 생성, 수정, 삭제)
+		권한 처리.. pl/sql 데이터베이스
+		database 설계
+		jsp 기초
+		database를 java를 통해서 연동.
+		jsp 중급 연동된 화면 구현..
+		MVC모델..
+		ajax 구현..
