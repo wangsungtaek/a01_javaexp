@@ -100,3 +100,98 @@ GROUP BY job;
 SELECT *
 FROM emp
 ORDER BY sal;
+/*
+# where
+1. 테이블에 저장된 데이터 중에서 원하는 데이터만 선택적으로 검색하는 기능을
+처리할 때, 사용된다.
+*/
+	SELECT * FROM emp e2;
+	WHERE deptno = 10;
+/*
+2. where 절의 조건문은 컬럼 이름, 연산자, 상수, 산술 표현식을 결합하여
+다양한 형태로 표현 한다.
+3. where 절에서 사용되는 데이터 타입은 문자, 숫자 날짜 타입이 있다.
+4. 문자와 날짜 타입의 상수 값을 작은 따옴표(')로 묶어서 표현하고 숫자는
+그대로 사용한다.
+*/
+	SELECT * FROM emp
+	WHERE job = 'SALESMAN';
+/*
+5. 상수 값에서 영문자는 대소문자를 구별한다.
+	컬럼명과 테이블명, 명령문은 대소문자를 구별하지 않으나 데이터는 대소문자를 구분한다.
+*/
+	select * from emp
+	WHERE job = 'SALESMAN';
+/*
+6. 논리 연산자
+	조건1 (논리연산자) 조건2
+	and, or, not
+*/
+	SELECT *
+	FROM emp
+	WHERE deptno = 10
+	AND sal >= 3000; -- 조건1 and 조건2
+	SELECT empno, ename, sal
+	FROM emp
+	WHERE deptno = 10
+	OR sal >= 3000; -- 조건1 or 조건2
+	
+-- ex1) job이 'SALESMAN'인 데이터를 출력하되, 칼럼은 ENAME, JOB, SAL를 선택하세요.
+	SELECT ename, job, sal
+	FROM emp
+	WHERE job = 'SALESMAN';
+-- ex2) 부서번호(deptno)가 20이고, sal가 4000미만인 데이터를 출력하세요.
+	SELECT *
+	FROM emp
+	WHERE deptno = 20
+	AND sal < 4000;
+-- ex3) 연봉(sal) 이 2000에서 3000사이 이거나, 직책(job)이 'SALESMAN'인 사원의 사원번호(EMPNO),
+--		사원명(ENAME), 직책(JOB), 연봉(SAL)을 출력하세요
+	SELECT empno, ename, job, sal
+	FROM emp
+	WHERE ( sal >= 2000 AND sal <= 3000 )
+	OR job = 'SALESMAN';
+
+-- not 연산자 처리..
+-- 부서번호가 10이 아닌 경우 처리.
+SELECT * FROM emp
+WHERE deptno != 10;
+
+-- 컬럼명 between A and B == 컬럼명 >= A and 컬럼명 <= B
+-- sal가 1000에서 2000사이인 데이터 출력..
+SELECT * FROM emp
+WHERE sal BETWEEN 1000 AND 2000;
+
+-- # null 데이터 처리
+-- 데이터가 할당되지 않는 경우를 의미한다.
+-- 컬럼명 is null : 해당 컬럼에 데이터가 할당되지 않는 경우.
+-- 컬럼명 is not null : 해당 컬럼에 데이터가 할당된 경우.
+SELECT sal, comm
+FROM emp
+WHERE comm IS NULL; -- comm = null (버그로 정상적인 데이터를 가져오지 못 한다)
+SELECT sal, comm 
+FROM emp
+WHERE comm IS not NULL;
+SELECT * FROM emp;
+SELECT * FROM emp;
+
+-- ex1) job이 CLERK가 아닌 데이터를 출력하세요.
+SELECT *
+FROM emp
+WHERE job != 'CLERK';
+
+-- ex2) between을 이용하여 sal가 2000에서 3000사이 데이터를 출력하세요.
+SELECT *
+FROM emp
+WHERE sal BETWEEN 2000 AND 3000;
+
+-- ex3) comm이 null이 아닌 데이터를 ename과 sal의 comm의 합산한 급여로 출력하세요.
+SELECT ename, sal, comm, sal+comm show -- comm이 null이면 합산 처리에 문제가 있다.
+FROM emp
+-- null 아닌 경우만 호출
+SELECT ename, sal, comm, sal+comm 합산
+FROM emp
+WHERE comm IS NOT NULL;
+-- nvl함수 이용 nvl(컬럼, null경우초기데이터)
+SELECT ename, sal, comm, sal+nvl(comm,0) 합산
+FROM emp;
