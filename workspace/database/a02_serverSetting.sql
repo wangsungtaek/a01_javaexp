@@ -55,3 +55,10 @@ http://dbeaver.io/update/latest/
 	sql 작성 ctrl + enter를 통해서 실행..
 	
 
+eclipse 로 접속 안되시는 분들..
+cmd 창에서 system/1111로 접속하여서 
+아래 명령어를 하나씩 붙여 넣으세요..
+그리고, 다시 접속하시길..
+
+SQL> alter system set LOCAL_LISTENER='(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))' scope=both;
+SQL> alter system register;

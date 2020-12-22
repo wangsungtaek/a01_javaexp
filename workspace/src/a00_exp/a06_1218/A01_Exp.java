@@ -15,8 +15,15 @@ public class A01_Exp {
 					프로세스처리..
 				  	return 결과데이터;
 				  }
+			리턴타입 메서드명(매개변수) {
+				특정 매개변수에 따른 process 진행 처리..
+				return 리턴데이터;
+			}
+			int plus(int num01 + int num02){
+				return num01 + num02;
+			}
 		*/
-		
+	
 		/*
 		2. 완성도 있는 자판기 프로그램을 구현하세요..
 			1) 객체를 이용해서
@@ -231,10 +238,23 @@ public class A01_Exp {
 		System.out.println();
 		System.out.println();
 		
+		A a1 = new A();
+		
+		System.out.println(a1);
+		System.out.println(a1.toString());
+		
 		/*
 		11. 데이터베이스 설치 관련 내용을 캡처를 통해 설치되는 절차를 정리하여 ppt파일로
 			만들어 보세요.
 		*/			
+	}
+}
+class A {
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "A";
 	}
 }
 class VendingMachine { // Ex2
