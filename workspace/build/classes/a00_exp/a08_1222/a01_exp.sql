@@ -84,16 +84,20 @@ DELETE FROM test2;
 --5. 데이터 유형을 확인하고, 학생테이블(번호, 이름, 국어, 영어, 수학)을 만들고 데이터를 입력하세요.
 */
 CREATE TABLE student( -- 테이블 생성
-	num char(10),
-	name varchar2(15),
+	NO NUMBER,
+	name varchar2(30),
 	kor NUMBER,
 	eng NUMBER,
 	math NUMBER
 );
-INSERT INTO student values('2000000001','김영수',100,90,20); -- 데이터 입력
-INSERT INTO student values('2000000002','최철수',70,100,40);
-INSERT INTO student values('2000000003','홍길동',900,90,90);
-SELECT num 학번, name 이름, kor 국어, eng 영어, math 수학 FROM student; -- 조회
+-- 테이블의 별칭.* :(전체 컬럼) 에서 추가할 때는 테이블 테이블의 별칭으로 설정
+-- 컬럼을 통한 연산이나 함수를 통해서 처리될 수 있는 데이터는 테이블로 관리하지 않는다.
+-- round(컬럼, 소숫점자리수) : 해당 자리만큼 반올림 처리.
+SELECT a.*, kor+eng+math 총계, round(kor+eng+math)/3,1) 평균 FROM student a;
+INSERT INTO student values(1,'김영수',100,90,20); -- 데이터 입력
+INSERT INTO student values(2,'최철수',70,100,40);
+INSERT INTO student values(3,'홍길동',900,90,90);
+SELECT NO 학번, name 이름, kor 국어, eng 영어, math 수학 FROM student; -- 조회
 /*
 --6. 스포츠 스타의 이름 소속사 올해 성적을 입력하는 테이블을 만들고 데이터를 입력하고 조회하세요.
 */

@@ -75,6 +75,8 @@ FROM emp;
 **/
 SELECT DISTINCT deptno
 FROM emp;
+SELECT DISTINCT deptno
+FROM emp;
 SELECT *
 FROM emp
 WHERE sal>=3000;

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<h3>텍스트 꾸미기</h3>
+		<hr>
+		<p>
+			<b>진하게</b><br>
+			<strong>중요한</strong><br>
+			<em>강조</em><br>
+			<i>이탤릭으로 강조</i><br> <!-- 이탤릭체로 기운모양의글자 처리. -->
+			<b>
+				<i>진하게 이태릭으로 강조</i>		
+			</b>
+			<br>
+			<!-- 태그를 중첩해 적용 계층형으로 적용 하여야 한다. -->
+			보통 문자 <small>한 단계 작은 문자</small><br>
+			<del>삭제</del><br> <!-- 중간에 사선 처리 -->
+			<ins>추가</ins><br> <!-- 하단에 언더라인 처리 -->
+			보통문자의 <sup>윗첨자</sup><br>
+			보통문자의 <sub>아래첨자</sub><br>
+			<mark>하이라이팅</mark><br>
+		<p>
+		<!-- 
+		# 블록 태그와 인라인 태그.
+			1. 태그는 줄바꿈을 포함하는 태그이냐에 따라 구분되어지는 형태가 있다.
+				1) 블록 태그 : p, h1, div, ul
+				2) 인라인 태그 : 텍스트 꾸미기 관련 한 태그, a, img, span
+					해당 태그를 사용하고 다음에 태그를 사용하더라도 라인이 바뀌지 않는 태그를 말한다.
+		 -->
+		<h3>사랑</h3> <!-- 블럭 태그 -->
+		<hr>
+		<div style="background-color:skyblue; padding:20px;">
+			<!--  
+			# css, inline 설정.
+			1. css 속성은 head에서 스타일시트를 사용하여 선택{속성:속성값} 해당 페이지에 css설정 내용이 적용.
+			2. 태그 style="속성:속성값" 해당 라인만 css가 적용
+				background-color:skyblue; 배경 색상 지정
+				padding:20px; 내부 글자와 테두리라인 사이의 간격을 지정.
+			 -->
+			내가 사람의 방언과 천사의 말을 할지라도
+			<span style="color:red">사랑</span>이 없으면 소리 나는 구리와 울리는 꽹과리가 되고,
+			<span style="color:red">사랑</span>이 없으면 아무 것도 아니라.
+			<!-- span은 인라인 태그.. -->
+		</div>
+		<p>
+			~우리 서로 사랑하며 살아요~
+		</p>
+	</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<h1>2020-12-23 과제</h1>
+		<!--
+		1. 텍스트를 변경하는 코드에서 계층적 적용이라는 말의 의미를 설명하고, 
+			이택릭체로 진하게 처리하는 안녕하세요 코드를 만들어 출력해보세요.
+			1) 특정 태그안에 또다른 태그를 위치 시키는 것
+		 -->
+		<h2>Ex1)</h2>
+		<i><b>안녕하세요</b></i><br>
+		<hr>
+		<!--
+		2. 텍스트 꾸미기 코드의 사선과 언더라인, 첨자에 관련하여 기술하세요.
+		 -->
+ 		<h2>Ex2)</h2>
+		<del>사선</del><br>
+		<ins>언더라인</ins><br>
+		<hr>
+		 
+		<!--
+		3. 블럭과 인라인 태그의 의미와 코드를 분류하여 기술하고, 해당 내용에 간단한 예제를 만드세요.
+			1) 블럭 태그 : 줄바꿈을 포함하고 한라인을 차지하는 태그이다.
+				ex) p, div, h1, p
+			2) 인라인 태그 : 줄바꿈을 하지 않는 태그
+				ex) span, img, a,
+		 -->
+ 		<h2>Ex3)</h2>
+		<div>안녕하세요 저는 블럭 태그입니다.</div>
+		<p>안녕하세요 저는 <span style="color:red">인라인 태그</span>입니다.</p>
+		<hr>
+		
+		<!--
+		4. 이미지의 기본 속성을 기술하고, 좋아하는 애완 동물의 사진을 출력하는 코드를 작성하세요.
+			1) src : 이미지의 경로를 지정한다.
+			2) alt : 이미지를 불러오지 못했을때 이미지에 대한 설명확인할 수 있는 속성
+			3) width : 이미지의 가로 사이즈 설정
+			4) height : 이미지의 세로 사이즈 설정
+		 -->
+		<h2>Ex4)</h2>
+		<img alt="구글 로고" 
+			src="https://www.google.com/logos/doodles/2020/december-holidays-days-2-30-6753651837108830.5-s.png"
+			width="100", height="50">
+		<hr>
+		
+		<!--
+		5. 웹에서 상대적 경로와 절대적 경로/외부 페이지의 차이를 기본적인 예제를 통하여 설명하세요.
+		 -->
+		<h2>Ex5)</h2>
+		<h3>상대 경로 이미지 불러오기</h3>
+		<img src="dog.jpg"/>
+		<h3>절대 경로 이미지 불러오기</h3>
+		<img src="/javaexp/a00_exp/a01_1223/dog.jpg"/>
+		<hr>
+		
+		<!--
+		6. 간단한 맛집 투어라는 홈페이지를 h1, p, hr, img를 이용해서 나타내세요. 
+			img는 외부페이지 링크를 통해서 처리하세요.
+		 -->
+		<h2>Ex6)</h2>
+		<h1>간단한 맛집 투어</h3>
+		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9Ss7xF4TmFTbdLSu49-SLd5bkFo68hUCoqg&usqp=CAU"/>
+		<p>
+			청주 마카롱 맛집<br>
+			상호명 : 플레닐룬<br>
+			지역: 충청북도<br>
+			주소: 서원구 성화동 733번지 주1동 104호 신영빌딩 청주시 충청북도 KR<br>
+		</p>
+		<hr>
+		
+		<!--
+		7. ul/ol/dt의 차이점과 속성을 기술하세요.
+		 -->
+		<h2>Ex7)</h2>
+		<h3>list 태그의 차이점과 속성</h3>
+		<p>
+			<pre>
+				ul(unordered list) : 순서가 없는 리스트
+					. 속성 : disc/circle/square
+				ol(ordered list) : 순서가 있는 리스트
+					. 속성 : 1/A/a/i
+				dt(definitionlist) : 정의 리스트
+			</pre>
+		</p>
+		<hr>
+
+		<!--
+		8. 계층형으로 취미 생활을 종류/타이틀을 넣고,
+			경험 내용을 ul, ol, dt를 이용하여 계층형으로 처리하는 페이지를 만드세요.
+		 -->
+		<h2>Ex7)</h2>
+		<h3>계층형으로 취미생활 종류/타이틀 만들기</h3>
+			<ul>
+				<li>운동</li>
+				<ol>
+					<li>수영</li>
+					<li>런닝</li>
+					<li>클라이밍</li>
+				</ol>
+				<li>게임</li>
+				<dl>
+					<dt><stong>래프트</stong></dt>
+					<dd>바다에서 생존하는 게임</dd>	
+					<dt><stong>아크서바이벌</stong></dt>
+					<dd>공룡을 잡고 공룡을 키우는 게임</dd>
+					<dt><stong>롤</stong></dt>
+					<dd>5:5 전략게임</dd>
+				</dl>
+				<li>영화보기</li>
+			</ul>
+		<hr>
+	</body>
+</html>
