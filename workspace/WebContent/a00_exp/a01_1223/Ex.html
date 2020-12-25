@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		</head>
+	<body>
+		<!-- 
+		1. 계층적 적용이란? html의 고유성격으로 상위태그시작 하위태그 시작 하위태그 종료 상위태그 종료
+		 -->
+		이틸릭 적용되지 않는 코드<br>
+		<i>이탤릭 적용</i><br>
+		<b>굵기 적용</b>
+		<i><b>안녕하세요</b></i><!--  계층적으로 부모/자식 관계로 설정되는 것을 말한다 -->
+		<hr>
+		
+		<!--
+		2. 텍스트 꾸미기 코드는 태그 자체 내에 코드를 랜더링할 때, 지원되는 특성을 말한다.
+			b : 굵기, strong : 진하기, i : 이탤릭, del : 취소선, ins : 추가됨, sup : 윗첨자, sub : 아래첨자,
+			mark : 하이라이크
+		 -->
+		<del>사선(취소선)</del>
+		<ins>언더라인 처리</ins>
+		보통 글자 <sup>윗 첨자</sup>
+		<sub>아래첨자</sub>
+		<hr>
+		
+		<!--
+		3. 블럭 태그 : 줄바꿈을 포함하는 태그 ex) h1, h2... p, br, div...
+			인라인 태그 : 줄바꿈 없이 한라인으로 처리하는 태그, 주로 텍스트를 꾸미는 태그를 포함한다.
+				ex) a, img, span...
+		 -->
+		<h1>블럭의 대표적인 예제..</h1>
+		<a href="http://www.daum.net">다음이동</a>
+		<hr>
+		
+		<!--
+		4.  1) src : 이미지 경로를 설정..
+			2) width : 이미지의 넓이 지정
+			3) height : 이미지의 폭 지정
+			4) alt : dlternative 이미지가 해당 경로에 없을 때, 지정된 문자열을 출력하는 내용을 말한다.
+		 -->
+		<img src="dog.jpg", whidth="200", height="200"/>
+		<hr>				
+		
+		<!--
+		5.
+			상대경로 : 현재페이지(Ex.html)을 기준으로 호출하는 파일(이미지, 내부서버의 페이지, 다운할 파일)
+				을 설정하는 것을 말한다.
+				1) 현재페이지와 같은 폴드에 있을 때는 해당 파일명 그대로 활용하여도 된다.
+					a00_exp 폴드에 puppy01.PNG 파일이 있기 때문에 같은 경로로 사용할 수 있다.
+				2) 현재페이지 있는 폴드 하위에 폴드를 만들어 파일을 호출할 때..
+					폴드명/파일명으로 호출할 수 있다.
+				3) 현재페이지(Ex.html)와 다른 폴드 접근
+					.. : 상위계층의 폴드를 접근
+					/폴드명 : 해당 폴드로 접근..
+					
+		 -->		
+		<h3>파일과 같은 폴드에 있는 이미지</h3>
+		<img src="dog.jpg", whidth="200", height="200"/>
+
+		<h3>현재폴드에 하위 폴드의 이미지 호출</h3>
+		<img src="img/dog.jpg", whidth="200", height="200"/>
+		
+		<h3>현재폴드에 상위 폴드의 이미지 호출</h3>
+		<img src="../../z02_img/dog.jpg", whidth="200", height="200"/>
+		<!--
+		5.
+			절대경로 : 웹에서 tomcat was와 연동하여 실행하면 프로젝트/에 해당하는 default 경로는
+			javaexp\WebContent 하위와 연결되어 있어,
+			http://localhost:7080/javaexp/ 경로와 동일하다.
+			http://localhost:7080 부분은 소스에서는 생략이 가능하다.
+			
+			javaexp\WebContent\z01_img\banana.png
+			프로젝트명/하위 기본 경로에서 z01_img/banana.png를 접근하여 호출할 수 있다
+			
+			웹프로그램 소스에서는 소스마다 접근방식을 다르게 하고 있다.
+				각 폴드마다 특별한 기능을 가진 폴드를 분류를 해놓고 사용하고 있다.
+				ex) java소스 저장폴드, 설정파일, 컴파일된 파일, 웹화면을 출력할 파일폴드
+				html, css, 이미지 파일을 기본폴드에서 접근하게 설정했는데 그것이 WebContent폴드입니다.
+				화면에 보여주는 부분을 특정하게 설정해서 처리하게끔 했다.
+			
+			로컬 서버 pc로 서버 http://localhost:7080/javaexp/z01_img/banana.png
+			로 웹 서버를 통해 설정한 것은 목적자체가 외부에서 이 페이지를 호출하기 위한 목적이기 때문에,
+			localhost라는 곳에 ip주소나 domain주소를 넣으면 네트웍상 다른 클라이언트가
+			접근이 가능하다.
+		 -->			
+		<h3>절대 경로로 호출</h3>
+		<img src="/javaexp/z01_img/banana.png", whidth="200", height="200"/>
+
+		<!--
+		7.
+			리스트 처리할 때, 주로 사용된다.
+			ul : unordered list 순번이 붙지 않는 처리를 할 때, 특정모양을 설정해서 처리할 때 활용된다.
+				1) type="disc/circle/square/none"
+					disc : 디스크판 모양으로 원이 꽉찬 모양
+					circle : 원모양 테두리
+					square : 네모 모양
+					none : 모양이 붙지 않음.
+			ol : ordered list 글머리 기호로 숫자(기본), 로마자(I,i), 알파벳
+			dl : definition list 하위에
+				dt(definition title) 타이틀,
+				dd(dedinition data)	내용
+		 -->
+		<ul>
+			<li><a href="#">메뉴1</a></li>
+			<li><a href="#">메뉴2</a></li>
+			<li><a href="#">메뉴3</a></li>
+		</ul>
+		<!--
+		8.
+		 -->
+		<h2>나의 취미 생활</h2>
+		<d1>
+			<dt>운동</dt>
+			<dd>
+				<ol>
+					<li>자전거타기</li>
+					<li>러닝</li>
+					<li>팔굽혀펴기</li>
+				</ol>
+			</dd>
+			<dt>음악</dt>
+			<dd>
+				<ul>
+					<li>클래식 듣기</li>
+					<li>피아노 치기</li>
+					<li>공연 참석하기</li>
+				</ul>
+			</dd>
+		</d1>		
+	</body>
+</html>

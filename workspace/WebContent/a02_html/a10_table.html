@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<!--  
+		# 테이블
+		1. 전체적인 리스트 되는 데이터를 2차원으로 나타날때 활용되는 태그이다.
+		2. 주요 구성요소
+			1) table : 최상위 내용의 태그, 전체 속성을 설정할 때 사용된다.
+			2) caption : 테이블을 정의
+			   thead : 테이블의 헤드를 선언할 때.
+			   tbody : 테이블의 몸체인 body를 선언
+			   tfoot : 테이블의 하단 부분을 선언
+			3) tr : table row 행단위로 th, td를 넣는 태그
+			4) th : table head 주로 테이블의 타이틀로 중앙정렬과 bold를 처리해준다.
+			   td : table data 실제 들어갈 데이터처리
+		3. 속성
+		 -->
+		<h3>기본 구조를 가진 표</h3> 
+		<hr>
+		<!--  계층 구조화된 내용을 확인할 수 있다. -->
+		<table border="1">
+			<caption>1학기 성적</caption>
+			<thead>
+				<tr>
+					<th>이름</th>
+					<th>HTML</th>
+					<th>CSS</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr><td>황기태</td><td>80</td><td>70</td></tr>
+				<tr><td>이재문</td><td>95</td><td>99</td></tr>
+				<tr><td>이병은</td><td>40</td><td>61</td></tr>
+			</tbody>		
+			<tfoot>
+				<tr>
+					<th>합</th>
+					<th>255</th>
+					<th>230</th>
+				</tr>
+			</tfoot>
+		</table>
+		<!-- 
+		테이블은 이와같이 기본 구성으로 되어 있지만, 생략이 가능한 부분과 생략 불가한 부분이 있다.
+		1. 위에 caption, tbody, tfoot는 생략이 가능하다.
+		2. 하지만 tr, td, th부분은 반드시 사용해서 테이블 구조를 만들 수 있다.
+		3. table의 기본 속성 : table 속성1="속성값1값" 속성2="속성2값"
+			1) width : 테이블 전체 폭
+			2) height : 테이블 전체 높이
+			3) align : 전체화면 대비 정렬 위치 left, right, center
+		 -->
+		<h2>2x2</h2>
+		<table width="200" height="200" border>
+			<tr><td>1행1열</td><td>1행2열</td></tr>
+			<tr><td>2행1열</td><td>2행2열</td></tr>
+		</table>
+		<hr>
+		<!-- ex1) 3X3 중앙정렬 테이블, 4x4 왼쪽 정렬 테이블 구성 -->
+		<h2>3x3</h2>
+		<table width="200" height="200" border align="center">
+			<tr><td>1행1열</td><td>1행2열</td></tr>
+			<tr><td>2행1열</td><td>2행2열</td></tr>
+			<tr><td>3행1열</td><td>3행2열</td></tr>
+		</table>
+		<hr>
+		<h2>4x4</h2>
+		<table width="200" height="200" border>
+			<tr><td>1행1열</td><td>1행2열</td></tr>
+			<tr><td>2행1열</td><td>2행2열</td></tr>
+			<tr><td>3행1열</td><td>3행2열</td></tr>
+			<tr><td>4행1열</td><td>4행2열</td></tr>
+		</table>
+		<hr>
+		<br>
+		<!-- ex2) 번호 물건명 가격 갯수 타이틀로 테이블 구성 -->
+		<h2>ex2)</h2>
+		<table width="200" height="200" border>
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>물건명</th>
+					<th>가격</th>
+					<th>갯수</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr><td>1</td><td>사과</td><td>3000</td><td>2</td></tr>
+				<tr><td>2</td><td>바나나</td><td>4000</td><td>3</td></tr>
+				<tr><td>3</td><td>오렌지</td><td>1000</td><td>4</td></tr>
+			</tbody>
+		</table>
+	</body>
+</html>
