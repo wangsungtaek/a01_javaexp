@@ -90,7 +90,6 @@ SELECT LENGTH('hello') AS 문자열길이,
 	   LENGTH('안녕') AS 문자열길이,
 	   LENGTHB('안녕') AS 문자열바이트
   FROM dual;
-	   
 -- 11. ||, substr  이용하여  [ename(deptno)의 직책은 job 입니다. ] 형식으로 출력하세요.   
 --    ename : 앞에서 3자 추출
 --    job :뒤에서 5자 추출

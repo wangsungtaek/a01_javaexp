@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<!-- 
+		1. table에서 rowspan, colspan의 의미와 col태그의 의미를 기본 예제(3X3 테이블)와 함께 기술하세요.
+		 	rowspan : 행을 병합한다는 의미이다.
+		 		ex) rowspan = "2" 라고 지정하면 2개의 행을 병합한다.
+		 	colspan : 열을 병합한다는 의미이다.
+		 		ex) colspan = "2" 라고 지정하면 2개의 열을 병합한다.
+		 	* 테이블이 이상하게 만들어지지 않게 병합에 해당되는 셀은 비워져야한다.
+		 -->
+		<h2>Ex1)</h2>
+		<table border width="200" height="200">
+			<caption>3X3 table</caption>
+			<tr><td colspan="2">1</td><td>3</td></tr>
+			<tr><td>4</td><td rowspan="2">5</td><td>6</td></tr>
+			<tr><td>7</td><td>9</td></tr>
+		</table>
+		<hr>
+		
+		<!-- 
+		2. 3*3테이블에서  1,4,7 병합처리, 2,3병합, 8,9병합 
+		 -->
+		<h2>Ex2)</h2>
+		<table border width="200" height="200">
+			<col width="33%">
+			<col width="33%">
+			<col width="33%">
+			<caption>3X3 table</caption>
+			<tr><td rowspan="3">1</td><td colspan="2">2</td></tr>
+			<tr><td>5</td><td>6</td></tr>
+			<tr><td colspan="2">8</td></tr>
+		</table>
+		<hr>
+		
+		<!-- 
+		3. 4*4테이블에서 1,5,9,13 병합, 6,7,10,11 병합, 14,15,16 병합 처리하세요.
+		 -->
+		<h2>Ex3)</h2>
+		<table border width="200" height="200">
+			<col width="25%">
+			<col width="25%">
+			<col width="25%">
+			<col width="25%">
+			<caption>4X4 table</caption>
+			<tr><td rowspan="4">1</td><td>2</td><td>3</td><td>4</td></tr>
+			<tr><td colspan="2" rowspan="2">6</td><td>8</td></tr>
+			<tr><td>12</td></tr>
+			<tr><td colspan="3">14</td></tr>
+		</table>
+		<hr>
+
+		<!-- 
+		3. 5*5 테이블 만들어 모두의 마블 같은 모양으로 테두리를 1부터시작하여 번호를 넘버링하고,
+			중간을 비운 테이블을 구성하세요.
+		 -->
+		<h2>Ex4)</h2>
+		<table border width="200" height="200">
+			<col width="20%">
+			<col width="20%">
+			<col width="20%">
+			<col width="20%">
+			<col width="20%">
+			<caption>5X5 table</caption>
+			<tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+			<tr><td>16</td><td colspan="3" rowspan="3"></td><td>6</td></tr>
+			<tr><td>15</td><td>7</td></tr>
+			<tr><td>14</td><td>8</td></tr>
+			<tr><td>13</td><td>12</td><td>11</td><td>10</td><td>9</td></tr>
+		</table>
+		<hr>	
+	</body>
+</html>

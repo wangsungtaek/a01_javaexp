@@ -93,5 +93,68 @@
 				<tr><td>3</td><td>오렌지</td><td>1000</td><td>4</td></tr>
 			</tbody>
 		</table>
+		<!-- 
+		# 셀병합 처리.
+		1. th, td 속성
+			colspan = "병합할갯수" : colume(열) span(확장합니다)
+				확장이 된 경우, 옆에 있는 cell의 개수만큼 삭제해야한다.
+			rowspan = "병합할갯수" : row(행) span(확장합니다)
+		 -->
+		<h2 align="center">4X4</h2>
+		<!--  align left는 default이고, 명시적으로 선언하면 다음테이블 정렬에 영향을 미친다. -->
+		<table width="200" height="200" align="center" border>
+			<col width="25%"> <!--  col(열)의 비율 설정 -->
+			<col width="25%">
+			<tr><td colspan="2">1</td><td>3</td><td>4</td></tr>
+			<tr><td rowspan="3">5</td>
+				<td rowspan="2", colspan="2">6</td><td>8</td></tr>
+			<!--  하나의 cell에서 rowspan과 colspan을 동시에 설정하면
+			rowspan	갯수 * colspan의 갯수 범위 내에 모든 cell이 병합된다. -->
+			<tr></td><td>12</td></tr>
+			<tr><td>14</td><td>15</td><td>16</td></tr>
+		</table>
+		<hr>
+		<!-- 
+			ex1) 2*2테이블 생성 가로 cell병합 하세요. - cell 갯수 만큼 번호 numbering 처리
+			ex2) 2*2테이블 생성 가로 cell병합 하세요.
+			ex3) 3*3테이블에서
+				1	2	3
+				4	5	6
+				7	8	9
+				2,3 병합처리, 5,8병합
+			ex4) 3*3 테이블에서 1,4,7 병합처리, 2,3 병합, 8,9 병합
+		 -->
+		<h2>Ex1)</h2>
+		<table border>
+			<tr><td colspan="2">1</td></tr>
+			<tr><td colspan="2">3</td></tr>
+		</table>
+		<hr>
+		
+		<h2>Ex2)</h2>
+		<table border>
+			<tr><td rowspan="2">1</td><td colspan="2">2</td></tr>
+			<tr></tr>
+		</table>
+		<hr>
+		
+		<h2>Ex3)</h2>
+		<table border>
+			<tr><td>1</td><td colspan="2">2</td></tr>
+			<tr><td>4</td><td rowspan="2">5</td><td>6</td></tr>
+			<tr><td>7</td><td>9</td></tr>
+		</table>
+		<hr>
+
+		<h2>Ex4)</h2>
+		<table border>
+			<col width="33%">
+			<col width="33%">
+			<col width="33%">
+			<tr><td rowspan="3">1</td><td colspan="2">2</td></tr>
+			<tr></td><td>5</td><td>6</td></tr>
+			<tr><td colspan="2">8</td></tr>
+		</table>
+		<hr>
 	</body>
 </html>

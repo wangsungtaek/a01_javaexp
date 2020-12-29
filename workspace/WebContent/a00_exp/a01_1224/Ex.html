@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style type="text/css">
+			h2 {background-color:orange;}
+		
+		</style>
+		<script>
+			function call(obj){
+				obj.innerHTML = "클릭이 되었습니다.";
+			}
+			function chColor(obj,idx){ // h1 ==> obj, h2 ==> obj
+				// 클릭한 객체를 첫번째 매개변수값을 받는다.
+				var colors = ['red','orange','yellow','green','blue','navy'];
+				// this ==> obj로 할당
+				// 클릭한 객체의 속성 style을 이용해서 배경색상이나 타이틀 문자열을 변경 처리한다.
+				obj.style.backgroundColor=colors[idx]; // 받은 index값을 기준으로 데이터를 처리
+			}
+		</script>
+	</head>
+	<body>
+		<!-- 
+		1. 
+		 - 계층형 구성요소 : dtd선언, html, head(meta, title...), body
+		 - 프로그램적(front end)단 구성 요소 : 기본태그, css, javascript
+		 -->
+		<h2 onclick="call(this)">안녕하세요.</h2>		 
+		<!--
+		this : java에서도 객체지향적인 프로그램에서 현재 대상이 되는 객체를 말한다. 
+			상속과 관계에서 상위 객체와 구분할때, 지역변수와 구분할 때 사용.
+		 -->
+		<h1 onclick="chColor(this, 0)">빨</h1>
+		<!-- 
+		js는 모든 태그를 객체 개념으로 사용한다. h1 객체의 클릭을 통해서 클릭한 이 객체 즉 h1을 지칭하고,
+		
+		
+		 -->
+		<h2 onclick="chColor(this, 1)">주</h2>
+		<h3 onclick="chColor(this, 2)">노</h3>
+		<h4 onclick="chColor(this, 3)">초</h4>
+		<h5 onclick="chColor(this, 4)">파</h5>
+		<h6 onclick="chColor(this, 5)">남</h6>
+		<!-- 
+		4.
+			1) table : 계층구조의 최상위
+			2) caption : 테이블의 제목
+				thead : 테이블의 헤더
+				tbody : 테이블의 
+				tfoot : 테이블의 
+		
+		6. 1) width : 폭
+			2) height :높이
+			3) align : 테이블 외부에서 현재 테이블에 대한 상대적 정렬
+			4) border : 셀의 굵기 속성
+		 -->
+	</body>
+</html>
