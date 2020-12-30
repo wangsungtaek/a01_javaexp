@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	<style>
+		table {
+			height:200px;
+			border-collapse:collapse;
+		}
+		td {
+			border:2px solid black;
+			text-align:right;
+		}
+		th, .center {
+			text-align:center;
+		}		
+	</style>
+	</head>
+	<body>
+		<!-- 
+		1. [하]table의 cell과 두께 관련 속성을 예제를 통해서 기술하세요..
+		 -->
+		<h3 id="Ex1">Ex1)</h3>
+		<hr>
+		<table width="200px" border="10" > <!-- 테이블의 두께를 지정할 수 있다. -->
+			<caption>3x3</caption>
+			<tr><td>1</td><td>2</td><td>3</td></tr>
+			<tr><td>4</td><td>5</td><td>6</td></tr>
+			<tr><td>7</td><td>8</td><td>9</td></tr>
+		</table>
+		<hr>
+		
+		<!-- 
+		2. [하]css을 사용하는 이유와 테이블 내부 글자의 정렬과 cell을 병합하는 속성과 속성값 기술하세요.
+			css는 html로 만들어진 페이지를 꾸미기 위해 사용한다.
+			1) text-align
+				- 테이블 내부 글자를 정렬하기 위해 사용한다.
+				- center, lefr, right 값을 사용할 수 있다.
+			2) colspan, rowspan
+				- 셀을 병합하기 위해 사용한다.	
+		 -->
+		<h3 id="Ex2">Ex2)</h3>
+		<hr>
+		<table width="200px" border="10"> <!-- 테이블의 두께를 지정할 수 있다. -->
+			<caption>3x3</caption>
+			<tr><td colspan="3">1</td></tr>
+			<tr><td>4</td><td>5</td><td>6</td></tr>
+			<tr><td>7</td><td>8</td><td>9</td></tr>
+		</table>
+		<hr>
+		
+		<!-- 
+		3. [중]아래와 같은 테이블을 만드세요.
+               성 적 표
+	    번호    이름   국어  영어  수학  => 타이틀 중앙정렬
+	     1   홍길동    90   90   70
+	     2   김길동    80   90   80
+	     3   신길동    70   80   70
+	    1) 테이블 전체 한 line표시 
+	    2) 번호와 이름은 중앙 정렬, 점수는 오른쪽 정렬
+	    3) 기타 화면상 적절한 색상과 cell간격 설정 통해 데이터 출력 처리.
+		 -->
+		<h3>Ex3)</h3>
+		<hr>
+		<table width="500px" border="5" bgcolor="yellow"> <!-- 테이블의 두께를 지정할 수 있다. -->
+			<col width="20%">
+			<col width="20%">
+			<col width="20%">
+			<col width="20%">
+			<col width="20%">
+			<caption>성 적 표</caption>
+			<tr><th>번호</th><th>이름</th><th>국어</th><th>영어</th><th>수학</th></tr>
+			<tr><td class="center">1</td><td class="center">홍길동</td><td>90</td><td>90</td><td>70</td></tr>
+			<tr><td class="center">2</td><td class="center">김길동</td><td>80</td><td>90</td><td>80</td></tr>
+			<tr><td class="center">3</td><td class="center">신길동</td><td>70</td><td>80</td><td>70</td></tr>
+		</table>
+		<hr>
+		
+		<!-- 
+		4. [하]a 태그의 주요 속성값과 의미를 기술하고, 내부페이지와 외부페이지 이동 예제를 만드세요.
+			1) href : 이동할 페이지
+			2) target : 페이지가 출력할 이름
+		 -->
+		<h3>Ex4)</h3>
+		<hr>
+		<ol>
+			<li><a href="#Ex1">내부페이지 Ex1으로 이동</a></li>
+			<li><a href="#Ex2">내부페이지 Ex2으로 이동</a><br></li>
+			<li><a href="http://www.naver.com">네이버로 이동</a><br></li>
+		</ol>
+
+		<!-- 
+		5. [하]로그인메뉴 클릭시 로그인 화면 로딩화면 구현
+		 -->
+		<h3>Ex5)</h3>
+		<hr>
+
+		<!-- 
+		6. [중]물품리스트화면과  특정 물품를 클릭시 특정한 상세화면페이지 등 이동 처리하는 화면을 구현해 보세요.
+	   (frame 사용하지 않음.) 
+	    번호 물건명  가격  갯수               
+	    1   사과   3000 2    ==> 클릭시 페이지 이동 ==>      사과 상세정보
+	    2   바나나  4000 5                                가격  3000
+	                                                    구매할 갯수  5 
+	                                                     창닫기 ==> 클릭시 원페이지 이동
+		 -->
+		<h3>Ex6)</h3>
+		<hr>
+		<table border="2" width="300">
+			<tr><th>번호</th><th>물건명</th><th>가격</th><th>갯수</th></tr>
+			<tr>
+				<td class="center">1</td>
+				<td class="center"><a href="product.html#apple">사과</a></td>
+				<td>3000</td><td>2</td>
+			</tr>
+			<tr>
+				<td class="center">2</td>
+				<td class="center"><a href="product.html#banana">바나나</a></td>
+				<td>4000</td><td>5</td>
+			</tr>
+		</table>
+		
+		<!-- 
+		7. [하]frame의 계층 관계에 대하여 간단한 예제로 설명하세요.
+		 -->
+		<h3>Ex7)</h3>
+		<hr>		
+		<iframe src="product.html" name="iframe1" width="500" height="500"></iframe>
+		<iframe src="http://www.w3.org" name="iframe2" width="500" height="500"></iframe>
+
+		<!-- 
+		8. [중]iframe을 이용해서 상단/왼쪽/하단/메인 구조의 메인화면을 만들어 보세요.
+		 -->
+		<h3>Ex8)</h3>
+		<hr>
+		<iframe src="child.html" width="500" height="500"></iframe>
+	</body>
+</html>

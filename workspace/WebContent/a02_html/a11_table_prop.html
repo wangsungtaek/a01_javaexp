@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		</head>
+		<style type="text/css">
+			td {
+				text-align:center;
+				border:1px solid green;
+			}
+			table {
+				border-collapse:collapse;
+			}
+		</style>
+	<body>
+		<!-- 
+		# 테이블의 속성2
+		1. 기본 속성
+			1) 테이블의 속성으로 border, 글자와의 간격 등을 설정할 수 있다.
+				cell : 각각 테이블 구성요소로 만들어지는 것을 이 단위로 하여
+				cellpadding : 셀안에 있는 글자와 border사이의 간격을 설정해준다.
+				cellspacing : 셀과 센간의 간격을 설정해준다.
+				- border : 테두리의 굵기 설정
+			2) bgcolor ="배경색"
+				
+		2. css 속성
+			1) 정렬 처리 : 테이블내에 글자에 대한 정렬은 기본속성으로 지원하지 않기 때문에
+				css을 선언하여 정렬 처리한다.
+				선택자{정렬속성:정렬속성값;}
+				td{text-align : 정렬방식;}
+			2) border에 대한 1라인 표시
+				border-collapse:collapse;
+					border의 2라인으로 입체감있게 표현되는 내용을 collapse(병합/붕괴) 처리하겠다는
+					css 속성
+				border:선의굵기 형식 색상;
+					border가 있는 요소(태그)의 외곽선에 대한 옵션으로 매개값으로 굵기 형식 생상을 지정할 수 있다.
+					ex) border:1px solid green;
+						굵기를 1px로 형태를 단일라인으로 색상을 green으로 처리.
+					
+		 -->
+		<h2 align="center">table 속성</h2>
+		<table align="center" width="200" height="200" border="10"
+				cellpadding="20"
+				cellspacing="20"
+				bgcolor="yellow"
+			>
+			<col width="33%">
+			<col width="33%">
+			<col width="33%">
+			<tr><td>1</td><td>2</td><td>3</td></tr>
+			<tr><td>4</td><td>5</td><td>6</td></tr>
+			<tr><td>7</td><td>8</td><td>9</td></tr>
+		</table>
+		<hr>
+		
+		<h2 align="center">table css 속성</h2>
+		<table align="center" width="200" height="200" border="10">
+			<col width="33%">
+			<col width="33%">
+			<col width="33%">
+			<tr><td>1</td><td>2</td><td>3</td></tr>
+			<tr><td>4</td><td>5</td><td>6</td></tr>
+			<tr><td>7</td><td>8</td><td style="text-align:right;">9</td></tr>
+		</table>
+		<!-- 
+		css를 해당 라인에서 적용 처리 태그명 style="css속성:속성값"
+		상위에 선언한 css속성과 충돌할 때, 현재 라인에서 선언한 속성값이 우선적으로 적용이 된다.
+		 -->
+	</body>
+</html>

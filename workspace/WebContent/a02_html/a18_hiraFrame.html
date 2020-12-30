@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>브라우저 윈도우(top)</title>
+	</head>
+	<!-- 
+	# 브라우저 윈도우(최상위)와 인라인 프레임의 계층 관계
+	1. 브라우저 윈도우와 프레임과의 관계는 부모 자식 관계이다.
+		1) a18_hiraFrame.html 파일에서 만들어진 실행한 화면은 최상위 브라우저 윈도우이다.
+		2) 이 화면에서 포함되어 있는 leftframe.html를 가진 frame과, 
+			rightframe.html를 가진 frame이 자식 프레임(child윈도우)으로 
+		3) 현재 창에서 leftframe.html 화면(left프레임)을 child윈도우이고,
+		4) leftframe.html화면에서 현재 창(최상위화면)을 parent 윈도우이다.
+		5) rightframe.html 화면 안에 있는 http://www.etnews.com페이지는
+			rightfram.html의 child윈도우이고, http://www.etnews.com페이지에서
+			현재페이지는 top윈도우 이다.
+	 -->
+	<body>
+		<h3>2개의 &lt;iframe&gt; 윈도우를 가집니다.</h3>
+		<hr>
+		<iframe src="leftframe.html" name="left" width="100" height="500">
+		</iframe>
+		<iframe src="rightframe.html" name="right" width="400" height="500">
+		</iframe>
+	</body>
+</html>

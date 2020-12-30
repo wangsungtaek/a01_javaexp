@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			td{
+				border : 1px solid green;
+				text-align:center;
+			}
+			.al01{
+				text-align:right;
+				/* 클래스명으로 지정하면 하단에 효율적으로 활용 */
+			}
+			table{
+				border-collapse:collapse;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 
+		ex) 아래와 같은 테이블을 만드세요.
+			번호	물건명	가격	갯수
+			1		사과	3000	2
+			2		바나나	4000	3
+			
+			테이블은 1라인으로 처리
+			1. 번호/물건명은 중앙 정렬
+			2. 가격/갯수는 오른쪽 정렬
+			3. 글자와 border사이의 간격 10px
+		 -->
+		<h2 align="center">물건 정보</h2>
+		<table align="center" width="400" height="200"
+				cellapdding="5px"
+				border>
+			<col width="20%">
+			<col width="30%">
+			<col width="25%">
+			<col width="25%">
+			<tr><td>번호</td><td>물건명</td><td class="al01">가격</td><td class="al01">갯수</td></tr>
+			<tr><td>1</td><td>사과</td><td class="al01">3000</td>
+										<td class="al01">2</td></tr>
+			<tr><td>2</td><td>바나나</td><td class="al01">4000</td>
+										<td class="al01">3</td></tr>
+										<!-- 상단에 지정된 .클래스명{속성:속성값}
+											으로 처리가 된다.
+											.al01{text-align:right;}
+										 -->
+		</table>
+	</body>
+</html>

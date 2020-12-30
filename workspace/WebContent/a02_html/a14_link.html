@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<!-- 
+		# hyperlink 만들기
+		1. hyperlink란 다른 html페이지와 연결하여
+			1) 현재 서버에 있는 html페이지의 특정 위치로 이동할 수 있을 뿐만 아니라
+				ex) a href="a01_start.html" 현재 폴드에 있는 특정한 페이지로 이동
+			2) 외부 서버에 있는 페이지로 이동을 가능하게 한다.
+				ex) a htrf="http://www.naver.com" 네이버
+			3) 이미지로 링크
+				a href=""img
+		2. 기본형식
+			a href="이동할페이지" target="페이지가 출력할 이름"
+		 -->
+		<h3>링크 만들기</h3>
+		<hr>
+		포털 사이트
+		<ul><!-- 외부 페이지로 이동처리 -->
+			<li><a href="http://www.naver.com">네이버</a></li>
+			<li><a href="http://www.daum.com">다음</a></li>
+		</ul>
+		신문 사이트
+		<ul><!-- 이미지로 외부사이트 연결 -->
+			<li><a href="http://www.etnews.com">
+				<img src="media/iconetnews.png" alt="전자신문">
+				</a>
+			</li>
+			<li><a href="http://www.chosun.com">
+				<img src="media/iconchosun.png" alt="조선일보">
+				</a>
+			</li>
+		</ul>
+		<!-- 
+		3. 하이퍼링크 텍스트 색상
+			1) 초기 색상 : 파랑색으로 밑줄과 함께 표시
+			2) 방문 후 : 보라색으로 변경된다.
+			3) 마우스 클릭 시 : 누르고 있는 동안 색상은 빨강색..
+		 -->
+		<hr>
+		<!-- 
+			상대적/절대적 위치로 서버에 있는 특정한 페이지로 이동 처리.
+		 -->
+		<a href="a01_start.html">a01_start.html 페이지로 이동</a>
+		
+		<h3>링크의 target 속성활용</h3>
+		<hr>
+		<ul><!-- 이미지로 외부사이트 연결 -->
+		<!-- 
+		# target 속성..
+			_blank : 새로운 탭/창으로 페이지가 로딩..
+			_self : 현재페이지를 변경처리..
+			_parent : window.open()(js), iframe으로 페이지 호출시 사용
+			_top : window.open()(js), iframe으로 페이지 호출시 최고 레벨 창을 변경 처리
+		 -->
+			<li><a href="http://www.w3.org" target="_blank">W3C(새 윈도우, _blacnk)</a></li>
+			<li><a href="http://www.etnews.com" target="_self">전자신문(현재 윈도우, _self)</a></li>
+			<li><a href="http://www.naver.com" target="_parent">네이버(부모 윈도우, _parent)</a></li>
+			<li><a href="http://www.mk.co.kr" target="_top">매일경제신문(브라우저 윈도우, _top)</a></li>
+		</ul>
+		<hr>
+		<!-- 
+		# 페이지내에 특정한 위치로 이동하기..
+		1. 특정위치를 태그의 속성으로 id="아이디명" 로 설정하고 href="#아이디명" 하면,
+			내부 페이지의 특정 위치로 이동이 가능하다.
+		 -->
+		<h3>Elvis Presley</h3>
+		<hr>
+		<ul>
+			<li><a href="#Love">Love me tender</a></li>
+			<li><a href="#can">Can't help falling in love</a></li>
+			<li><a href="#it">It's now or never</a></li>
+		</ul>
+		<br><br><br><br><br><br><br><br><br><br>
+		<!--  위에 href="#love" 이부분을 클릭시, id="love"로 설정된 위치로 이동이 된다. -->
+		<h3 id="Love">Love me tender</h3>
+		Love me tender, Love me sweet, Never let me go.<br>
+		You have made my life complete,<br>
+		And I love you so.<br>
+		Love me tender, Love me true,<br>
+		All my dreadms fulfilled.<br>
+		For my darling I love you, And I always will.<br>
+		<br><br><br><br><br><br><br><br><br><br>
+		<h3 id="can">Can't help falling in love</h3>
+		Love me tender, Love me sweet, Never let me go.<br>
+		You have made my life complete, And I love you so.<br>
+		Love me tenger, Love me true, All my dreams fulfilled.<br>
+		For my darling I love you, And I always will.<br>
+		<br><br><br><br><br><br><br><br><br><br>
+		<h3 id="it">It's now or never</h3>
+		It's now or never, Come hold me tight<br>
+		Kiss me my darling, Be mine tonight<br>
+		Tomottow woll be too late,<br>
+		
+		<h3>외부페이지 이동</h3>
+		<ul>
+			<li><a href="a15_link.html#Love">15 love</li>
+			<li><a href="a15_link.html#can">15 Can</li>
+			<li><a href="a15_link.html#it">15 it</li>
+		</ul>
+	</body>
+</html>

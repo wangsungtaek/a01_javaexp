@@ -38,7 +38,9 @@ SELECT ENAME AS 사원명,
 
 /*
 4. floor와 trunc의 차이점을 기본 예제로 설명하세요.
- */
+ 	floor() : 정수로 절삭(소숫점이하는 절삭)
+ 	trunc() : 지정한 자리수만큼 확보하여 절삭
+ **/
 SELECT floor(3415.88) AS floor, -- floor는 가장 가까운 정수를 반환한다.
 	   trunc(3415.88,1) AS trunc -- 소수점1자리까지 표현하고 나머지 절삭
   FROM DUAL;
@@ -46,20 +48,24 @@ SELECT floor(3415.88) AS floor, -- floor는 가장 가까운 정수를 반환한
 /*
 5. 날짜형 데이터에 증감단위를 일, 월, 년을 정할 때, 사용되는 연산자와 함수 또는 연산자+함수 조합으로
     처리되는 내용을 예제로 기술하세요.
+    
+    날짜형 데이터 + 1 : 일단위 증가, add_months(날짜데이터, 1) : 한달 증가,
+    add_months(날짜데이터, 월*12) : 연단위 증가.
  */
-SELECT sysdate AS 현재날짜,
-	   sysdate+1 AS 내일날짜,
-	   sysdate-1 AS 어제날짜,
-	   sysdate+(8/24) AS "8시간후",
-	   sysdate+365 AS "1년후"
-  FROM DUAL;
+SELECT ENAME AS 이름,
+	   HIREDATE AS 입사일,
+	   HIREDATE+1 AS "입사후 1알후",
+	   add_months(HIREDATE, 1) AS "입사후 한달",
+	   add_months(HIREDATE, 12) AS "입사후 일년",
+	   add_months(HIREDATE, 12*10) AS "입사후 10년"
+  FROM EMP;
 
 /*
 6. 사원, 이름과 입사후 300일 날짜, 지금까지 근무연한(일년 - 365 기준)를 출력
  */
 SELECT ENAME AS 이름,
 	   HIREDATE AS 입사일,
-	   HIREDATE+300 AS "입사후300일",
+	   HIREDATE+300 AS "입사후 300일",
 	   floor(months_between(sysdate, HIREDATE)/12)||'년' AS 근무연한
   FROM EMP;
  
@@ -67,6 +73,8 @@ SELECT ENAME AS 이름,
 7. 오늘을 1일로, 1000일 후 개월수, 10000 후 년수를 출력하세요.
  */
 SELECT sysdate AS "오늘",
+	   substr(sysdate+1000, 4, 2) AS "개월",
+	   substr(sysdate+10000, 1, 2) AS "년",
 	   floor(MONTHS_BETWEEN(sysdate+1000, sysdate))||'개월' AS "1000일 후 개월",
 	   floor(MONTHS_BETWEEN(sysdate+10000, sysdate)/12)||'년' AS "1000일 후 년"
   FROM DUAL;
