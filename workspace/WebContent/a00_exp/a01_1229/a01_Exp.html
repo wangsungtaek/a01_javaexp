@@ -16,10 +16,20 @@
 			text-align:center;
 		}		
 	</style>
+	<script>
+	   function goPage(page){
+	      location.href=page;
+	   }
+	</script>
 	</head>
 	<body>
 		<!-- 
 		1. [하]table의 cell과 두께 관련 속성을 예제를 통해서 기술하세요..
+			1) 테이블의 속성으로 border, 글자와의 간격 등을 설정할 수 있다.
+				- cell : 각각 테이블 구성요소로 만들어지는 것을 이 단위로 하여
+				cellpadding : 셀안에 있는 글자와 border사이의 간격을 설정해준다.
+				cellspacing : 셀과 셀간의 간격을 설정해준다.
+				- border : 테두리의 굵기 설정
 		 -->
 		<h3 id="Ex1">Ex1)</h3>
 		<hr>
@@ -33,6 +43,7 @@
 		
 		<!-- 
 		2. [하]css을 사용하는 이유와 테이블 내부 글자의 정렬과 cell을 병합하는 속성과 속성값 기술하세요.
+			css 사용 이유 : 태그마다 고유의 속성을 가지고 있는데, 이를 더 확장하여 크기나 생상이나 모양
 			css는 html로 만들어진 페이지를 꾸미기 위해 사용한다.
 			1) text-align
 				- 테이블 내부 글자를 정렬하기 위해 사용한다.
@@ -94,6 +105,7 @@
 		5. [하]로그인메뉴 클릭시 로그인 화면 로딩화면 구현
 		 -->
 		<h3>Ex5)</h3>
+		<a href="login.html" target="_blank">로그인</a>
 		<hr>
 
 		<!-- 
@@ -119,10 +131,19 @@
 				<td class="center"><a href="product.html#banana">바나나</a></td>
 				<td>4000</td><td>5</td>
 			</tr>
+			<tr onclick="goPage('a06_banan.html')">
+				<td class="center">3</td>
+				<td class="center"><>바나나</a></td>
+				<td>4000</td><td>5</td>
+			</tr>			
 		</table>
 		
 		<!-- 
 		7. [하]frame의 계층 관계에 대하여 간단한 예제로 설명하세요.
+			1) 브라우저 윈도우와 프레임과 관계는 부모 자식 관계이다.
+			2) 최상위 top 윈도우에서 하위 프레임을 만들면
+				상위윈도우 입장에서 포함되어 있는 프레임은 child이고,
+				하위프레임 입장에서는 상위윈도우가 parent이다.
 		 -->
 		<h3>Ex7)</h3>
 		<hr>		
