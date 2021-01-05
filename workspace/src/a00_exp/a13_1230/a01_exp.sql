@@ -20,8 +20,8 @@ SELECT nullif('a','b') AS "nullif1",
 SELECT ENAME AS 이름,
 	   DEPTNO AS 부서번호,
 	   SAL AS 월급,
-	   nvl2(nullif(DEPTNO,30), DEPTNO, 100)||'%' AS "보너스%",
-	   SAL*(nvl2(nullif(DEPTNO,30), DEPTNO, 100)/100) AS 보너스
+	   NVL(NULLIF(DEPTNO,30), 100)||'%' AS "보너스%",
+	   SAL*(NVL(NULLIF(DEPTNO,30), 100)/100) AS 보너스
   FROM EMP;
 
 /*
@@ -50,10 +50,19 @@ SELECT ENAME AS 이름,
 	   												'200%') AS "보너스(%)",
 	   SAL AS 급여
   FROM EMP;
+-- 문제풀이
+SELECT ENAME, HIREDATE,
+	   TO_NUMBER(TO_CHAR(HIREDATE, 'MM')) AS 월,
+	   DECODE(FLOOR(TO_NUMBER(TO_CHAR(HIREDATE, 'MM'))/7), 0, '상반기', '하반기') AS 입사구분1,
+	   DECODE(FLOOR(TO_NUMBER(TO_CHAR(HIREDATE, 'MM'))/7), 0, '100%', '200%') AS 입사구분2,
+	   SAL,
+ 	   DECODE(FLOOR(TO_NUMBER(TO_CHAR(HIREDATE, 'MM'))/7), 0, SAL*1, SAL*2) AS 입사구분3
+  FROM EMP;
 
  --[하]5. sal를 기준으로 5000이상 A등급, 4000이상 B등급, 3000이상 C등급, 2000이상 D등급, 
 --      1000이상 E등급, 1000미만 F등급으로 급여등급표기하세요
 --      사원명, 급여, 등급
-SELECT ENAME AS 사원명,
-	   SAL AS 급여,
+SELECT ENAME, SAL, FLOOR(SAL/1000),
+	   DECODE(FLOOR(SAL/1000), 0, 'F등급', 1, 'E등급', 2, 'D등급', 3,
+	   			'C등급', 4, 'B등급', 'A등급') AS 등급
   FROM EMP;

@@ -93,3 +93,36 @@ SELECT ENAME, DEPTNO,
 SELECT ENAME, EMPNO,
 	   decode(mod(EMPNO,2),0,'홍팀','청팀') AS 팀
   FROM EMP;
+  
+/*
+# 일반 함수 case
+1. decode의 확장된 함수 형식을 표현식 또는 컬럼 값 '=' 비교를 통해
+	조건의 일치하는 경우에만 다른 값으로 대치하지만, case 함수에서는
+	산술 연산, 관계 연산, 논리 연산과 같은 다양한 비교가 가능하다.
+2. 기본형식
+	case [컬럼명]
+		when 논리|산술|관계 then 처리할 데이터,
+		when 논리|산술|관계 then 처리할 데이터,
+		else 기타처리할 데이터
+	end 
+*/
+-- 부서번호에 따라 처리하는 데이터를 다르게 할 때.
+SELECT ENAME, DEPTNO,
+  CASE WHEN DEPTNO = 10 THEN sal*0.2
+  	   WHEN DEPTNO = 20 THEN sal*0.5
+  	   WHEN DEPTNO = 30 THEN sal*0.7
+  	   ELSE SAL*1.2
+   END SHOW
+  FROM EMP;
+
+-- ex) case문을 이용하여, 분기별로 보너스 금액을 0.1, 0.2, 0.3, 0.4로 지정하여
+-- 		사원명, 입사일, 입사분기, 급여, 보너스 를 출력하세요
+SELECT ENAME, HIREDATE,
+	   TO_CHAR(HIREDATE, 'Q') AS 입사분기,
+	   SAL AS 급여,
+  CASE WHEN TO_CHAR(HIREDATE, 'Q') = '1' THEN SAL * 0.1
+  	   WHEN TO_CHAR(HIREDATE, 'Q') = '2' THEN SAL * 0.2
+  	   WHEN TO_CHAR(HIREDATE, 'Q') = '3' THEN SAL * 0.3
+  	   WHEN TO_CHAR(HIREDATE, 'Q') = '4' THEN SAL * 0.4
+   END AS 보너스
+  FROM EMP;

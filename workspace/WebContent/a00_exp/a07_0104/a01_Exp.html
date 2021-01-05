@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+	<!-- 
+	1. 시맨틱 태그를 활용하는 이유와 주요 시맨틱 태그의 의미를 기술하세요.
+		1) 기존 HTML의 구조화의 한계를 보완하여 HTML5에서는 웹 문서를 구조화하여 의미 있는 내용 탐색이 용이한
+			웹을 만들어 간다.
+		2) 문서의 구조와 의미를 전달한다.
+		3) 시맨틱 태그의 의미
+			. header - 페이지나 섹션의 머리말 표현, 페이지 제목, 페이지 소개하는 간단한 설명
+			. nav - 하이퍼링크들을 모아 놓은 특별한 섹션 (페이지 내의 목차를 만드는 용도)
+			. section - 문서의 장 혹은 절을 구성하는 역할
+						일반문서에 여라 장이 있듯이 웹 페이지에 여러 section 가능
+						해당 태그(h1~h6)를 사용하여 절 혹은 섹션의 주제 기입
+			. article - 본문과 연관 있지만, 독립적인 콘텐츠를 담는 영역
+						보조 기사, 블로그 포스트, 댓글 등 기타 독립적인 내용을 담는다.
+						articel에 담는 내용이 많은 경우 여러 section을 둘 수 있음.
+			. aside - 본문에서 약간 벗어난 노트나 팁
+						신문, 잡지에서 주요 기사 옆 관련기사, 삽칩 어구로 표시된 논평 등
+						페이지 오른쪽이나 왼쪽에 주로 배치
+			. footer - 꼬리말 영역, 주로 저자나 저작권 정보
+	 -->
+	<!-- 
+	2. 아래 내용을 시맨틱 태그로 변경 처리하세요.
+	 -->
+		<header>
+			<h1><a href="https://www.facebook.com/elvis">Elvis Presley</a></h1>
+		</header>
+		<section id="container">
+			<article id="post-1">
+				<h2><a href="https://ko.wikipedia.org/wiki/엘비스_프레슬리">
+		                  Who is Elvis?</a></h2>
+		        <div class="entry">
+		               <p>엘비스 프레슬리는 20세기 가장 잘 알려진 미국 가수 중 한
+		               명이었다. 하나의 문화 아이콘으로, 엘비스의 음악들은
+		               세계적으로 선풍적인 인기를 끌었으며 "로큰롤의 제왕"으로
+		               불리곤한다. 그는 미시시피 주의 투펄로에서 태어났다.</p>
+		            </div> 
+			</article>
+			<article id="post-2">
+				<h2><a href="http://www.biography.com/people/elvis-presley-9446466">
+		                  His music and life</a></h2>
+		        
+		            <div class="entry">
+		               <p>Presley received his first guitar as a gift
+		               from his mother on his 11th birthday in 1946
+		               and had his first taste of musical success
+		               a few years later when he won a talent show
+		               at Humes High School in Memphis. </p>
+		            </div>
+			</article>
+		</section>
+		<aside>
+			 <a href="">&laquo; Previous Entries</a>
+		</aside>
+		<nav>
+			<ul>
+		    	<li><h2>Archives</h2>
+		            <ul>
+		            	<li><a href="http://www.elvisthemusic.com/">Elvis The Music</a></li>
+		            	<li><a href="http://www.graceland.com/">Elvis Home Graceland</a></li>
+		            	<li><a href="http://www.last.fm/music/Elvis+Presley">Free Listening, Video</a></li>
+		        	</ul>
+		    	</li>
+		    </ul>		
+		</nav>
+		<footer>
+			<p>Copyright 2015 Elvis</p>
+		</footer>		
+	</body>
+</html>

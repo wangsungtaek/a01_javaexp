@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>HTML5 문서 구조 시맨틱 태그 사용</title>
+	</head>
+	<style>
+		html, body {
+			margin : 0;
+			padding : 0;
+			height : 100%;
+		}
+		/*
+		. 클래스명{}
+			float : left; 순서정렬을 해당방향으로 처리, 다음 내용 즉 특정 태그들에 대한 정렬처리
+			clear : bothw
+		*/
+		.header {
+			width : 100%; height:15%;
+			background : yellow;
+		}
+		.nav {
+			width : 15%; height:70%; float : left;
+			background : orange;
+		}
+		.section {
+			width : 70%; height:70%; float : left;
+			background : olivedrab;
+		}
+		.aside {
+			width : 15%; height:70%; float : left;
+			background : orange;
+		}
+		.footer {
+			width : 100%; height:15%; clear : both;
+			background : plum;
+		}
+		
+	</style>
+	<body>
+		<!-- 
+		# 시맨틱 웹
+		1. 기존 HTML의 구조화의 한계를 보완하여 HTML5에서는 웹 문서를 구조화하여 의미 있는 내용 탐색이 용이한
+			웹을 만들어 간다.
+		2. 시맨틱 태그
+			1) 문서의 구조와 의미를 전달하는 태그
+				header, section, article, main, summary, mark, time
+			2) 시맨틱 태그의 의미
+				header - 페이지나 섹션의 머리말 표현, 페이지 제목, 페이지 소개하는 간단한 설명
+				nav - 하이퍼링크들을 모아 놓은 특별한 섹션
+					페이지 내 목차를 만드는 용도
+				section - 문서의 장 혹은 절을 구성하는 역할
+					일반문서에 여러 장이 있듯이 웹 페이지에 여러 section 가능
+					해당 태그(h1~h6)를 사용하여 절 혹은 섹션의 주제 기입
+				article - 본문과 연관 있지만, 독립적인 콘텐츠 담는 영역
+					보조 기사, 블로그 포스트, 댓글 등 기타 독립적인 내용을 담는다.
+					article에 담는 내용이 많은 경우 여러 section을 둘 수 있음.
+				aside - 본문에서 약간 벗어난 노트나 팁
+					신문, 잡지에서 주요 기사 옆 관련 기사, 삽입 어구로 표시된 논평 등
+					페이지 오른쪽이나 왼쪽에 주로 배치
+				foorter - 꼬리말 영역, 주로 저자나 저작권 정보
+		 -->
+		 <header class="header">header</header>
+		 <nav class="nav">navigation</nav>
+		 <section class="section">section</section>
+		 <aside class="aside">aside</aside>
+		 <footer class="footer">footer</footer>
+	</body>
+</html>
