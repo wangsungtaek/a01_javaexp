@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<!-- 
+		1. 시맨틱 태그 중에 figure태그에 대하여 기본예제(css란?-기본형식 표현)를 통해 간략하게 설명하세요.
+			본문에 사진, 차티, 코드 등으로 내용을 설명할 때 사용한다.
+		 -->
+		<h2>Ex1</h2>
+		<hr>
+		<figure>
+			<figcaption>css란? </figcaption>
+			<pre>
+				<code>
+					body {
+						width = 500px;
+						height = 500px;
+						background-color = yellow;
+					}
+				</code>
+			</pre>
+			<hr>
+			<small>실행화면</small>
+			<pre>
+				<img src="", alt="css적용된 페이지">
+			</pre>
+		</figure>
+		<br>
+		<hr>
+		
+		<!-- 
+		2. details 태그를 통해서, 많이 하는 질문이라는 코너를 처리하세요.
+		 -->
+		<h2>Ex2</h2>
+		<hr>
+		<details>
+			<summary>
+				개발을 잘하는 방법은?
+			</summary>
+			<p>
+				노력, 경험, 생각
+			</p>
+		</details>
+		<br>
+		<hr>
+		
+		<!-- 
+		3. 인라인 시맨틱 태그의 종류와 속성값에 대하여 구체적으로 기술하세요.
+			1) mark : 중요 텍스트 표시(노랑색 배경색)
+			2) time : 시간 처리 표시(의미시맨틱)
+			3) meter : 주어진 범위나 %로 스크롤 표기
+			4) progress : 작업의 진행 정도를 전체 값 대비 현재 value로 표기 한다.
+		 -->
+		<!-- 
+		4. form의 속성과 하위에 태그의 기능에 대하여 기술하세요. 
+			1) 속성
+				. method : get/post의 속성값을 가지고 있고, 전송 방식을 지정해 준다.
+				. action : 문자열로 지정한 페이지에 하위 input|select|textarea에 속성으로
+							name으로 지정 키와 입력값을 전송한다.
+			2) 하위태그
+				. input : 기본 입력창
+				. select : 선택적 형식
+				. textarea : 여러라인을 통한 입력 처리
+		 -->
+		<!-- 
+		5. 하위 태그 중에 input type="submit"는 어떤 기능을 하는가?
+			버튼모양으로 해당 내용을 클릭하는 순간 form에서 지정하는 페이지로 입력된 데이터를 전송한다.
+		 -->
+		<!-- 
+		7. input태그와 textarea의 기본 속성들을 기술하세요.
+			1) input tage
+				- type
+					. text, password, submit 등이 있다.
+				- name
+				- size : 화면에 보여지는 사이즈를 정한다.
+				- maxlength : 실제 문자열의 길이를 정한다.
+				- value : 초기 값을 지정한다.
+				
+		 	2) textarea tage : 여러줄 입력
+		 		- cols : 열 크기를 지정할 수 있다.
+		 		- rows : 행 크기를 지정할 수 있다.
+		 -->
+		<!-- 
+		8. 위 form의 input/textarea를 이용해서 아래와 같은 구매물품 명세서를
+        작성해보세요
+		 -->
+		<h2>Ex8</h2>
+		<hr>				
+		<h3>구매 물품 명세서</h3>
+		물품명: <input type="text" name="name" size="15" value=""><br>
+		가 격 : <input type="text" name="name" size="15" value=""><br>
+		갯 수 : <input type="text" name="name" size="15" value=""><br>
+		<h4>기타요청사항</h4>
+		<textarea cols="15" rows="5">요청사항을 입력하세요.</textarea><br>
+		<input type="submit" value="등 록"><br>
+	</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>로그인 화면</title>
+	</head>
+	<body>
+		<!-- 
+		6. form 태그와 하위에 input을 이용하여 로그인화면을 만들고,
+     	   로그인 클릭시, result.jsp에
+     	   id=himan&pass=7777 형식으로 전달되게 하세요.
+     	   로그인페이지(login.html), 결과페이지(result.jsp)
+		 -->
+		<h2>로그인 화면</h2>
+		<form method="get" action="result.jsp">
+		  	사용자 ID : <input type="text" name="id" size="15" value=""><br>
+			비밀 번호 : <input type="password" name="pass" size="15" value=""><br>
+			<input type="submit" value="보내기">
+		</form>
+	</body>
+</html>

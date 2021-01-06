@@ -120,9 +120,21 @@ SELECT ENAME, DEPTNO,
 SELECT ENAME, HIREDATE,
 	   TO_CHAR(HIREDATE, 'Q') AS 입사분기,
 	   SAL AS 급여,
-  CASE WHEN TO_CHAR(HIREDATE, 'Q') = '1' THEN SAL * 0.1
-  	   WHEN TO_CHAR(HIREDATE, 'Q') = '2' THEN SAL * 0.2
-  	   WHEN TO_CHAR(HIREDATE, 'Q') = '3' THEN SAL * 0.3
-  	   WHEN TO_CHAR(HIREDATE, 'Q') = '4' THEN SAL * 0.4
+  CASE TO_CHAR(HIREDATE, 'Q') 
+  	WHEN '1' THEN SAL * 0.1
+  	WHEN '2' THEN SAL * 0.2
+  	WHEN '3' THEN SAL * 0.3
+  	WHEN '4' THEN SAL * 0.4
    END AS 보너스
   FROM EMP;
+  
+-- 급여별 등급 표기(조건-비교연산자활용)
+SELECT ENAME, SAL,
+	CASE WHEN SAL >= 5000 THEN 'A등급'
+		 WHEN SAL >= 4000 THEN 'B등급'
+		 WHEN SAL >= 3000 THEN 'C등급'
+		 WHEN SAL >= 2000 THEN 'D등급'
+		 WHEN SAL >= 1000 THEN 'E등급'
+		 ELSE 'F등급'
+	END AS 급여등급
+ FROM EMP;																																																																																																																																		

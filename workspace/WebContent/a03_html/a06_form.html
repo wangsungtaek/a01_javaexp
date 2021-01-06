@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<!--
+		# web form
+		1. 웹 페이지에서 사용자가 입력하는 데이터를 처리하는 태그
+		2. form하위에 하위요소 태그들을 서버에 사용자가 입력한 데이터를 전달할 목적으로
+			사용된다.
+		3. from하위 요소 태그들을 다양한 형식을 가지고 있다.
+			1) input : 기본 입력창
+			2) select : 선택적 형식
+			3) textarea : 여러라인을 통한 입력 처리.
+		 -->
+		<h3>로그인 폼</h3>
+		<hr>
+		<!--  form 태그를 상위로 -->
+		<form name="fo" method="get" action="a07_rev.jsp">
+		<!-- 
+		# form의 속성과 속성값
+		1. method : get/post의 속성값을 가지고 있고, 전송 방식을 지정해 준다.
+		2. action : 문자열로 지정한 페이지에 하위 input|select|textarea에 속성으로
+			name으로 지정 키와 입력값을 전송한다.
+		 -->
+			<!-- 하위에 기본 입력태그 input
+			1. 속성 type에 따라 입력되는 형식에 차이가 있음.
+				1) text : 기본 문자열 입력
+				2) password : 패스워드형식 입력
+				3) submit : 버튼모양으로 해당 내용을 클릭하는 순간 form에서
+					지정하는 페이지로 입력된 데이터를 전송한다.
+			 -->
+			 사용자 ID : <input type="text" name="id" size="15" value=""><br>
+			 비밀 번호 : <input type="password" name="pass" size="15" value="">
+			 <input type="submit" value="완료">
+			 <!-- 
+			 submit을 클릭시, ?id=41414&pass=1414 형식(query string)으로 form객체에 입력한 값을
+			 서보로 전달한다.
+			 http://localhost:7080/javaexp/a03_html/a06_form.html?id=41414&pass=1414
+			  -->
+		</form>
+	</body>
+</html>

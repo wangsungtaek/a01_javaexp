@@ -34,3 +34,75 @@ SELECT TO_CHAR(HIREDATE, 'Q') AS 분기,
 GROUP BY TO_CHAR(HIREDATE, 'Q')
 ORDER BY TO_CHAR(HIREDATE, 'Q');
  
+/*
+# avg(컬럼) : 평균값
+  sum(컬럼) : 합산값
+  min(컬럼) : 최소값
+  max(컬럼) : 최대값
+  stddev(컬럼명) : 표준편차
+  variance(컬럼명) : 분산
+*/
+SELECT DEPTNO, AVG(SAL) AS 평균, SUM(SAL) AS 종합,
+	   MIN(SAL) AS 최소연봉,
+	   MAX(SAL) AS 최대연봉,
+	   STDDEV(SAL) AS 표준편차,
+	   VARIANCE(SAL) AS 분산
+  FROM EMP
+GROUP BY DEPTNO
+ORDER BY DEPTNO;
+
+-- ex1) 부서별로 가장 최근에 입사한 사람의 입사일과 입사일이 가장 오래된 입사일을 출력하세요
+SELECT DEPTNO,
+	   MAX(HIREDATE) AS "가장 최근 입사일",
+	   MIN(HIREDATE) AS "가장 오래된 입사일"
+  FROM EMP
+GROUP BY DEPTNO
+ORDER BY DEPTNO;
+
+-- cf) 부서별로 가장 최근에 입사한 사람의 이름, 입사일, 부서번호를 출력하세요
+SELECT ENAME, HIREDATE, DEPTNO 
+  FROM EMP
+ WHERE (DEPTNO, HIREDATE) 
+ 		in(
+ 		SELECT DEPTNO, MAX(HIREDATE)
+ 		FROM EMP
+ 		GROUP BY DEPTNO)
+ ORDER BY DEPTNO;
+/*
+#rollup
+1. group by절과 같이 사용되며, group by절에 의해서 그룹 지어진 집합 결과에 대해서
+	좀 더 상세한 정보를 반환하는 기능을 수행한다.
+2. 그룹데이터와 데이터의 총계를 구할 수 있다.
+*/
+-- job별로 급여 합계
+SELECT JOB, SUM(SAL)
+  FROM EMP
+GROUP BY JOB;
+
+-- 급여 합계의 총계를 다시 구할 때.
+SELECT JOB, SUM(SAL)
+  FROM EMP
+GROUP BY ROLLUP(JOB);
+
+-- 부서와 직책별로 급여와 데이터 건수
+-- 그룹할 컬럼이 2개일 때, group by에 컬럼명1, 컬럼명2
+SELECT DEPTNO, JOB, SUM(SAL) AS 합계,
+	   COUNT(*) AS 데이터건수
+  FROM EMP
+GROUP BY DEPTNO, JOB
+ORDER BY DEPTNO, JOB;
+-- 각각의 상위 항목별 통계치와 전체 통계치를 처리할때 rollup을 활용한다.
+SELECT DEPTNO, JOB, SUM(SAL) AS 합계,
+	   COUNT(*) AS 데이터건수
+  FROM EMP
+GROUP BY ROLLUP(DEPTNO, JOB)
+ORDER BY DEPTNO, JOB;
+
+/*
+# cube : rollup에서 전체데이터 summary기능을 포함할 때, 활용된다.
+ */
+SELECT DEPTNO, JOB, SUM(SAL) AS 합계,
+	   COUNT(*) AS 데이터건수
+  FROM EMP
+GROUP BY CUBE(DEPTNO, JOB)
+ORDER BY DEPTNO, JOB;
