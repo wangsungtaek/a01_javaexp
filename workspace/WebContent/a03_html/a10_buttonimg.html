@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>버튼이 있는 입력 폼</title>
+	</head>
+	<script type="text/javascript">
+		function call(){
+			alert("함수 처리 합니다.");
+		}
+		function start(){
+			alert("좋은 하루 시작!!");
+		}
+	</script>
+	<body>
+		<h3>버튼을 만들자</h3>
+		<hr>
+		<!-- 
+		# 버튼과 이미지 처리.
+		1. input의 type속성으로 여러가지 형태로 요소객체를 만들 수 있다.
+			1) type="text" : 일반적인 입력형식
+			2) type="password" : 패스워드 입력가능처리.
+			3) type="button|submit|reset" : 버튼 모양
+					value="버튼의 label"
+					button : 버튼 통해서 클릭시, 동적인 처리를 위해 사용 : js 함수호출
+					submit : form 하위에 있는 모든 입력 요소객체를 name값이 있을때, 서버로 전송 처리
+					reset : form 하위에 있는 모든 입력 요소객체의 입력값을 초기화 처리
+			4) type="image" : 이미지 보이기
+					src="이미지의 위치와 파일명"
+			5) type="redio" : 둥근 모양의 여러개 중 단일 선택
+			6) type="checkbox" : 네모 모양의 여러개 중 다중 선택
+		 -->
+		<form>
+			검색 : <input type="text" size="10" value="">
+					<input type="button" value="Q1" onclick="call()">
+					<button type="button">Q2</button><br>
+			submit 버튼 : <input type="submit" value="전송1">
+						<button type="submit">전송2</button><br>
+			reset 버튼 : <input type="reset" value="리셋1">
+						<button type="reset">리셋2</button><br>
+			이미지버튼 :<!-- 이미지로 나타낼 수 있고. --> 
+						<input type="image" src="media/jajang.png" alt="이미지 버튼">
+						<!-- 이미지 요소객체를 감싸서 버튼 기능을 처리할 수 있다. -->
+						<button type="button" onclick="alert('이미지클릭')">
+						<img src="media/button.png" alt="이미지 버튼>"></button>
+		</form>
+		<!-- 
+		ex) 버튼이미지를 다운 받아서, 해당 버튼을 클릭시 함수를 호출해서 좋은 하루 시작!!
+			이라고 메세지가 표시되게 하세요
+		 -->
+		<input type="image" src="media/button.png" value="함수호출" onclick="start()">
+		기능버튼:<button type="button" onclick="start()">
+					<img src="media/button.png" width="50"
+					heigth="50" alr="이미지 버튼"></button>
+	</body>
+</html>

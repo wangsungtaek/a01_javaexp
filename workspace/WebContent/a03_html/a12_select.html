@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>콤보박스 만들기</title>
+		<style>
+			table{
+				border-collapse:collapse;
+			}
+			th {
+				background-color:yellow;
+			}
+			td {
+				text-align:center;	
+			}
+		</style>
+	</head>
+	<body>
+		<h3>오늘 점심은?</h3>
+		<hr>
+		<!-- 
+		# select
+		1. 드롭다운 리스트에 목록 출력을 처리하여 하나 또는 다중을 선택할 수 있게 한다.
+		2. 기본 형식과 속성값
+			1) 기본 형식
+				<select name="" size="" multiple>
+					<option value="전송/내부 데이터"> 화면에 보이는 선택</option>
+					<option value="전송/내부 데이터" selected> 화면에 보이는 선택</option>
+			2) select의 속성
+				size="숫자" : 한번에 보이는 선택의 크기
+				multiple : 다중선택을 가능하게 하는 옵션
+			3) option의 속성
+				value : 선택되었을 때, 전송 또는 js로 처리되는 값
+					value이 없을 때는 기본적으로 화면에 보이는 값을 설정된다.
+				selected : 초기에 선택되어서 나오게 할 때, 사용된다.
+		 -->
+		<form>
+			<select name="china">
+				<option value="1">짜장면</option>
+				<option value="2" selected>짬뽕</option>
+				<option value="3">탕수육</option>
+			</select>
+			<select name="china1" size="2">
+				<option>짜장면</option>
+				<option selected>짬뽕</option>
+				<option>탕수육</option>
+			</select>
+			<select name="china2" size="3" multiple>
+			<!-- ctrl을 눌러서 2개 이상 선택 가능 -->
+				<option value="1">짜장면</option>
+				<option value="2">짬뽕</option>
+				<option value="3" selected>탕수육</option>
+			</select>
+			<input type="submit"/>
+		</form>
+		<hr>
+		<!-- 
+		서버에 전송되는 데이터는 name과 선택되어진 값이 전달된다.
+		a12_select.html?china=2&china1=%EC%A7%AC%EB%BD%95&china2=2&china2=3
+		 -->
+		<!-- 
+		아래와 같은 화면을 만들어 보세요(table로 정렬처리까지 포함)
+		 --> 
+		<h3 align="center">회원가입</h3>
+		<form>
+			<table align="center" border>
+				<tr><th>아이디</th><td><input type="text" size="45" value="himan" name="id"></td></tr>			
+				<tr><th>패스워드</th><td><input type="password" size="45" value="7777" name="pass"></td></tr>		
+				<tr><th>이름</th><td><input type="text" size="45" value="홍길동" name="name"></td></tr>		
+				<tr>
+					<th>성별</th>
+					<td>
+						<select name="gender">
+							<!-- value값 설정시는 선택 value값 전송 -->
+							<option value="남">남</option>
+							<option value="여">여</option>
+						</select>
+					</td>
+				</tr>		
+				<tr>
+					<th>취미</th>
+					<td>
+						<input type="checkbox" name="hobby" value="음악">음악
+						<input type="checkbox" name="hobby" value="게임">게임
+						<input type="checkbox" name="hobby" value="운동">운동
+						<input type="checkbox" name="hobby" value="기타">기타
+					</td>
+				</tr>		
+				<tr>
+					<th>거주지</th>
+					<td>
+						<input type="radio" name="loc" value="서울/경기">서울/경기
+						<input type="radio" name="loc" value="광역시">광역시
+						<input type="radio" name="loc" value="제주도">제주도
+						<input type="radio" name="loc" value="기타기역">기타지역
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="submit">
+						<button type="reset">리셋</button>
+					</td>
+				</tr>	
+			</table>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<!-- 
+		[하] 1. datalist의 기본 형식을 설명하고, 좋아하는 과일항목을 선택하는 예제를 만드세요.
+			<datalist id="input에 list속성으로 사용">
+				<option value = "항목에 넣을 데이터1">
+				<option value = "항목에 넣을 데이터1">
+				<option value = "항목에 넣을 데이터1">
+			</datalist>
+		 -->
+		<h2>Ex1)</h2>
+		<hr>
+		<form>
+			좋아하는 과일 항목 : <input type="text" list="fruit">
+			<datalist id="fruit">
+				<option value="사과">
+				<option value="수박">
+				<option value="바나나">
+			</datalist>
+		</form>
+		
+		<!-- 
+		[하] 2. input의 type 속성중 button관련 속성값을 나열하고, 해당 내용을 특징을 기술하세요.
+			1) reset : form 하위에 있는 모든 입력 요소객체의 입력값을 초기화 처리
+			2) submit : from 하위에 있는 모든 입력 요소객체를 name값이 있을때, 서버로 전송 처리
+			3) button : 버튼 통해서 클릭시, 동적인 처리를 위해 사용
+			4) value : 버튼의라벨
+		 -->
+		<!-- 
+		[하] 3. 버튼을 클릭시, alert으로 '안녕하세요!'가 출력되게 처리하세요.
+		 -->
+		<h2>Ex3)</h2>
+		<hr>
+		<button onclick="alert('안녕하세요!')">클릭</button>
+		
+		<!-- 
+		[중] 4. 이미지를 처리하는 형식이 두가지가 있다. 두가지 형식에 대하여
+		기술하고, 버튼 클릭이 '클릭클릭!'이라는 메시지가 처리 되게 하세요.
+			1) input 태그의 속성을 image로 처리하는 방식
+			<input type="image" src="이미지경로" alt="이미지설명">
+			2) button 태그의 하위태그에 image태그를 위치시키는 방식
+			<button>
+				<img src="이미지경로" alt="이미지설명">
+			</button>
+		 -->
+		<h2>Ex4)</h2>
+		<hr>
+		<input type="image" src="button.png" alt="클릭이미지" onclick="alert('클릭클릭!')"><br>
+		<button onclick="alert('클릭클릭!')">
+			<img src="button.png" alt="클릭이미지">
+		</button>
+		
+		<!-- 
+		[하] 5. input type의 radio와 checkbox의 차이를 기술하고,
+        여기서 name 속성은 어떤 역할을 하는지 설명하세요.
+        	1) 차이점
+        		- radio는 한개의 데이터만 선택이 가능하며, checkbox는 여러개의 데이터를
+        			복수로 선택 가능하다.
+        		- radio는 원형, checkbox는 사각형 모양을 갖고있다.
+        	2) name 속성
+        		- 여러개의 input을 그룹화하여 하나의 radio 또는 checkbox를 만들 수 있다.
+		 -->
+		<!-- 
+		[하] 6. select의 속성과 option의 속성에 대하여 기술하세요.
+     		1) select 속성
+     			size="숫자" : 화면상 한번에 보이는 선택의 크기
+     			mutiple : 다중선택을 가능하게 하는 옵션
+     		2) option 속성
+     			value : 선택되었을 때, 전송 또는 js로 처리되는 값
+     			selected : 초기에 선택되어서 나오게 할 때 사용된다.
+		 -->
+		<!-- 
+		[하] 7. select를 이용해서 물건(사과/바나나/딸기), 갯수(1~10)를 선택하게
+        만들고, 해당 내용을 선택했을 때, 값을 출력하게 하세요.
+		 -->
+		<h2>Ex7)</h2>
+		<hr>
+		<form>
+			<table border>
+				<tr>
+					<th>물건</th>
+					<td>
+						<select name="product">
+							<option value="사과" selected>사과</option>
+							<option value="바나나" >바나나</option>
+							<option value="딸기" >딸기</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>개수</th>
+					<td>
+						<select name="price">
+							<option value="1" selected>1</option>
+							<option value="2" >2</option>
+							<option value="3" >3</option>
+							<option value="4" >4</option>
+							<option value="5" >5</option>
+							<option value="6" >6</option>
+							<option value="7" >7</option>
+							<option value="8" >8</option>
+							<option value="9" >9</option>
+							<option value="10" >10</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type=submit value="구매">
+					</td>
+				</tr>
+			</table>
+		</form>			
+	</body>
+</html>

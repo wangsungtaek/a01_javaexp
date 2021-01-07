@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>데이터 목록을 가진 텍스트 입력</title>
+	</head>
+	<body>
+		<h3>가보고 싶은 곳</h3>
+		<hr>
+		<!-- 
+		# datalist
+		1. 입력(input)요소객체에 선택할 수 있는 데이터를 선언하고,
+			해당 리스트를 선택적으로 입력할 수 있게 처리해준다.
+		2.기본형식
+			datalist id="input에 list속성으로 사용"
+				option value="항목을 넣을 데이터1"
+				option value="항목을 넣을 데이터2"
+			input list="datalist의 id명"
+		 -->
+		<form>
+		나라 : <input type="text" name="country" list="countries"><br>
+				<datalist id="countries">
+					<option value="가나">
+					<option value="스위스">
+					<option value="브라질">
+				</datalist>
+		보고싶은것 : <input type="text" list="what"><br>
+				<datalist id="what">
+					<option value="산">
+					<option value="바다">
+					<option value="도시">
+				</datalist>
+		</form>
+	</body>
+</html>

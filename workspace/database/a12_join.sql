@@ -99,3 +99,65 @@ SELECT D.*, ENAME, JOB, SAL
   FROM DEPT D, EMP E
  WHERE D.DEPTNO = E.DEPTNO(+)
 ORDER BY D.DEPTNO;
+
+/*
+# self 조인
+1. 하나의 테이블 안에 컬럼끼리 연관관계가 있어, join형식으로 데이터를 처리하는
+	것을 말한다.
+2. 형식
+	SELECT a.*, b.*
+	  FROM 테이블1 a, 테이블2 b
+	  where a.컬럼1 = b.컬럼2
+*/
+SELECT EMPNO, ENAME, MGR
+  FROM EMP
+ WHERE ENAME='SMITH';
+SELECT EMPNO, ENAME
+  FROM EMP
+ WHERE EMPNO=7902;
+-- 사원의 이름과 사원의 관리자 이름을 출력..
+-- 1. 연관관계가 있는 컬럼을 선택 : empno, mgr
+-- 2. 하나의 테이블을 두개로 alias이름으로 선언하고, 두 개의 컬럼을 연관관계를
+--		설정한다.
+SELECT A.EMPNO, A.ENAME, A.JOB, A.MGR, B.EMPNO, B.ENAME
+  FROM EMP A, EMP B
+ WHERE A.MGR = B.EMPNO;
+ 
+/*
+위 계층 관계의 테이블을 이해했으면, 아래와 같은 하나의 테이블 내에 계층 관계가 있는
+데이터를 처리해보세요.
+family
+no(번호)	pos(역할)	name(이름)	parno(부모번호)
+1			할아버지	홍말순		0
+2			아버지		홍판서		1
+3			아들1		홍진희		2
+4			아들2		홍길동		2
+sample 데이터를 3개이상 입력해보세요.
+2. 데이터 입력
+3. sql이용해서 @@@의 아버지는 이름 @@@이다. 출력
+ */ 
+-- 테이블 생성
+CREATE TABLE FAMILY (
+	NO NUMBER,
+	POS VARCHAR2(20),
+	NAME VARCHAR2(20),
+	PARNO NUMBER
+);
+
+-- 테이블 삭제
+DROP TABLE FAMILY;
+
+-- 테이블 입력
+INSERT INTO FAMILY VALUES(1, '할아버지', '홍말순', 0);
+INSERT INTO FAMILY VALUES(2, '아버지', '홍판서', 1);
+INSERT INTO FAMILY VALUES(3, '아들1', '홍진희', 2);
+INSERT INTO FAMILY VALUES(4, '아들2', '홍길동', 2);
+INSERT INTO FAMILY VALUES(5, '딸', '홍미자', 3);
+INSERT INTO FAMILY VALUES(6, '손녀', '홍현희', 5);
+INSERT INTO FAMILY VALUES(7, '초기유닛', '라바1', 0);
+INSERT INTO FAMILY VALUES(8, '1차유닛', '드론1', 7);
+INSERT INTO FAMILY VALUES(9, '1차유닛', '저글링', 7);
+
+SELECT F1.NAME||'의 부모의 이름 '||F2.NAME||'이다' AS SHOW
+  FROM FAMILY F1, FAMILY F2
+ WHERE F1.PARNO = F2.NO;

@@ -3,10 +3,26 @@ SELECT JOB, MAX(SAL), MIN(SAL)
   FROM EMP
 GROUP BY JOB
 ORDER BY JOB;
+---------------------
+-- 쿼리1 union all 쿼리2 : 쿼리1과 쿼리2를 순차적으로 출력
+SELECT *
+  FROM EMP
+ WHERE (JOB, SAL) IN (
+ 	SELECT JOB, MAX(SAL) AS SAL
+ 	  FROM EMP
+ 	GROUP BY JOB)
+UNION ALL
+SELECT *
+  FROM EMP
+ WHERE (JOB, SAL) IN (
+ 	SELECT JOB, MIN(SAL) AS SAL
+ 	  FROM EMP
+ 	GROUP BY JOB);
+ 
 
---[중] 2. 월별로 평균 급여를 출력하세요.
+--[중] 2. 월별로 평균 급여(소수점1자리 반올림)를 출력하세요.
 SELECT TO_CHAR(HIREDATE, 'MM') AS 월,
-	   FLOOR(AVG(SAL)) AS 평균급여
+	   ROUND(AVG(SAL), 1) AS 평균급여
   FROM EMP
 GROUP BY TO_CHAR(HIREDATE, 'MM')
 ORDER BY TO_CHAR(HIREDATE, 'MM');
@@ -20,6 +36,7 @@ SELECT JOB, ENAME, HIREDATE
   	FROM EMP
 	GROUP BY JOB)
 ORDER BY JOB;
+-- 해당 데이터가 단일 데이터 일 경우에는 대입연산자 활용 한다.
 
 /*
 4. rollup와 cube의 차이점을 기본예제를 통해서 기술하세요.
@@ -49,7 +66,7 @@ SELECT ENAME, JOB, E.DEPTNO, LOC
 SELECT DNAME, ENAME, SAL
   FROM EMP E, DEPT D
  WHERE E.DEPTNO = D.DEPTNO
-   AND SAL IN(3000, 4000);
+   AND SAL BETWEEN 3000 AND 4000;₩	
   
 --[하] 7. 부서위치가 DALLAS인 사원정보를 출력하세요.
 SELECT E.*, LOC AS 부서위치
@@ -59,6 +76,16 @@ SELECT E.*, LOC AS 부서위치
  
 /*
 8. natural join과 일반 where문에 의한 조인을 차이점을 기술하세요.
+기본형식
+SELECT *
+FROM EMP NATURAL JOIN DEPT;
+SELECT *
+FROM EMP E, DEPT D
+WHERE E.DEPTNO = D.DEPTNO;
+두 형식에서 테이블에서 JOIN하는 컬럼명을 지정하는 부분에 있어서, 명시성과 내부적
+자동 조인처리에서 차이가 난다.
+NATURAL JOIN은 FOREGIN KEY 관계(제약키)에 있으면 자동으로 해당 컬럼을 명시적으로
+지정하지 않더라도 JOIN이 된다.
 */
 /*
 9. non equi join에 대하여 emp, salgrade를 활용하여 설명하세요.

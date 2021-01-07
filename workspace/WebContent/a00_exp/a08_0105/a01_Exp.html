@@ -52,7 +52,8 @@
 			1) mark : 중요 텍스트 표시(노랑색 배경색)
 			2) time : 시간 처리 표시(의미시맨틱)
 			3) meter : 주어진 범위나 %로 스크롤 표기
-			4) progress : 작업의 진행 정도를 전체 값 대비 현재 value로 표기 한다.
+			4) progress : 작업의 진행 정도를 전체 값 대비 현재 value로 표기 한다.(동적표시 - 진행상태)
+				- 브라우저별로 지원 여부 변경
 		 -->
 		<!-- 
 		4. form의 속성과 하위에 태그의 기능에 대하여 기술하세요. 
@@ -60,6 +61,11 @@
 				. method : get/post의 속성값을 가지고 있고, 전송 방식을 지정해 준다.
 				. action : 문자열로 지정한 페이지에 하위 input|select|textarea에 속성으로
 							name으로 지정 키와 입력값을 전송한다.
+				ex)
+				<form action="gogo.jsp">
+					<input name="id" value="himan"/> value는 입력된 값이나 초기값 지정.
+				gogo.jsp?id=himan ==> 형식으로 서버에 데이터를 전송한다.
+				
 			2) 하위태그
 				. input : 기본 입력창
 				. select : 선택적 형식
@@ -68,13 +74,15 @@
 		<!-- 
 		5. 하위 태그 중에 input type="submit"는 어떤 기능을 하는가?
 			버튼모양으로 해당 내용을 클릭하는 순간 form에서 지정하는 페이지로 입력된 데이터를 전송한다.
+			풀이 : 버튼모양으로 해당 내용을 클릭하는 순간 form에서 action으로 지정한 페이지에
+				데이터를 전송한다.
 		 -->
 		<!-- 
 		7. input태그와 textarea의 기본 속성들을 기술하세요.
 			1) input tage
 				- type
 					. text, password, submit 등이 있다.
-				- name
+				- name="입력key" value="입력값" : 서버에 전송될 때, 반드시 필요
 				- size : 화면에 보여지는 사이즈를 정한다.
 				- maxlength : 실제 문자열의 길이를 정한다.
 				- value : 초기 값을 지정한다.
@@ -89,12 +97,16 @@
 		 -->
 		<h2>Ex8</h2>
 		<hr>				
-		<h3>구매 물품 명세서</h3>
-		물품명: <input type="text" name="name" size="15" value=""><br>
-		가 격 : <input type="text" name="name" size="15" value=""><br>
-		갯 수 : <input type="text" name="name" size="15" value=""><br>
-		<h4>기타요청사항</h4>
-		<textarea cols="15" rows="5">요청사항을 입력하세요.</textarea><br>
-		<input type="submit" value="등 록"><br>
+		<h3 align="center">구매 물품 명세서</h3>
+		<form>
+			<table align="center" border>
+				<tr><th>물품명</th><td><input type="text" name="pname"></td></tr>
+				<tr><th>가격</th><td><input type="text" name="price"></td></tr>
+				<tr><th>갯수</th><td><input type="text" name="cnt"></td></tr>
+				<tr><th>기타요청사항</th><td><textarea cols="25" rows="10"></textarea></td></tr>
+				<tr><td style="text-align:center;" colspan="2">
+					<input type="submit" value="등록"></td></tr>
+			</table>
+		</form>
 	</body>
 </html>
