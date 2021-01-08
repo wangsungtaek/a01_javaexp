@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<style type="text/css">
+		h3{background-color:#8A2BE2;}
+	</style>
+	<script>
+	    function call1(date){
+	        document.querySelectorAll("span")[0].textContent=date;
+	    }
+	    function call2(time){
+	        document.querySelectorAll("span")[1].textContent=time;
+	    }    
+	    function call3(loc){
+	        document.querySelectorAll("span")[2].textContent=loc;
+	    }
+	</script>
+	<body>
+		<h3>컬러다이얼로그로 색 입력</h3>
+		<hr>
+		<!-- 
+		# 색상 처리
+		1. 색상 코드 값..
+			#rrggbb : red, green, blue 3원색을 16진수로 처리하여(0~255)로 각 색상의
+			농도를 설정하여 혼합하여 전체 색상을 만들어 갈 수 있다.
+			#FFD700 : gold 색상으로 처리가 된다.
+		2. 이러한 색상 코드 값은 css에서 색상을 설정할 때, 활용된다.
+			input type="color" 인 경우 default값으로 설정할 때, 활용된다.
+		3. 색 입력 폼 요소 : input type="color" value="#RGB코드값"
+		 -->
+		색 선택 <input type="color" value="#00BFFF"
+			onchange="document.body.style.color=this.value">
+			<!-- onchange : 데이터를 변경했을 때, js로 특정한 기능 처리 속성
+				document.body.style.color=this.value
+				css기준으로 body의 모든 글자색상을 this.value : 현재 요소객체인 input의 value값인
+				색상으로 처리.
+			 -->
+		<h3>시간 정보 입력 HTML5 폼 요소들</h3>
+		초기 세팅 : 2016년 9월 1일 밤 9시 30분(10초 32)<br>
+		시간을 변경해 보세요.
+		<hr>
+		<!-- 
+		# 날짜 시간 정보 처리.
+		html5에서 지원되는 각 type에 따른 캘린더 선택을 할 수 있게 해준다.
+		1. 형식
+			input type="month|week|date|time|datetime-local"
+		2. 속성값
+			month : 년/월
+			week : 년/년안에 몇번째 주
+			date : 년/월/일
+			datetime-local : 년/월/일/오전.오후/시/분/초100분의 1초/
+			time : 시/분
+		 -->
+		<pre>
+			month : <input type="month" value="2016-09"><br>
+			week : <input type="week" value="2016-W36"><br>
+			date : <input type="date" value="2016-09-01"><br>
+			time : <input type="time" value="21:30"><br>
+			local : <input type="datetime-local"
+						value="2016-09-01T21:30:10.32"><br>
+		</pre>
+		<h2>생일을 축하합니다.</h2>
+		<hr>
+		당신의 생일은 <span>2000년 5월 20일</span>입니다. 틀리면 수정하시고
+		파티 시간(<span></span>)과 장소(<span></span>)를 입력하세요.
+		<hr>
+		<form>
+			<table>
+				<tr>
+					<td>생일</td>
+					<td><input type="date" value="2000-05-20"
+							onchange="call1(this.value)"></td>
+				</tr>
+				<tr>
+					<td>생일파티시간</td>
+					<td><input type="time" onchange="call2(this.value)"></td>
+				</tr>
+				<tr>
+					<td>생일파티장소</td>
+					<td><input type="text" onchange="call3(this.value)"></td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>

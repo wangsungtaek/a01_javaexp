@@ -106,4 +106,25 @@ SELECT *
 			    FROM EMP
 			   WHERE DEPTNO = 20);
 
- 
+/*
+# exists연산자
+1. 서버쿼리의 결과값이 있는지 여부를 확인해서 메인쿼리를 실행해준다.
+*/
+SELECT *
+  FROM EMP
+ WHERE COMM IS NOT NULL;
+
+-- SUBQUER 데이터 있을 때
+SELECT *
+  FROM EMP
+ WHERE EXISTS(SELECT *
+ 				FROM EMP
+			   WHERE COMM IS NOT NULL);
+		
+-- SUBQUERY 데이터가 없을 때.			  
+SELECT *
+  FROM EMP
+ WHERE EXISTS(SELECT *
+ 				FROM EMP
+			   WHERE DEPTNO = 40);	
+			  

@@ -52,7 +52,16 @@ SELECT *
   FROM EMP
  WHERE SAL > (SELECT MAX(SAL)
 			    FROM EMP
-			   WHERE TO_CHAR(HIREDATE, 'Q') IN('1', '2'));
+			   WHERE TO_CHAR(HIREDATE, 'Q') IN('1', '2')
+			     AND TO_CHAR(HIREDATE, 'YYYY') = '1981')
+ORDER BY EMPNO;
+SELECT *
+  FROM EMP
+ WHERE SAL > ALL (SELECT SAL
+			    	FROM EMP
+			  	   WHERE TO_CHAR(HIREDATE, 'Q') IN('1', '2')
+			     	 AND TO_CHAR(HIREDATE, 'YYYY') = '1981')
+ORDER BY EMPNO;
 
 /*
 --[하] 6. 다중행 subquery의 연산자에 대하여 차이점을 기술하세요.

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<h3>&lt;label&gt; 태그로 로그인 폼 만들기</h3>
+		<hr>
+		
+		<form name="fo" method="get">
+		<!-- 
+		# 캡션이란?
+		1. 특정한 요소객체의 타이틀을 나타내는 label과 요소객체를 묶음 단위로 처리하여
+			특정한 요소객체의 기능을 명시화하여 연결하는 것을 말한다.
+			해당 타이틀을 클릭시, 요소객체로 focusing된다.
+		2. 형식
+			<label>타이틀부분 <요소객체></label>
+			<label for="아이디명">타이틀</label><요소객체 id="아이디명"/>
+		 -->
+			<label>사용자 ID : <input type="text" size="15" value=""></label><br>
+			<label for="pass">비밀 번호 : </label>
+			<input id="pass" type="password" size="15" value="">
+			<input type="submit" value="완료">
+		</form>
+		<h3>먹고 싶은 것 하나만 선택?(&lt;label&gt;이용)</h3>
+		<hr>
+		<form>
+			<label>
+				<input type="radio" name="china" value="1">
+				짜장면 <img src="media/jajang.png">
+			</label><br>
+			<label>
+				<input type="radio" name="china" value="2" checked>
+				짬뽕 <img src="media/jjambbong.png">
+			</label><br>
+			<label>
+				<input type="radio" name="china" value="3">
+				탕수육 <img src="media/tangsuyuk.png">
+			</label><br>
+		</form>
+	</body>
+</html>
