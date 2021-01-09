@@ -44,10 +44,16 @@
 		<!-- 
 		[중] 3. 배경색상 선택:[color요소객체1], 글자색상 선택:[color요소객체2]로 
 	       html 해당 페이지의 전체 배경색상과 글자색상을 변경 처리하게 하세요.
+	       css : background-color : #111122;
+	       js(camel case) : backgroundColor
+	       
+	       document.body.style.backgroundColor=this.value
+	       화면의 body(document.body)에서 css설정(style)으로 배경 색상(backgroundColor)
+	       은 변경한 현재요소 객체(this)
 		 -->
 		<h3>Ex3) 색상변경</h3>
 		<hr> 
-	 	배경색상 선택 : <input type="color" onchange="document.body.style.background=this.value"><br>
+	 	배경색상 선택 : <input type="color" onchange="document.body.style.backgroundColor=this.value"><br>
 	 	글자색상 선택 : <input type="color" onchange="document.body.style.color=this.value"><br>
 		<br>
 		<hr>
@@ -69,12 +75,24 @@
 		 -->
 		<h3>Ex5)</h3>
 		<hr> 		 			 
-		물건가격 : <input type="number" min="500" max="10000" step="500"><br>
-		50g<input type="range" min="50" max="1000" list="gram">1000g
+		물건가격 :
+		<input type="number" min="500" max="10000" step="500"><br><br>
+		중량 :
+		<input type="range" min="50" max="1000"
+				onchange="document.querySelector('span').textContent=this.value"
+				list="gram"><span></span> g
+		<!-- 
+		document.querySelect('span').textContent=this.value
+		document.querySelect('span') : <span></span>에 있는 요소객체 지정.
+		.textContent : 출력되는 문자열 지정.
+		=this.value : 현재 요소객체 (<input type="range")의 값을 할당.
+		 -->
 		<datalist id="gram">
-			<option value="60" label="min">
-			<option value="500" label="medium">
-			<option value="990" label="max">
+			<!-- range의 눈금을 처리할 수 있다. -->
+			<option value="60" label="Low1">
+			<option value="100" label="Low2">
+			<option value="500" label="Medium">
+			<option value="900" label="height">
 		</datalist>
 		<br>
 		<hr>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>&lt;link&gt; 태그로 스타일 파일 불러오기</title>
+		<link type="text/css" rel="stylesheet" href="mystyle.css">
+		<style>
+		/* 
+		# 스타일의 사용방법
+		1. 외부스타일 호출
+			외부에 @@.css파일로 스타일 선언이 된 파일 만들고,
+			link href="파일명"으로 호출하여 사용한다.
+			cf) 여러 페이지에 공통되는 css을 적용할 때, 많이 활용된다.
+		2. 현재페이지 적용 스타일
+			head부분에 style로 선언하고, 해당 페이지에 적용할 css선언한다.
+		3. 각 요소객체의 style 속성으로 선언
+			<요소태그 style="속성:속성값;.."> 형식으로 선언한다.
+		4. 우선 순위
+			1) inline이 가장 먼저 처리가 된다.
+			2) 페이지 선언 style, 외부 style : 선언된 순서로 우선 순위 설정
+				일반적으로는 외부 style을 선언 후, 페이지 style을 선언하여 우선순위를 잡는 경우가
+				많다.
+		*/
+			h2{background-color:yellow;}
+		</style>
+	</head>
+	<body>
+		<h3>손연재</h3>
+		<h2>안녕하세요</h2>
+		<hr>
+		<p>저는 체조 선수 손연재입니다. 음악을 들으면서 책읽기를 좋아합니다.
+		김치 찌개와 막국수 무척 좋아합니다.</p>
+		<h4 style="color:green;">인라인 스타일</h4>
+	</body>
+</html>

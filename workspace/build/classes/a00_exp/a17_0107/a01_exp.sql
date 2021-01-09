@@ -59,7 +59,9 @@ SELECT *
 
 --[중] 6. 부서별 최고급여의 구조와 데이터를 가진 복사 테이블 emp20을 만들고, emp20테이블에 subquery를 활용하여,
 --        부서번호 10 데이터를 입력하세요.
+--	1) 테이블은 만들 때도 subquery에 결과로 테이블과 데이터가 입력되어진다.
 -- 테이블 복사(EMP테이블의 부서별 최고급여 받는 사람의 데이터)
+
 CREATE TABLE EMP20 AS
 SELECT *
   FROM EMP
@@ -74,6 +76,25 @@ INSERT ALL INTO EMP20(EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
 		 SELECT EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO
 		   FROM EMP
 		  WHERE DEPTNO = 10;
+
+-- 풀이
+
+-- 만들려는 테이블과 내용
+SELECT DEPTNO, MAX(SAL), SAL
+ FROM EMP
+GROUP BY DEPTNO, SAL;
+
+-- 테이블 만들기
+CREATE TABLE EMP20
+AS SELECT DEPTNO, MAX(SAL) SAL
+FROM EMP
+GROUP BY DEPTNO;
+
+-- 데이터 입력
+INSERT INTO EMP20
+SELECT DEPTNO, SAL
+  FROM EMP
+ WHERE DEPTNO = 10;
 
 SELECT * FROM EMP20;
 

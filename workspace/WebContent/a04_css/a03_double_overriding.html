@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>스타일 합치기 및 오버라이딩</title>
+		<style>
+			/*
+			# 외부파일 호출 양식
+			오버라이딩 : 추가적이거나 겹치는 부분은 우선순위 기준으로 처리가 된다.
+			*/
+			@import url(external.css);
+			p { color : blue; font-size : 12px; }
+		</style>
+	</head>
+	<body>
+		<h3>p 태그에 스타일 중첩</h3>
+		<hr>
+		<p>Hello, students!</p>
+		<p style="font-size:25px">안녕하세요 교수님!</p>
+		<!-- 포함하고 있는 태그는 상위 부모 태그에 영향을 받는다. -->
+		<p style="color:green">자식 태그는 부모의 스타일을
+			<em style="font-size:25px">상속</em>받는다</p>
+	</body>
+</html>
