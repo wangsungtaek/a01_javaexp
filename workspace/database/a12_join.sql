@@ -29,7 +29,14 @@ SELECT E.*, D.*
 SELECT D.DNAME, E.ENAME, E.SAL
   FROM EMP E, DEPT D
  WHERE E.DEPTNO = D.DEPTNO;
--- 
+-- 통합테이블 사용시..(테이블 분리의 필요성)
+-- 1. 입력시 부서정보의 부서명, 위치를 계속 입력.(메모리 비효율)
+-- 2. 부서명, 위치를 잘못 입력 할 수 있다.(오류 가능)
+-- 3. 수정 삭제시, 데이터 건수가 늘어날수록 엄펑난 부하를 발생한다.
+--		ex) 부서명이나 부서위치가 변경될 때, 통합테이블과 분리된 테이블의 차이.
+--			ACCOUNTING -> 회계
+--			1) DEPT 테이블이 있을 때, DEPT테이블의 1개의 ROW만 수정
+--			2) 통합되어 있을 때, EMP_DEPT테이블이 있는 데이터건수 만큼 수정.
 SELECT DEPTNO AS 부서번호, DNAME AS 부서이름, LOC AS 부서위치
   FROM DEPT;
 -- ex) 사원번호, 사원명, 부서이름, 부서위치를 출력하세요
@@ -99,11 +106,13 @@ SELECT D.*, ENAME, JOB, SAL
   FROM DEPT D, EMP E
  WHERE D.DEPTNO = E.DEPTNO(+)
 ORDER BY D.DEPTNO;
+-- E.DEPTNO(+) : 사원테이블에 부서테이블에 비해 데이터가 없을 때,
+--	NULL인 내용도 표기할 때, 해당 테이블의 컬럼을 (+)로 표기한다.
 
 /*
 # self 조인
-1. 하나의 테이블 안에 컬럼끼리 연관관계가 있어, join형식으로 데이터를 처리하는
-	것을 말한다.
+1. 하나의 테이블 안에 컬럼끼리 연관관계(계층관계)가 있어,
+	join형식으로 데이터를 처리하는것을 말한다.
 2. 형식
 	SELECT a.*, b.*
 	  FROM 테이블1 a, 테이블2 b
@@ -120,8 +129,10 @@ SELECT EMPNO, ENAME
 -- 2. 하나의 테이블을 두개로 alias이름으로 선언하고, 두 개의 컬럼을 연관관계를
 --		설정한다.
 SELECT A.EMPNO, A.ENAME, A.JOB, A.MGR, B.EMPNO, B.ENAME
-  FROM EMP A, EMP B
+  FROM EMP A, EMP B -- 테이블 내에 SELF 조인이 있으면 ALIAS를 사용
  WHERE A.MGR = B.EMPNO;
+-- 관리자 번호의 사원 정보를 하나의 sql로 가져오고자 할때,
+-- join 관계를 설정하여 처리한다.
  
 /*
 위 계층 관계의 테이블을 이해했으면, 아래와 같은 하나의 테이블 내에 계층 관계가 있는
@@ -148,8 +159,8 @@ CREATE TABLE FAMILY (
 DROP TABLE FAMILY;
 
 -- 테이블 입력
-INSERT INTO FAMILY VALUES(1, '할아버지', '홍말순', 0);
-INSERT INTO FAMILY VALUES(2, '아버지', '홍판서', 1);
+INSERT INTO FAMILY VALUES(1, '할아버지', '홍말순', 0); -- 최상위 계층
+INSERT INTO FAMILY VALUES(2, '아버지', '홍판서', 1); -- NO와 parno의 연관관계를 설정하여 데이터를 입력한다.
 INSERT INTO FAMILY VALUES(3, '아들1', '홍진희', 2);
 INSERT INTO FAMILY VALUES(4, '아들2', '홍길동', 2);
 INSERT INTO FAMILY VALUES(5, '딸', '홍미자', 3);

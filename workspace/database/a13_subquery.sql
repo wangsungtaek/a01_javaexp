@@ -106,15 +106,42 @@ SELECT *
 			    FROM EMP
 			   WHERE DEPTNO = 20);
 
+-- 서브쿼리
+-- 가장 급여가 많은 사원의 정보를 출력하세요.'
+-- 1. 최고 급여를 호출
+SELECT MAX(SAL) FROM EMP;
+-- 2. 최고 급여에 해당하는 정보를 조건 처리
+SELECT *
+  FROM EMP
+ WHERE SAL = 5000;
+-- 3. 위 두개의 sql을 혼합해서 처리
+-- 1) 단일 데이터 sub query : 1개의 sub query 결과로 처리하는 형식
+SELECT  *
+  FROM EMP
+ WHERE SAL = (SELECT MAX(SAL) FROM EMP);
+-- 2) 다중 데이터 sub query : sub query의 결과가 다중으로 처리.
+-- 부서번호별 최고 급여자의 정보를 출력
+
+SELECT *
+  FROM EMP
+ WHERE (DEPTNO, SAL) IN(
+ 	SELECT DEPTNO, MAX(SAL)
+	  FROM EMP
+	GROUP BY DEPTNO
+ )
+ORDER BY DEPTNO;
+
+
+
 /*
 # exists연산자
-1. 서버쿼리의 결과값이 있는지 여부를 확인해서 메인쿼리를 실행해준다.
+1. 서버쿼리의 결과값이 있는지 여부를 확인해서 메인쿼리를 실행 여부를 처리해준다.
 */
 SELECT *
   FROM EMP
  WHERE COMM IS NOT NULL;
 
--- SUBQUER 데이터 있을 때
+-- SUBQUEY 데이터 있을 때
 SELECT *
   FROM EMP
  WHERE EXISTS(SELECT *
@@ -126,5 +153,5 @@ SELECT *
   FROM EMP
  WHERE EXISTS(SELECT *
  				FROM EMP
-			   WHERE DEPTNO = 40);	
+			   WHERE DEPTNO = 40);
 			  

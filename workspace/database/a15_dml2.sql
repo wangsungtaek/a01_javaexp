@@ -51,6 +51,11 @@ SELECT SAL
 SELECT MAX(SAL)
   FROM EMP10
  WHERE DEPTNO = 20;
+-- update 구문의 subquery은 해당하는 컬럼에 맞는 하나의
+-- 결과이기에 = (대입)으로 처리한다.
+-- 1) 한개의 컬럼	SET 컬럼1 = (SELECT 1개의 결과 컬럼)
+-- 2) 한개이상의 컬럼
+--		SET(컬럼1, .. 컬럼n) = (SELECT n개의 결과 컬럼)
 
 UPDATE EMP10
    SET SAL = (SELECT MAX(SAL)
@@ -125,3 +130,90 @@ DELETE
 CREATE TABLE EMP11 AS SELECT * FROM EMP;
 SELECT * FROM EMP11;
 DROP TABLE EMP11;
+
+/*
+# merge
+1. 변경 내지 입력할 데이터의 구조가 같은 두 개의 테이블을
+비교하여 하나의 테이블로 합치기 위한 오라클에서 지원하는 데이터 조작어.
+2. 조건문을 이용해서 해당 테이블 특정한 컬럼값이 있으면 update구문
+처리하고, 데이터가 없으면 insert구문을 처리한다.
+3. 기본 형식
+	MERGE INTO 테이블명 A
+	USING 테이블명 B
+	ON A와 B의 특정한 컬럼 비교
+	WHEN MATHCHED THEN : 두개의 테이블의 특정 컬럼에 데이터가 있을 때.
+		UPDATE SET : 수정 처리..
+	WHEN NOT MATHCHED THEN
+		INSERT INTO VALUES : 등록 처리
+*/
+CREATE TABLE EMP30
+AS SELECT * FROM EMP;
+CREATE TABLE EMP31
+AS SELECT * FROM EMP WHERE 1=0;
+SELECT * FROM EMP30;
+SELECT * FROM EMP31;
+
+--1) 두개의 테이블의 비교를 통해 입력하기..
+MERGE INTO EMP31 S
+USING EMP30 T
+ON (S.EMPNO = T.EMPNO)
+WHERE MATCHED THEN
+	UPDATE SET S.ENAME = T.ENAME,
+			   S.JOB = T.JOB,
+			   S.SAL = T.SAL
+WHERE NOT MATCHED THEN
+	INSERT (EMPNO, ENAME, SAL, DEPTNO)
+	VALUES (T.EMPNO, T.ENAME, T.SAL, T.DEPTNO);
+
+SELECT * FROM EMP30;
+SELECT * FROM EMP31;
+
+--2) 가상의 테이블로 데이터 입력 처리
+-- 8000, '홍길동' 프로그램을 통해서 전달된 입력값...
+-- 해당 데이터의 KEY인 EMPNO가 있으면 수정이 되고, 없으면 등록 처리되는 내용
+MERGE INTO EMP31 S
+USING DUAL
+ON(S.EMPNO = 8000)
+WHEN MATCHED THEN
+	UPDATE SET S.ENAME = '신길동'
+WHEN NOT MATCHED THEN
+	INSERT (S.EMPNO, S.ENAME)
+	VALUES (8000, '홍길동');
+SELECT * FROM EMP31;
+
+-- EX) EMP32테이블로 구조만 복사된 테이블을 만들고,
+--		전체데이터 기준으로 수정/등록되게 3개정도 데이터를 입력/수정 테스트 해보세요.
+
+-- 테이블 구조 복사
+CREATE TABLE EMP32 AS SELECT * FROM EMP WHERE 1=0;
+
+MERGE INTO EMP32 S
+USING DUAL
+ON(S.EMPNO = 8003)
+WHEN MATCHED THEN
+	UPDATE SET S.ENAME = '오길동', S.JOB = '대리', S.MGR = 7999, S.HIREDATE = SYSDATE
+WHEN NOT MATCHED THEN
+	INSERT
+	VALUES(8003, '하길동', '사원', 7999, SYSDATE, 3000, 100, 10);
+-- MERGE INTO EMP32에서 대상 테이블을 지정했기 때문에,
+-- INSERT 구문의 기본형식인 INTO 테이블명을 지정하지 않아야 된다.
+
+SELECT * FROM EMP32;
+
+-- EX) EMP33테이블을 구조만 복사한 테이블로 만들고,
+--		EMP30기준되는 데이터 EMPNO컬럼으로 사원명, 부서명, 입사일을
+--		MERGE처리하세요
+CREATE TABLE EMP33 AS SELECT * FROM EMP WHERE 1=0;
+MERGE INTO EMP33 S
+USING EMP30 T
+ON(S.EMPNO = T.EMPNO)
+WHEN MATCHED THEN
+	UPDATE SET S.ENAME = T.ENAME,
+			   S.DEPTNO = T.DEPTNO,
+			   S.HIREDATE = T.HIREDATE
+WHEN NOT MATCHED THEN
+	INSERT (EMPNO, ENAME, DEPTNO, HIREDATE)
+	VALUES (T.EMPNO, T.ENAME, T.DEPTNO, T.HIREDATE);
+
+SELECT * FROM EMP30;
+SELECT * FROM EMP33;

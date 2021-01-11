@@ -24,6 +24,7 @@
 		1. method : get/post의 속성값을 가지고 있고, 전송 방식을 지정해 준다.
 		2. action : 문자열로 지정한 페이지에 하위 input|select|textarea에 속성으로
 			name으로 지정 키와 입력값을 전송한다.
+		3. name/id : form의 식별자로 할용된다.
 		 -->
 			<!-- 하위에 기본 입력태그 input
 			1. 속성 type에 따라 입력되는 형식에 차이가 있음.
@@ -38,7 +39,14 @@
 			 <!-- 
 			 submit을 클릭시, ?id=41414&pass=1414 형식(query string)으로 form객체에 입력한 값을
 			 서보로 전달한다.
-			 http://localhost:7080/javaexp/a03_html/a06_form.html?id=41414&pass=1414
+			 
+			 	ex) <form action="/javaexp/a03_html/a06_form.html">
+			 	ex) <form>
+			 		action값이 생략되면 현재 페이지를 대상 페이지로 지정이 된다.
+			 http://localhost:7080/javaexp/a03_html/a06_form.html?id=himan&pass=7777
+			 	ex) <form action="/javaexp/a03_html/a07_rev.jsp">
+			 			<input name="id" value="himan"/.
+			 			<input name"pass" value="7777"/.
 			  -->
 		</form>
 	</body>

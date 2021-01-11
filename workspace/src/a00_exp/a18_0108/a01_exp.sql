@@ -23,6 +23,12 @@ UPDATE EMP17
 				  WHERE COMM IS NULL
 				     OR COMM = 0);
 SELECT * FROM EMP17;
+-- 풀이
+UPDATE EMP15
+  SET COMM = (SAL * 0.15),
+      HIREDATE = TO_DATE('2000/01/01', 'YYYY/MM/DD')
+ WHERE NVL(COMM, 0) = 0;
+
 
 --[중] 4. emp21복사테이블을 만들고, 부서별 최고 급여자의 사원번호를 확인하고, 
 --        10=>20, 20=>30, 30 => 10으로 변경하고, 평균 급여로 변경
@@ -46,7 +52,7 @@ UPDATE EMP21
 				 WHERE (DEPTNO, SAL) IN(SELECT DEPTNO, MAX(SAL)
 				  						  FROM EMP21
 				  					  GROUP BY DEPTNO));
-				  					 
+
 SELECT * FROM EMP21;
 /*
 --[하] 5. 삭제구분의 기본형식을 기술하세요
@@ -61,6 +67,6 @@ CREATE TABLE EMP22 AS SELECT * FROM EMP;
 DELETE
   FROM EMP22
  WHERE (DEPTNO, SAL) IN (SELECT DEPTNO, MIN(SAL)
-						  FROM EMP22
-					  GROUP BY DEPTNO);
+						   FROM EMP22
+					   GROUP BY DEPTNO);
 SELECT * FROM EMP22;
