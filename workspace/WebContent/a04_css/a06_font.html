@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+		/*
+		# css의 표준 단위
+		1. em : 배수 ex) 기본적으로 지원하는 크기에서 배수로 처리할 때 활용
+						font-size : 3em;
+		2. % : 퍼센트 ex) 해당 지원하는 크기에 %로 크기 설정.
+						font-size : 200%;
+		3. px : 픽셀수	ex) 절대적인 픽셀단위 크기 설정.
+		4. pt : 포인트 1pt = 1in(인치)의 1/72 크기
+		5. cm|mm : ex) 절대적 cm/mm크기로 설정.
+		6. in : 인치 = 2.54cm = 96px ex) margin:2in; 왼쪽 여백 2인치
+		7. pc : 피카소(picas) 1px = 12pt
+		8 deg : 각도	ex) transform:rotate(20deg) : 시계방향 20도 회전
+		
+		# 폰트 관련 속성들..
+		1. 폰트의 종류 font-family : 폰트의 종류 궁서체, 맑은 고딕, Arial등, 굵림체
+			ex) h2{font-family : 궁서체;}
+		2. 폰트의 크기 font-size : 표준 단위로 크기를 설정..
+			ex) h1{font-size:2.0em;}
+		3. 폰트의 스타일 font-style : 기울림(italic), oblique..
+		4. 폰트의 굵기 : font-weight : bold, boder, light.., 100~900 범위 굵기
+		5. 한번에 폰트의 속성을 지정..
+			font:font-style font-weight font-size font-family
+			ex) p{font:italic bold 20px consolas, sans-serif;}
+			ex) h4{font:20px consolas, sans-serif;}
+				font-size, font-family외 생략.
+				
+		*/
+			body {
+				font-family : "Times New Roman", Serif;
+				font-size : Large;
+			}
+			h3 {
+				font : italic bold 40px consolas, sans-serif;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>Consolas font</h3>
+		<hr>
+		<p style="font-weight:900">font-weight 900</p>
+		<p style="font-weight:100">font-weight 900</p>
+		<p style="font-style:italic">Italic Style</p>
+		<p style="font-style:oblique">Oblique Style</p>
+		<p>현재 크기의
+			<span style="font-size:1.5em">1.5배</span>
+			크기로
+		</p>
+	</body>
+</html>

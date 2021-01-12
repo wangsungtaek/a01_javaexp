@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+		<style type="text/css">
+		/*
+		# div(box)에 배경색과 이미지 속성.
+		1. background-color : 배경색상.
+		2. background-image : url("이미지주소/파일경로명");
+			배경이미지 파일 지정.
+		3. background-position : center center
+			이미지의 위치를 지정(x축, y축) 중앙에 위치..
+		4. background-repeat : repeat-y;
+			none : 반복하지 않음
+			repeat : x/y축 왼쪽/오른쪽, 위/아래 반복
+			repeat-x : x 왼쪽에서 오른쪽으로 반복
+			repeat-y : y축 위에서 아래로 반복
+		*/
+			div {
+				width:150px;
+				height:70px;
+				padding:10px;
+				border:10px solid lightgray;
+				background-image:url("media/spongebob.png");
+				background-size:150px 100px;
+				background-repeat:no-repeat;
+			}
+		</style>
+	<body>
+		<div class="redBox">뚱이와 함께</div><br>
+		<div class="blurBox">뚱이와 함께</div><br>
+		<div class="multiEffect">뚱이와 함께</div><br>
+	</body>
+</html>

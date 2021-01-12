@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<style>
+		.style1{font-style:normal;}
+		.style2{font-style:italic;}
+		.style3{font-style:oblique;}
+		.size1{font-size:1em;}
+		.size2{font-size:10pxem;}
+		.size3{font-size:1%;}
+		.weight1{font-weight:nomal;}
+		.weight2{font-weight:bold;}
+		.weight3{font-weight:boder;}
+		.weight4{font-weight:900;}
+		.family1{font-family:Georgia;}
+		.family2{font-family:"Gill Sans, sans-serif";}
+		.family3{font-family:sans-serif;}
+		.size4{font-size:3em;}
+		.size5{font-size:2.54cm;}
+		.size6{font-size:1in;}
+		.size7{font-size:96px;}
+	</style>
+	<body>
+		<!-- 
+		[하] 1. font에 관련된 속성을 기술하고, 해당 속성에 따른 기본값을 예제를 통해 나타내세요.		
+		 	1) 폰트의 종류
+		 		- font-family : 궁서체|맑은고딕|Arial|굴림체;
+		 	2) 폰트의 크기
+		 		- font-size : 2.0em|2px;
+		 	3) 폰트의 스타일
+		 		- font-style : normal|italic|oblique;
+		 	4) 폰트의 굵기
+		 		- font-weight : bold|boder|100~900 범위
+		 	<style>
+				.style1{font-style:normal;}
+				.style2{font-style:italic;}
+				.style3{font-style:oblique;}
+				.size1{font-size:1em;}
+				.size2{font-size:10pxem;}
+				.size3{font-size:1%;}
+				.weight1{font-weight:nomal;}
+				.weight2{font-weight:bold;}
+				.weight3{font-weight:boder;}
+				.weight4{font-weight:900;}
+				.family1{font-family:Georgia;}
+				.family2{font-family:"Gill Sans, sans-serif";}
+				.family3{font-family:sans-serif;}
+			</style>			
+		 -->
+		<h3>Ex1)</h3>
+		<hr>
+		<div class="style1">font-style : normal</div>
+		<div class="style2">font-style : italic</div>
+		<div class="style3">font-style : oblique</div>
+		<br>
+		<div class="size1">font-size : 1em</div>
+		<div class="size2">font-size : 10px</div>
+		<div class="size3">font-size : 1%</div>
+		<br>
+		<div class="weight1">font-weight : nomal</div>
+		<div class="weight2">font-weight : bold</div>
+		<div class="weight3">font-weight : boder</div>
+		<div class="weight4">font-weight : 900</div>
+		<br>
+		<div class="family1">font-family : Georgia</div>
+		<div class="family2">font-family : Gill Sans</div>
+		<div class="family3">font-family : sans-serif</div>
+		<br>
+		<!-- 
+		[하] 2. css의 표준 단위에 대하여 기술하세요.
+			1) em : 배수
+				- 기본적으로 지원하는 크기에서 배수로 처리할 때 활용
+			2) % : 퍼센트
+				- 해당 지원하는 크기에 %로 크기 설정
+			3) px : 픽셀수
+				- 절대적인 픽셀단위 크기 설정
+			4) pt : 포인트
+				- 1in(인치)의 1/72 크기
+			5) cm|mm
+				- 절대적 cm/mm크기로 설정
+			6) in : 인치
+				- 2.54cm = 96px
+			7) pc : 피카소
+				- 1px = 12pt
+			8) deg : 각도
+				- 시계방향 회전
+		 -->
+		<h3>Ex2)</h3>
+		<hr>
+		<div class="size4">size:3em</div>
+		<div class="size5">size:2.54cm</div>
+		<div class="size6">size:1인치</div>
+		<div class="size7">size:96px</div>
+		<br>
+		<!-- 
+		[하] 3. box의 기본 속성값 3개와 방향속성값과 연관관계, 
+				border속성값에서 추가되는 속성을 기술하세요.
+				1) 속성
+					- margin(여백) : 외부 객체와 사이 간격
+					- border(테두리) : div 객체의의 테두리 선을 말한다.
+					- padiing : 박스모델의 내부에 포함된 컨텐츠와 테두리 사이 간격
+					- contents(포함내용) : 문자열, 포함된 내부 요소객체(태그)
+				2) 방향속성값
+					- top : 위쪽으로 적용한다.
+					- bottom : 아래쪽으로 적용한다.
+					- left : 왼쪽으로 적용한다.
+					- right : 오른쪽으로 적용한다.
+				3) border 속성값
+					- width(굵기)
+					- style(스타일)
+					- color(색상)
+		 -->
+		<!-- 
+		[하] 4. border 테두리 관련 속성값을 기술하세요.
+			1) 속성값
+				- width(굵기)
+				- style(스타일)
+				- color(색상)
+		 -->
+		<h3>Ex4)</h3>
+		<hr>
+		<p style="border:1px solid blue; margin:1px">border</p>
+		<p style="border:1px dotted blue; margin:1px">border</p>
+		<p style="border:2px inset blue; margin:1px">border</p>
+		
+		<!-- 
+		[하] 5. box관련 배경이미지 속성과 속성값을 기술하세요.
+			1) background-color : 배경색상
+				- white, yellow, green, black ..
+			2) background-image : 배경이미지
+				- url("이미지주소/파일경로명")
+			3) background-position : 위치
+				- left, right, center, top, bottom 
+			4) background-repeat : 패턴
+				- none : 반복하지 않음
+				- repeat : x, y 축 반복
+				- repeat-x : x축 반복
+				- repeat-y : y축 반복
+				- no-repeat : 반복하지 않음
+		 -->
+		<!-- 
+		[하] 6. block, inline, inline-block의 차이점을 좋아하는 
+			과일 리스트를 div에 넣고 화면에 표시하세요. -->
+		<h3>Ex6)</h3>
+		<hr>
+		좋아하는 과일은
+		<div style="display:none">
+			바나나
+		</div>
+		입니다.<br><br>
+		
+		좋아하는 과일은
+		<div style="display:block">
+			귤
+		</div>
+		입니다.<br><br>
+
+		좋아하는 과일은
+		<div style="display:inline">사과</div>
+		<div style="display:inline">귤</div>
+		입니다.<br><br>
+
+		좋아하는 과일은
+		<div style="display:inline-block; height:50px">복숭아<br>포도</div>
+		입니다.<br><br>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<style>
+		div {
+			border : 2px solid yellowgreen;
+			color : blue;
+			background : aliceblue;
+		}
+		span {
+			border : 3px dotted red;
+			background : yellow;
+		}
+		/*
+		# 블럭 박스
+			1. 새라인으로 시작 ex) 요소{display:block;}
+		
+		# 인라인 박스
+			1. 옆으로 나열되서 처리 ex) 요소{display:inline;}
+		
+		# 인라인 블럭 박스 ex) 요소{display:inline-block}
+			1. 블럭 속성과 인라인 속성을 혼합해서 가지고 있다. 
+			2. 외부 다른 요소들과의 관계은 인라인으로 처리.(옆으로 나열 처리)
+			3. 내부에 있는 내용은 block속성을 가진다.(높이를 가질 수 있다.)
+		*/
+	</style>
+	<body>
+		<h3>인라인, 인라인 블록, 블록</h3>
+		<hr>
+		나는 <div style="display:none">
+			div(none)</div>입니다. <br><br>
+		나는 <div style="display:inline">
+			div(inline)</div> 입니다.<br><br>
+		나는 <div style="display:inline-block; height:50px" >
+			div(inline-block)</div> 입니다.<br><br>
+			<div style="display:inline-block; height:50px" >
+			div(inline-block)</div> 입니다.<br><br>
+		나는 <div>div
+				<span style="display:block">span(block)</span>입니다.
+				<span style="display:block">span(block)</span>입니다.
+			</div>
+	</body>
+</html>
