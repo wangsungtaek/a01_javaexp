@@ -22,6 +22,7 @@
 		.size5{font-size:2.54cm;}
 		.size6{font-size:1in;}
 		.size7{font-size:96px;}
+		div{border:1px solid black;}
 	</style>
 	<body>
 		<!-- 
@@ -128,11 +129,11 @@
 		
 		<!-- 
 		[하] 5. box관련 배경이미지 속성과 속성값을 기술하세요.
-			1) background-color : 배경색상
+			1) background-color : 배경색상, 색상지정
 				- white, yellow, green, black ..
 			2) background-image : 배경이미지
 				- url("이미지주소/파일경로명")
-			3) background-position : 위치
+			3) background-position : 위치(x축, y축)left, right, center, top, bottom
 				- left, right, center, top, bottom 
 			4) background-repeat : 패턴
 				- none : 반복하지 않음
@@ -145,26 +146,18 @@
 		[하] 6. block, inline, inline-block의 차이점을 좋아하는 
 			과일 리스트를 div에 넣고 화면에 표시하세요. -->
 		<h3>Ex6)</h3>
-		<hr>
-		좋아하는 과일은
-		<div style="display:none">
-			바나나
-		</div>
-		입니다.<br><br>
+		<h2>block</h2>
+		<div style="display:block;height:50px">사과</div>
+		<div style="display:block;height:50px">바나나</div>
+		<div style="display:block;height:50px">딸기</div>
+		<h2>inline</h2>
+		<div style="display:inline;height:50px">사과</div>
+		<div style="display:inline;height:50px">바나나</div>
+		<div style="display:inline;height:50px">딸기</div>
+		<h2>inline-block</h2>
+		<div style="display:inline-block;height:50px">사과</div>
+		<div style="display:inline-block;height:50px">바나나</div>
+		<div style="display:inline-block;height:50px">딸기</div>
 		
-		좋아하는 과일은
-		<div style="display:block">
-			귤
-		</div>
-		입니다.<br><br>
-
-		좋아하는 과일은
-		<div style="display:inline">사과</div>
-		<div style="display:inline">귤</div>
-		입니다.<br><br>
-
-		좋아하는 과일은
-		<div style="display:inline-block; height:50px">복숭아<br>포도</div>
-		입니다.<br><br>
 	</body>
 </html>

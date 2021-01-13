@@ -45,6 +45,28 @@ SELECT * FROM BOARD;
 --[중] 3. student2테이블 학번, 이름, 학과 테이블이다.
 --        학번을 올해연도(2)학과코드(CS)번호(4)로 해당 자리수로 설정할 때,
 --        테이블과 sequence를 만들고 데이터를 입력 처리하세요
+CREATE TABLE STUDENT2(
+	SNUM CHAR(8), -- 코드성으로 자리가 정해진 데이터는 char로 설정
+	NAME VARCHAR2(50),
+	SUBJECT VARCHAR2(50)
+);
+
+CREATE SEQUENCE STUD2_SEQ
+	START WITH 1000
+	INCREMENT BY 1
+	MINVALUE 1000
+	MAXVALUE 9999
+	CYCLE;
+
+SELECT 
+	TO_CHAR(SYSDATE, 'YY')||'CS'||STUD2_SEQ.NEXTVAL 
+	STUDNO
+FROM DUAL;
+INSERT INTO STUDENT2 VALUES(
+	TO_CHAR(SYSDATE, 'YY')||'CS'||STUD2_SEQ.NEXTVAL, '홍길동',
+	'컴퓨터 통계학과'
+);
+SELECT * FROM STUDENT2;
 /**
 --[하] 4. sequence의 변경/삭제 구문을 기술하고, 한계를 예제를 통해서 나타내세요.
 	1) 한계
@@ -84,7 +106,8 @@ DROP SEQUENCE SEQ_TEST;
 	2) 옵션	
 		옵션 1 : global temporary - 임시테이블 만들 때, 사용
 			해당 세션(클라이언트)에만 보임
-		옵션 2 : 스키마(사용자계정) - 다른 계정에서 호출해서 사용한다.
+		옵션 2 : 스키마(사용자계정) - 다른 계정에서 테이블을 특정한 계정 테이블을 생성해서 사용한다.
+			ex) system으로 로그인해서 scott계정에 테이블을 생성할 때, 활용된다.
 			ex) system계정으로 접속해서 scott계정에서 사용할 테이블을 만들 때,
 				반드시 스키마를 선언하여야 한다.
 		옵션 3 : default 데이터 선언 - 데이터를 입력하지 않을 때, null값 대신에
@@ -94,7 +117,8 @@ DROP SEQUENCE SEQ_TEST;
 --[하] 6. 테이블 생성시, default 데이터의 입력의 제약사항에 대하여 기술하세요.
 /*
 	1) 컬럼의 입력 값이 묵시적 null인 경우에 기본값을 지정하기 위하여 사용된다.
-	2) 기본값을 설정하는 데이터 :
+	묵시적인 null인 경우만 default 데이터로 입력이 된다.
+	2) 기본값을 설정하는 데이터
 		리터럴 값, 표현식, sql함수, sysdate, user를 사용할 수 있다.
 		특정 컬럼이나 의사컬럼(nextval, currval)은 사용할 수 없다.
 */
@@ -109,9 +133,8 @@ CREATE TABLE EMP60 AS SELECT * FROM EMP;
 
 -- 3) 컬럼(부서명, 부서위치) 추가
 ALTER TABLE EMP60
-ADD DNAME VARCHAR2(20);
-ALTER TABLE EMP60
-ADD LOC VARCHAR2(20);
+ADD (DNAME VARCHAR2(50) DEFAULT '부서명',
+	 LOC VARCHAR2(50) DEFAULT '부서위치');
 
 /*
 --[하] 8. 컬럼의 삭제 처리하는 형식을 기술하고, 위 emp60에서 부서위치를 삭제 처리하세요.

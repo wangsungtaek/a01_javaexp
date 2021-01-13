@@ -110,3 +110,74 @@ SELECT * FROM EMP41;
 */
 ALTER TABLE EMP41 DROP COLUMN DEPARTNO;
 SELECT * FROM EMP41;
+
+/*
+4. 컬럼의 변경
+	1) 테이블의 컬럼의 타입, 크기, 기본 값은 변경이 가능하다.
+	2) 기본형식
+		ALTER TABLE 테이블명
+		MODIFY 컬럼 데이터유형 옵션1
+		옵션1 (default 기본데이터)
+	3) 기존 컬럼에 데이터가 없는 경우
+		컬럼 타입이나 크기 변경이 가능
+		ex) 큰데이터할당 ==> 작은데이터할당으로 변경도 가능하다.
+	4) 기존 칼럼에 데이터가 있는 경우
+		- 타입변경 char, varchar2허용
+		- 변경한 컬럼의 크기가 저장된 데이터의 크기보다 같거나 클 경우만 가능
+			varchar2(10) ==> varchar2(15) 변경가능
+			varchar2(5) ==> varchar2(4) 변경불가능
+	5) default 값 변경은 변경 후에 입력되는 데이터 부터 적용.
+-- 데이터 없을 때, 변경.
+ */
+-- 테이블 복사
+CREATE TABLE EMP50
+AS SELECT * FROM EMP WHERE 1=0;
+
+-- 컬럼변경
+ALTER TABLE EMP50
+MODIFY (ENAME VARCHAR2(50),
+	    JOB VARCHAR2(50));
+	   
+ALTER TABLE EMP50
+MODIFY (ENAME VARCHAR2(10),
+	    JOB VARCHAR2(10));
+
+-- ex) 컬럼의 유형을 변경 처리(크기, 유형, Default 설정)
+ALTER TABLE EMP50
+MODIFY (EMPNO NUMBER(6) DEFAULT 0,
+	    MGR NUMBER(6));
+
+SELECT * FROM EMP50;
+DROP TABLE EMP50;
+	   
+-- 데이터가 있는 테이블 컬럼의 변경
+-- 테이블 복사
+CREATE TABLE EMP51
+AS SELECT * FROM EMP;
+
+-- 작은 크기 ==> 큰 크기로 변경
+ALTER TABLE EMP51
+MODIFY (ENAME VARCHAR2(50),
+		JOB VARCHAR2(50));
+	
+-- ex) 다른 유형의 데이터로 변경, 큰유형에서 작은 유형으로 변경 확인.
+-- 
+ALTER TABLE EMP51
+MODIFY (ENAME NUMBER(4),
+		JOB NUMBER(10)); -- error
+
+-- 있는 데이터의 범위보다 작은 것은 에러발생
+ALTER TABLE EMP51
+MODIFY (ENAME VARCHAR2(40),
+		JOB VARCHAR2(2)); -- error
+		
+-- 숫자형 데이터는 정밀도가 number(p, s)
+-- 작은 데이터로 변경이 불가능 하고,
+-- 정밀도가 한번 커지면 할당 데이터 상관없이 작은 크기로 변경이 불가능 하다.
+ALTER TABLE EMP51
+MODIFY DEPTNO NUMBER(3,1);
+ALTER TABLE EMP51
+MODIFY DEPTNO NUMBER(2,1); -- error
+
+SELECT * FROM EMP51;
+DROP TABLE EMP51;
