@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<style>
+		table {
+			border-collapse : collapse;
+		}
+		td, th {
+			width : 100px;
+			height : 40px;
+			text-align : center;
+		}
+		thead, tfoot {
+			background : darkgray;
+			color : yellow;
+		}
+		tbody tr:nth-child(even) {
+			background : aliceblue;
+		}
+		tbody tr:hover {
+			background : pink;
+		}
+		
+	</style>
+	<body>
+	<!-- 
+	[하] 1. 테이블에서 table로 테두리와 2중선 변경 옵션을 선언하세요.
+		table {
+			border-collapse : collapse;
+		}
+	 -->
+	<!-- 
+	[하] 2. th,td에 대한 정렬과 높이를 지정할려고 한다. 예제를 통해 지정 처리하세요
+		<style>
+			th, td {
+				text-align : center;
+				height : 50px;
+			}
+		</style>
+	 -->
+	<!-- 
+	[하] 3. 행별로 배경색상을 처리하고 마우스 커서 위치시 색상 변경하는 설정을 기술하세요.
+		<style>
+			tbody tr:nth-child(even) {
+				background : aliceblue;
+			}
+			tbody tr:hover {
+				background : pink;
+			}
+		</style>
+	 -->
+	 	<h3>Ex2, 3)</h3>
+	 	<hr>
+		<table>
+			<thead>
+				<tr><th>열1</th><th>열2</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>1</td><td>2</td></tr>
+				<tr><td>3</td><td>4</td></tr>
+				<tr><td>5</td><td>6</td></tr>
+				<tr><td>7</td><td>8</td></tr>
+			</tbody>
+			<tfoot>
+				<tr><th>9</th><th>10</th></tr>
+			</tfoot>
+		</table>
+	<!-- 
+	[하] 4. 조별 과제의 회원등록/게시판 화면으로 오늘 배운 테이블과 폼 css적용하여 만들어 보세요.
+	 -->
+	<!-- 
+	[하] 5. javascript란 무엇인가?
+		1) 웹 브라우저에서 많이 사용하는 front end단 프로그래밍 언어를 말한다.
+		2) 네스케이스 사가 썬 마이크로시스템과 함께 자바스크립트라는 이름을 붙여 주고 본격적 발전을 하였다.
+		3) 웹 페이지에 생동감을 불어넣기 위해 만들어진 프로그래밍 언어
+	 -->
+	<!-- 
+	[하] 6. javascript가 head부분에 선언되었을 때와 body 밑에 선언되었을 때의 차이점은 무엇인가?
+		1) head 부분에 선언 되었을때
+			- body태그를 읽기 전에 실행기때문에, body부분에 있는 DOM을 메모리에 로딩하지 못 함.
+			- 상단에 선언되어 있더라도, 함수로 호출하는 경우에는 처리가 가능하다.
+		2) body 밑에 선언 되었을때
+			- body부분에 있는 DOM을 메모리에 로딩된 후 실행된다.
+	 -->
+	<!-- 
+	[하] 7. 변수 선언에 있어서, java와 javascript의 차이점을 기술하세요.
+		- 데이터 타입을 정의하지 않아도 된다.
+			ex) var name ="홍길동";
+	 -->			 	 
+	</body>
+</html>

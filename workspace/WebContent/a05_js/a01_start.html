@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+		// 한줄 주석
+		/*
+		# javascript란?
+		1. 웹 브라우저에서 많이 사용하는 front end단 프로그래밍 언어를 말한다.
+		2. 네스케이스 사가 썬 마이크로시스템과 함께 자바스크립트라는 이름을 붙여
+			주고 본격적 발전을 하였다.
+		3. 작동
+			1) html 페이지의 각 태그는 웹 브라우저에 의해 순차적으로 실행한다.
+				위로부터 아래..
+			2) 웹 브라우저는 head 태그를 먼저 읽은 후 body 태그를 읽는다.
+				-scrpt 태그를 head 태그에 넣으면 body태그를 읽기 전에 실행한다.
+					- body부분에 있는 DOM(document object model-tag를 객체화) 메모리에 로딩하지 못 함.
+					- 상단에 선언되어 있더라도, 함수로 호출하는 경우에는 처리가 가능
+				- body태그 하단에 넣으면 head태그를 실행한 후, body에 있는
+					태그가 dom 메모리에 로딩된 후, 실행된다/
+			3) script 태그를 head 태그 안에 넣으면 코드에 대한 이해와
+				가독성 편의때문에 주로 사용한다.
+				기능함수를 통해서 하단 script를 선언한 것과 동일한 효과를 처리한다.
+				window.onload=function(){
+				};
+		4. 웹 애플리케이션의 장점
+			1) 웹 브라우저가 돌아가는 데스크탑, 노트북, 스마트폰 등 
+				모든 장치에서 사용이 가능하다/
+			2) html5가 도입됨에 따라 웹 상에서 플래시가 실버라이트의
+				도움없이도 게임과 같은 복잡한 프로그램 제작이 가능하다.
+		5. 자바스크립의 종류
+			1) 유럽 컴퓨터 제조 협회(European Computer Manufacturerer's Association)는
+				자바스크립트를 ECMAScript라는 이름으로 표준화 하고 있다.
+				ex) ecma6, ecma7..
+			2) 구글 크롬에선 자바스크립트를 이용해서 최신 웹 브라우저 프로그램을
+				지원하고 있다.
+		# 표현식
+		1. 값을 만들어내는 간단한 코드
+			ex) 273, 10+20+30, '안녕'
+		2. 문장이란?
+			1) 하나 이상의 표현식이 모인 것
+			2) 문장이 모여 프로그램 구성
+			3) 문장의 끝에서 세미콜론을 찍어 문장의 종결을 알려준다.
+				ex) 10+20+30;
+				ex) var num01 = 50; var num02=70;
+					var sum = num01 + num02;
+			4) 자바스크립에서는 라인별로 된 문장은 ;(세미클론)을 생략가능하다.
+				var num01 = 50
+				var num01 = 70
+		*/
+			// document.querySelect("h2") DOM객체
+			// document.querySeelct("h2").innerHTML="안녕";
+			// 메모리 생성 전이라 인식 못 함.
+			console.log("화면이 아닌 debug 모드에서 출력 처리된다(f12)");
+			// 자바스크립트의 변수 선언 규칙.
+			// var 변수명 = 할당할 데이터;
+			// 초기에 데이터 유형을 선언하지 않고 할당한 후에 해당 변수 데이터유형이
+			// 만들어진다. cf) int num01=25; 차이/
+			var name = "홍길동";
+			var age = 25;
+			console.log("이름은 " + name + ", 나이는 " +age);
+			// ex) 변수 num01, num02를 지정하고 할당한 후,
+			// 4칙 연산 내용과 결과를 console에서 출력되게 하세요
+			// @@ + @@ = @@
+			// @@ - @@ = @@
+			// @@ * @@ = @@
+			// @@ / @@ = @@
+			var num01 = 25;
+			var num02 = 5;
+			console.log(num01 + " + " + num02 + " = " + (num01+num02));
+			console.log(num01 + " - " + num02 + " = " + (num01-num02));
+			console.log(num01 + " * " + num02 + " = " + (num01*num02));
+			console.log(num01 + " / " + num02 + " = " + (num01/num02));
+			// `(astorophy) : es6에서 지원되는 브라우저에서만
+			// 줄바꿈까지 포함하여 처리 가능..
+			// 사용 가능 ${변수명}
+			console.log(`${num01} + ${num02}
+			
+			결과 ${num01+num02}`);
+			// ex) 물건명/가격/갯수 변수를 선언하여 데이터를 할당한 후 $(변수명) 형식과 `(아스트로피)
+			//	활용하여
+			//	물건명 : @@@
+			//	가격 : @@
+			//	갯수 : @@
+			//	총비용 : @@을 출력해보세요.. console에서 ..
+			var product = "사과";
+			var price = 3000;
+			var cnt = 5;
+			console.log(`물건명 : ${product}
+가격 : ${price}
+갯수 : ${cnt}
+총비용 : ${price*cnt}`);
+			/*
+			# javascript
+			1. 프로그램 공통
+				1) 변수, 타입(문자열, 숫자, 불리언, 함수, 객체)
+				2) 조건, 반복
+				3) 함수
+				4) 객체
+			2. 이벤트 처리
+			3. DOM/BOM (브라우저 안에 있는 객체와 윈도우 창)
+			*/
+			/*
+			3. 키워드
+				1) 자바스크립트가 처음 만들어질 때, 정해진 특별한 의미가 있는 단어
+					ex) break, else, true, try
+				2) 키워드는 변수명으로 사용할 수 없다.
+			4. 식별자(변수명)
+				1) 자바스크립트에서 이름을 붙일 때, 사용한다.
+				2) 식별자는 변수명과 함수명, 객체명으로 사용된다.
+				3) 식별자 생성 규칙
+					- 키워드를 사용하면 안 된다.
+					- 숫자로 시작할 수 없다. ex) var 24num;(x)
+						ex) var num24;(o)
+					- 특수 문자 _, $만 허용
+					- 공백 문자를 포함 할 수 없다.
+						ex) var num 01(x), var set Num(x)
+				4) 관례(가독성을 위하여)
+					- 모든 언어 사용 가능하나 알파벳 사용을 권한다.
+					- input, out 같이 의미 있는 단어 사용
+					- 생성자 함수(객체)의 이름을 항상 대문자로 시작
+						ex) function Person(){}
+							var p01 = new Person();
+					- 변수, 인스턴스, 함수, 메서드의 이름은 항상 소문자 시작
+						ex) var num01, var p2 = new Person();
+							function setName(){}
+					- 여러 단어로 이뤄진 식별자는 각 단어의 첫 글자를 대문자로
+						ex) var callName, var setAge = function(){}
+			*/
+		</script>
+	</head>
+	<body>
+		<h2>안녕하세요</h2>
+	</body>
+	<script type="text/javascript">
+		document.querySelector("h2").style.backgroundColor="yellow";
+		document.querySelector("h2").innerHTML="안녕^^";
+		
+	</script>
+</html>

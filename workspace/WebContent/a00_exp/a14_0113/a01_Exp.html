@@ -43,11 +43,18 @@
 
 		</style>
 		<script type="text/javascript">
-			function ch1(obj) {
-				obj.style.visibility='visible';
-			}
-			function ch2(obj) {
-				obj.style.visibility='hidden';
+			var isVisible=true;
+			function ch(btn){
+				var obj = document.querySelector("img");
+				if(isVisible){
+					obj.style.visibility="hidden";
+					obj.value="보여라";
+					isVisible=false;
+				} else {
+					obj.style.visibility="visible";
+					obj.value="사라져라";
+					isVisible=true;
+				}
 			}
 		</script>
 	</head>
@@ -94,7 +101,11 @@
 		<br>
 		<!-- 
 		[하] 3. display:fixed;와 float:right|left;의 차이점을 기술하세요.  
+			display:fixed : 특정한 위치로 고정적으로 나타나는 부분처리
+					스크롤이나 화면 축소/확대시 위치 고정
+			float:right : 해당 위치로 왼쪽 오른쪽으로 붙여져서 출력..
 		 -->
+		 
 		<!-- 
 		[하] 4. visibility와 overflow의 공통 속성과 다른 속성을 기술하세요.
 			1) visibility 속성
@@ -110,9 +121,8 @@
 		 -->
 		<h3>Ex5)</h3>
 		<hr>
-		<button onclick="ch1(target)">이미지 보이기</button>
-		<button onclick="ch2(target)">이미지 안보이기</button><br>
-		<img id="target" src="media/marker.png" width="100px" height="100px">
+		<input type="button" onclick="ch()" value="사라져라!!"/><br>
+		<img src="media/marker.png" width="100px" height="100px">
 		<br>
 		<br>
 		
