@@ -30,10 +30,12 @@
 	[하] 1. 테이블에서 table로 테두리와 2중선 변경 옵션을 선언하세요.
 		table {
 			border-collapse : collapse;
+			border : 1px solid blue;
 		}
 	 -->
 	<!-- 
 	[하] 2. th,td에 대한 정렬과 높이를 지정할려고 한다. 예제를 통해 지정 처리하세요
+		th, td는 포함하는 문장열에 대한 정렬옵션이 기본 속성으로 지원되지 않음.
 		<style>
 			th, td {
 				text-align : center;
@@ -47,8 +49,11 @@
 			tbody tr:nth-child(even) {
 				background : aliceblue;
 			}
-			tbody tr:hover {
+			tbody tr:nth-child(odd) {
 				background : pink;
+			}
+			tbody tr:hover {
+				background : yellow;
 			}
 		</style>
 	 -->
@@ -76,6 +81,8 @@
 		1) 웹 브라우저에서 많이 사용하는 front end단 프로그래밍 언어를 말한다.
 		2) 네스케이스 사가 썬 마이크로시스템과 함께 자바스크립트라는 이름을 붙여 주고 본격적 발전을 하였다.
 		3) 웹 페이지에 생동감을 불어넣기 위해 만들어진 프로그래밍 언어
+		
+		유럽 컴퓨터 제조협회의 ECMAScript와 구글 크롬의 자바스크립트가 있다.
 	 -->
 	<!-- 
 	[하] 6. javascript가 head부분에 선언되었을 때와 body 밑에 선언되었을 때의 차이점은 무엇인가?
@@ -84,11 +91,19 @@
 			- 상단에 선언되어 있더라도, 함수로 호출하는 경우에는 처리가 가능하다.
 		2) body 밑에 선언 되었을때
 			- body부분에 있는 DOM을 메모리에 로딩된 후 실행된다.
+			
+		풀이 : body부분 밑에서 호출시 활용할 수 있다.
+			   head부분잉라도 window.onload=function(){}를 활용하면, 하단에 있는 것과
+			   동일한 효과를 가지고 있다.
 	 -->
 	<!-- 
 	[하] 7. 변수 선언에 있어서, java와 javascript의 차이점을 기술하세요.
 		- 데이터 타입을 정의하지 않아도 된다.
 			ex) var name ="홍길동";
-	 -->			 	 
+			java도 최신버전에는 타입지정하지 않고 var변수를 활용할 수 있지만,
+			일반적으로 데이터타입선언 변수명;으로 선언하고 사용한다.
+			javascript var변수를 선언하고 데이터를 할당하는 순간, 해당
+			데이터타입이 지정이 된다.
+	 -->
 	</body>
 </html>

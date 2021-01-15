@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+		/* 
+ 		# js에서 기본 입력 처리 함수.
+ 		1. confirm("메세지") : 리턴되는 값이 확인/취소로 boolean을 가져온다.
+		
+ 		var isAdult = confirm("성인입니까?");
+ 		console.log("isAdult:"+isAdult);
+ 		if(isAdult){
+ 			console.log("성인 인증");	
+ 		} else {
+ 			console.log("미성년");	
+ 		}
+ 		
+ 		2. prompt("메세지", "초기값") 확인/취소로
+			: 리턴되는 값이 입력된 값과 null값
+
+		*/
+ 		//var name=prompt("이름을 입력하세요!","여기에");
+ 		//console.log("입력된 이름:"+name);
+ 		/*
+ 		# js에서의 데이터 연산 처리 형식..
+ 		1. js에서 자동변환이 적용된다.
+ 		2. 단, +는 문자열의 concat해주는 처리를 우선 순위로 해서.
+ 			+만은 연결처리를 해준다.
+ 		3. +를 처리할 때는 숫자형 변환 함수 Number(), parseInt(), parseFloat()
+ 			활용한다.
+ 		*/
+ 		var num01 = '25'; // 문자열
+ 		var num02 = '5'; //문자열
+ 		console.log(`${num01} + ${num02} = ${num01+num02}`);
+ 		console.log(`${num01} + ${num02} = ${Number(num01)+Number(num02)}`);
+ 		
+ 		console.log(`${num01} - ${num02} = ${num01-num02}`);
+ 		console.log(`${num01} * ${num02} = ${num01*num02}`);
+ 		console.log(`${num01} / ${num02} = ${num01/num02}`);
+		// es6에서 부터 지원되는 데이터 선언 방식.
+		// let, const
+		// 1. const : 상수 선언..
+		// 2. let : 지역변수와 전역변수의 명확한 구분 처리.
+		const num05 = 25;
+		/* num05 = 30; */
+		console.log(`num05:${num05}`);
+		// 2. var의 한계
+		// var변수는 선언할 때부터 전역변수로 활용되는 문제 발생..
+		
+		
+		{
+			// 스코프 A
+			var variable = 273;
+		}
+		{
+			// 스코프 B
+			console.log("다른 블럭 variable :" + variable);
+			
+		}
+		// 전역 스코프
+		console.log("전역 블럭 variable : " + variable);
+		{
+			// 스코프 A
+			let variable2 = 273;
+		}
+		{
+			// 스코프 B
+			console.log("다른 블럭 variable2 :" + variable2);
+			
+		}
+		// 전역 스코프
+		console.log("전역 블럭 variable2 : " + variable2);
+		</script>
+	</head>
+	<body>
+   		<h2></h2>
+	</body>
+	<script type="text/javascript">
+	/* 
+ 
+ 
+	*/
+   	document.querySelector("h2").innerHTML="js 시작^^";
+	//
+	</script>
+</html>

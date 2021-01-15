@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<script type="text/javascript">
+	/* js 주석(멀티라인)
+	
+	*/
+	// 단일 라인/
+	// 출력형식
+	// 1. 경고창
+		/* alert("안녕하세요"); */
+	// 2. js 명령어로 화면 출력
+		document.write("<h2>js 코드로 화면 출력</h2>");
+	// 3. console.log() console 창에 출력
+		console.log("콘솔 출력");
+	// ex) js의 출력형식(3개 활용)을 이용해서 물건가격 갯수를 출력하세요.
+		var price = 3000;
+		var cnt = 3;
+		/* alert("물건가격 : "+price+"\n갯수 : "+cnt); */
+		document.write("<h2>물건가격 : "+price+"</h2><h2>갯수 : " + cnt + "</h2>");
+		console.log("물건가격 : "+price+"\n갯수 : "+cnt);
+		// 문자열 출력 "", ''를 활용하여 출력을 한다.
+		console.log('This is "string"');	// 안쪽/바깥쪽 으로 사용.
+		console.log("This is 'string'");
+		// ""/''를 같이 쓸려면 \(역슬래시)를 활용한다.
+		console.log("This is \"string\"");
+		console.log('This is \'string\'');
+		// \n : 줄바꿈, \t 탭간격 등 사용 가능..
+		console.log('동해물과 백두산이\n마르고 닳도록');
+		
+		// js의 데이터 유형 : 5가지
+		var stringVar = 'String'; // 문자열''/""둘다 문자열로 처리..
+		var numberVar = 273; // 숫자형 데이터
+		var booleanVar = true; // boolean
+		var functionVar = function () {}; // 함수형
+		var objectVar = {}; // 객체형(json형식)
+		// typeof(변수명)을 통해서 데이터 유형을 확인 가능하다.
+		console.log("typeof(stringVar) : "+typeof(stringVar));
+		console.log("typeof(numberVar) : "+typeof(numberVar));
+		console.log("typeof(booleanVar) : "+typeof(booleanVar));
+		console.log("typeof(functionVar) : "+typeof(functionVar));
+		console.log("typeof(objectVar) : "+typeof(objectVar));
+		
+		// js의 연산자
+		// 1. 대입연산자
+			var cnt = 1;
+		// 2. 증감연산자
+			console.log("번호 : " + (++cnt));
+			console.log("번호 : " + (--cnt));
+			console.log("번호 : " + (--cnt));
+			console.log("번호 : " + (++cnt));
+		// 3. boolean (ture/false)
+			if(cnt>10) {
+				console.log("cnt:"+cnt+"!!! 10이상");
+			} else {
+				console.log("cnt:"+cnt+"!!! 10이하");
+			}
+		// 4. 문자열 누적 대입연산자
+			console.log("번호:"+(cnt+=2));
+			console.log("번호:"+(cnt+=3));
+			console.log("번호:"+(cnt+=4));
+	</script>
+	<body>
+		<h2></h2>
+		<!-- <h1>주석입니다.</h1> -->
+	</body>
+	<script type="text/javascript">
+	/*
+	
+	*/
+	//	document.querySelector("h2").innerHTML="js 시작^^";
+		var show = "<h2>안녕하세요!</h2>";
+		show+="<h3>좋은 날 !!</h3>";
+		show+="<h4>반갑습니다.!!</h4>";
+		// DOM객체를 통해 문자 누적하여 출력 처리..
+		document.body.innerHTML = show;
+	//
+	</script>
+</html>
