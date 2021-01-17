@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/* 
+# document.getElementById("아이디명")
+1. 태그의 속성으로 id를 설정한 것에 대하여 호출하여 처리한다.
+# document.getElementByTagNmae("태그")
+1. 해당 태그를 기준으로 호출한다.
+2. 기본적으로 배열로 각각의 요소객체를 접근한다.
+ 
+*/
+//
+	window.onload = function(){
+		document.querySelector("h2").innerHTML="js 시작^^";
+		// 문서 객체를 가져옵니다.
+		var header1 = document.getElementById('header-1');
+		var header2 = document.getElementById('header-2');
+		// 문서 객체의 속성을 변경합니다.
+		header1.textContent = 'with getElementById()';
+		header2.textContent = 'with getElementById()';
+		var headers = document.getElementsByTagName('h3');
+		headers[0].textContent = 'with getElementByTagName()';
+		headers[1].textContent = 'with getElementByTagName()';
+		
+		// getElementsByTagName는 배열이기에 loop를 활용하여 처리할 수 있다.
+		var headers4 = document.getElementsByTagName('h4');
+		for(var i=0; i<headers4.length; i++) {
+			// 문서 객체의 속성을 변경합니다.
+			headers4[i].innerHTML = (i+1)+'번째 with getElementByTagName()';
+		}
+		
+		// ex) h5에 영문으로 무지개 색상 7개를 nextnode로 표시하고,
+		//		getElementsByTagName()으로 접근하되, 반복문으로 접근하여 배열색상을
+		//		무지개 색상으로 처리하세요
+		var h5Obj = document.getElementsByTagName('h5');
+		for(var i=0; i<h5Obj.length; i++) {
+			console.log(h5Obj.textContent);
+				var color = h5Obj[i].textContent;
+				h5Obj[i].setAttribute('style','background-color:'+color+';');
+			// h5Obj[i].style.backgroundColor=h50bj[i].textContent;
+		}
+/*
+# DOM객체의 style 접근처리.
+1. DOM객체명.style.css속성 = "css속성값";
+ */		var header = document.getElementById('header');
+ 		// 문서 객체의 스타일을 바꿔줍니다.
+ 		header.style.border = '2px solid black';
+ 		header.style.color = 'orange';
+ 		header.style.fontFamily = '궁서체';
+	};
+</script>
+</head>
+<body>
+	<h1 id="header">안녕하세요</h1>
+	<h2></h2>
+	<h1 id="header-1">Header</h1>
+	<h1 id="header-2">Header</h1>
+	<h3>Header</h3>
+	<h3>Header</h3>
+	<h4></h4>
+	<h4></h4>
+	<h4></h4>
+	<h4></h4>
+	<h5>red</h5><h5>orange</h5><h5>yellow</h5><h5>green</h5>
+	<h5>blue</h5><h5>navy</h5><h5>purple</h5>
+</body>
+</html>

@@ -3,8 +3,13 @@
 1. 이상 현상이 발생하지 않도록, 릴레이션을 관련 있는 속성들로만
 구성하기 위해 릴레이션을 분해(decomposition)하는 과정
 함수적 종속성을 판단하여 정규화를 수행함
-
+- 릴레이션 : 테이블 내에 컬럼들간의 관계
 2. 함수 종속
+- 테이블 내의 컬럼간의 속성이 서로 연관관계를 확인할 때, 사용되는 개념.
+ex) 사원테이블에서 사원번호와 사원명과의 관계를 함수적으로 종속이 되는냐를
+	확인하는 부분
+	사원번호를 알 때, 학년, 사원명, 주민번호, 전공명
+	
 "X가 Y를 함수적으로 결정한다"
 릴레이션 내의 모든 투플에서 하나의 X값에 대한 Y값이 항상 하나임
 X와Y는 하나의 릴레이션을 구성하는 속성들의 부분 집합
@@ -23,6 +28,8 @@ X->Y로 표현(X는 결정자, Y는 종속자)
 X의 전체가 아닌 일부분에는 종속되지 않음을 의미
 일반적으로 함수 종속은 완전 함수 종속을 의미함
 예) 당첨여부는 {고객아이디, 이벤트번호}에 완전 함수 종속됨
+* 테이블은 구성은 모든 키에 완전 함수 종속성이 있을 때 완성된다.
+* 
 
 5. 부분 함수 종속(PFD; partial Functional Dependency)
 릴레이션에서 속성 집합 Y가 속성 집합 X의 전체가 아닌 일부분에도 함수적으로 종속됨을 의미
@@ -125,3 +132,52 @@ FROM normalform3_1
 ORDER BY grade;
 SELECT * FROM normalform4_1;
 SELECT * FROM normalform4_2;
+
+/*
+# 보이스/코드 정규화(BCNF; Boyce/Codd Normal Form)
+1. 필요성
+하나의 릴레이션에 여러 개의 후보키가 존재하는 경우, 제 3 정규형까지 모두
+	만족해도 이상 현상이 발생할 수 있음
+2. 의미
+강한 제 3 정규형(strong 3NF)
+후보키를 여러 개 가지고 있는 릴레이션에 발생할 수 있는 이상 현상을 해결하기 위해
+제 3 정규형보다 좀 더 엄격한 제약조건을 제시
+보이스/코드 정규형에 속하는 모든 릴레이션은 제 3 정규형에 속하지만,
+제 3 정규형에 속하는 모든 릴레이션이 보이스/코드 정규형에 속하는 것은 아님 
+*/
+
+CREATE TABLE normalBCNF(
+	cus_id varchar2(20),
+	inter_less varchar2(20),
+	tech_no char(4)
+);
+SELECT * FROM normalBCNF;
+INSERT INTO normalBCNF values('apple','영어회화','P001');
+INSERT INTO normalBCNF values('banana','기초토익','P001');
+-- 삭제 이상 : banna로 신청한 기초토익과 담당강사번호 정보가 삭제가 된다.
+INSERT INTO normalBCNF values('carrot','영어회화','P001');
+INSERT INTO normalBCNF values('carrot','기초토익','P004');
+-- 데이터불일치 : 입력 오류로 불일치 발생
+INSERT INTO normalBCNF values('orange','영어회화','P003');
+INSERT INTO normalBCNF values('orange','기초토익','P004');
+-- 데이터불일치 : 입력 오류로 불일치 발생 
+INSERT INTO normalBCNF values(NULL,'중급토익','P005');
+-- 강좌와 담당 강사번호만 입력했을 때, 삽입이상이 발생한다.
+
+SELECT cus_id 고객아이디, tech_no 담당강사번호 FROM normalBCNF;
+SELECT DISTINCT tech_no 담당강사번호, inter_less 인터넷강좌
+  FROM normalBCNF
+ORDER BY tech_no;
+
+CREATE TABLE normalBCNF2
+AS SELECT cus_id, tech_no FROM normalBCNF;
+CREATE TABLE normalBCNF3
+AS SELECT tech_no, inter_less
+	 FROM normalBCNF
+ORDER BY tech_no;
+
+SELECT * FROM normalBCNF;
+SELECT * FROM normalBCNF2;
+SELECT * FROM normalBCNF3;
+	   
+

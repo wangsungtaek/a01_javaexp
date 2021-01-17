@@ -23,9 +23,19 @@
 	setXXX(저장데이터)
 	XXX : Date, Day, FullYear, Hours, Milliseconds, Minutes, Month,
 		Seconds, Time
+	ex) date01.getDate(), date01.getHours()
+		date01.getTime() : 1970.1.1기준 이후로 1/1000초를 계산하여 처리.
+		date01.getDay() : 요일(0~6) index
+		date01.getMonth() : 월(0~11)
 	ex) 일주일 후 : date.setDate( date.getDate() + 7 )
+		getDate()를 통해서 현재 날짜를 가져오고 setDate()를 통해서 저장처리
+		현재날짜1/28이면 7일이후 2/4로 날짜처리 규칙에 의해 저장처된다.
 	toOOOString()
 	OOO : Date, GMT, ISO, JSON, LocalDate, Locale, LocaleTime, Time
+		date.toISOString() : iso 형태 날짜 출력
+		date.toLocaleDateString() : 한국형 날짜 출력
+		date.toLocaleTimeString() : 한국형 시간 출력
+		date.toLocaleString() : 한국식 날짜/시간 출력.
 */
 // 변수를 선언합니다.
 var date = new Date();
@@ -119,9 +129,12 @@ var now = new Date();
 var before = new Date('December 9, 1991');
 // 날짜 간격을 구합니다.
 // getTime() : 1970.1.1 기준으로 1/1000초 단위로 할당하여 처리함.
+// 1*1000 1초
+// 1*1000*60: 1분
 var interval = now.getTime() - before.getTime();
 // 오늘과 특정기준일의 차이를 계산하고
 // (1000 * 60 * 60 * 24) 1일단위로 변경처리.
+// 36 ==> 1.5 ==> 1일로 계산
 interval = Math.floor(interval / (1000*60*60*24));
 // 출력합니다.
 console.log('Interval: ' + interval+'일');

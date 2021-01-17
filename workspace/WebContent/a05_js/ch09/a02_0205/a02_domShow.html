@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/* 
+# 출력 node가 있는 DOM
+1. 출력 처리
+	1) dom객체.innerHTML
+		textnode가 있는 객체에 html 태그를 랜더링
+	2) dom객체.textContent
+		textnode가 있는 객체에 문자열로 그대로 출력. 
+*/
+//
+	window.onload=function(){ // 화면이 다 로딩된 이후로 처리할 이벤트
+		document.querySelector("h2").innerHTML="js 시작^^";
+		// 변수를 선언합니다.
+		var output ='';
+		output += '<ul>';
+		output += '<li>JavaScrupt</li>';
+		output += '<li>jQuery</li>';
+		output += '<li>Ajax</li>';
+		output += '<ul>';
+		// innerHTML 속성에 문자열을 할당합니다.
+		document.body.innerHTML += output;
+		// innterHTML 속성에 문자열을 할당합니다.
+		//document.body.textContent += output;
+		//document.body.textContent += '<h1>Document Object Model</h1>';
+		// ex) h1으로 안녕하세요를 출력하되 show01 innerHTML
+		//		show02에는 textContent로 출력 처리하세요.
+		var show = "<h1>안녕하세요</h1>";
+		var show01 = document.getElementById("show01");
+		show01.setAttribute("style","background-color: yellow");
+		show01.innerHTML = show;
+		var show02 = document.getElementById("show02");
+		show02.setAttribute("style","background-color: orange");
+		show02.textContent = show;
+	};
+</script>
+</head>
+<body>
+	<h2></h2>
+	<div id="show01"></div>
+	<div id="show02"></div>
+</body>
+</html>
