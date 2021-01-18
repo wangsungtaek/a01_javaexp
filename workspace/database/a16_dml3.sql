@@ -12,6 +12,12 @@
 		CYCLE | NOCYCLE : 최대 /최소에 이를 때, 반복여부
 		CACHE | NOCACHE : 속도향상을 위한 캐시메모리
 				사용 여부
+5. 활용 함수
+	1) 시퀀스명.currval : 현재 시퀀스의 번호. 증가 시키지 않음
+	2) 시퀀스명.nextval : numbering(번호증가)으로 다음 시퀀스 번호 호출.
+	ex) foreign 키로 입력할 때, 다른 테이블에 데이터 입력하여야 할 경우,
+	메인게시판(시퀀스명.nextavl를 입력),
+	다중의 첨부파일 테이블(시퀀스명.currval)
 */
 SELECT MAX(EMPNO) FROM EMP21;
 
@@ -48,6 +54,8 @@ CREATE SEQUENCE student_seq
    MAXVALUE 30;
 INSERT INTO student values(student_seq.nextval,'홍길동',80,80,80);
 SELECT * FROM student;
+-- primary key 컬럼의 데이터는 squence로 그대로 사용하는 경우도 많지만
+-- 아래와 같이 복합키를 이용해서 생성하여, char()으로 저장하는 경우가 있다.
 --사번 코드 체계(입사년월4자리)(부서코드 2자리)(sequence5자리)
 CREATE SEQUENCE com_seq
    START WITH 10000

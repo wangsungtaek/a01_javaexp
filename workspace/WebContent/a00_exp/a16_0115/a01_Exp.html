@@ -9,6 +9,9 @@
 	 		alert("경고창에 출력");
 			console.log("콘솔창에 출력");
 			document.write("<h2>화면에 출력</h2>");
+			-- DOM객체 처리..
+			body 하단에 body에서 선언한 h1이 있으면.
+			document.querySelector("h1").innerHTML="출력4";
  		*/
 		/* 
  		[하] 2. js의 기본 데이터 유형에 데이터를 할당해서 확인하고, 데이터유형을 확인 하는 함수를 통해서 유형을 확인하세요.
@@ -18,7 +21,7 @@
  			var booleanVar =  true; // 불리언
  			var functionVar =  function(){}; // 함수형
  			var objectVar =  {}; // 객체형
- 			
+ 			// typeof(변수명|데이터) : 해당 데이터유형을 확인할 수 있는 내장 함수.
  			console.log(typeof(stringVar));
  			console.log(typeof(numberVar));
  			console.log(typeof(booleanVar));
@@ -29,35 +32,108 @@
  	 	[하] 3. js의 입력/출력 형식과 해당 기능에 대하여 기술하세요.
  	 		1) 입력
  	 			- confirm("메세지") : 리턴되는 값이 확인/취소로 boolean을 가져온다.
- 	 			- prompt("메세지", "초기값") 확인/취로 : 리턴되는 값이 입력된 값과 null값
+ 	 			- prompt("메세지", "초기값") 확인/취소 : 리턴되는 값이 입력된 값과 null값
  	 		2) 출력
  	 			- alert("메세지") : 경고창 출력
  	 			- console.log("메세지") : 콘솔창으로 출력
  	 			- document.write("메세지") : 브라우져 화면으로 출력
- 	 	*/
- 		/* 
- 	 	[중] 4. 기본 입력/출력 형식을 이용해서 학생의 이름, 국어, 영어, 수학 점수를 입력 받아서, 해당 내용을 h3로 화면에
-  			  출력하되, 마지막에 평균 출력 여부를 확인하여 확인시에 평균값을 출력하고 취소시 총액을 출력하세요.\
- 	 	*/
- 	 	var name = prompt("이름","입력하는 곳");
  	 			
-		</script>
-	</head>
-	<body>
-   		<h2></h2>
-	</body>
-	<script type="text/javascript">
-	/* 
- 
- 
-	*/
-	//
-	</script>
+ 	 	*/
+ 	 	/*
+ 	 	[중] 4. 기본 입력/출력 형식을 이용해서 학생의 이름, 국어, 영어, 수학 점수를 입력 받아서, 해당 내용을 
+ 	 	h3로 화면에 출력하되, 마지막에 평균 출력 여부를 확인하여 확인시에 평균값을 출력하고 취소시 총액을 출력하세요.
+		*/
+
+		 /*
+		 //[중] 5. 물건명/가격/갯수를 입력받아, 출력형식을 선택하게 하여 1:alert(), 2:console, 3:웹화면 로 하여
+		 해당 형식으로 화면에 출력하세요 하세요.
+		 */
+/* 		var name ="사과";
+		var price= 3000;
+		var cnt = 10;
+
+ 	 	alert("물건명 : "+name+"\n가격 : "+price+"\n갯수 : "+cnt);
+ 	 	console.log(`물건명 : ${name}
+	 	가격 : ${price}
+ 	 	갯수 : ${cnt}`);
+
+ 	  	document.write("<h2>물건명 : "+name+"</h2><h2>가격 : "+price+"</h2><h2>갯수 : "+cnt+"</h2>"); */
+		
+		 /*
+		 6. let/var 변수의 차이를 기본예제를 통해서 기술하세요
+		var는 선언하는 순간 전역변수로써 사용이 되는 것이고
+		let는 전역변수와 지역변수를 명확히 구분한다.
+		*/ 	 	
+	 	/*  { var variable = 273; }
+	 	 {console.log("다른 블럭variable:"+variable);}
+	 	 console.log("전역 블럭variable:"+variable);
+
+	 	 { let variable2 = 273; }
+	 	 { console.log("다른 블럭variable2:"+variable2); }
+	 	 console.log("전역 블럭variable2:"+variable2);
+		 */
+	 	// window.onload = function(){}
+	 	// 윈도우화면(BOM)이 다 로딩후 실행할 내용 정의
+	 	// head javascript에서 DOM객체를 인식할 수 있다.
+	 	 window.onload = function(){
+	 		var name = prompt("이름 입력하세요.", "홍길동");
+		 	var kor = prompt("국어점수를 입력하세요.", "0")
+		 	var eng = prompt("영어점수를 입력하세요.", "0")
+			var math = prompt("수학점수를 입력하세요.", "0")
+		 	var isAvg = confirm("평균출력시는 확인\n총계출력시는 취소")
+			
+		 	document.querySelectorAll("h2")[0].innerHTML = "이름:"+name;
+		 	document.querySelectorAll("h2")[1].innerHTML = "국어:"+kor;
+		 	document.querySelectorAll("h2")[2].innerHTML = "영어:"+eng;
+		 	document.querySelectorAll("h2")[3].innerHTML = "수학:"+math;
+		 	// 입력값은 문자열이기때문에 변환함수 처리해주어야 한다.
+			var tot = Number(kor)+Number(eng)+Number(math);
+		 	if(isAvg){
+		 		document.querySelectorAll("h2")[4].innerHTML = "평균:"+tot/3;
+		 	} else{
+		 		document.querySelectorAll("h2")[4].innerHTML = "총점:"+tot;
+			}
+	 	}
+	 	/*
+	 	6. let/var 변수의 차이를 기본예제를 통해서 기술하세요
+		var는 선언하는 순간 전역변수로써 사용이 되는 것이고
+		let는 전역변수와 지역변수를 명확히 구분한다.
+			var : 전역변수로 사용
+			let : 지역/전역변수 구분 사용
+			{ var variable = 273; }
+	 		{
+	 			console.log("다른 블럭variable:"+variable);
+	 		}
+	 		console.log("전역 블럭variable2:"+variable2);
+	 		{ let variable2 = 273; }
+	 		{ consol.log("다른블럭variable2:"+variable2) }
+	 	*/
+ 	 </script>
+ 	 </head>
+ 	 <body>
+ 	    <h2></h2>
+ 	    <h2></h2>
+ 	    <h2></h2>
+ 	    <h2></h2>
+ 	    <h2></h2>
+ 	 </body>
+ 	 <script>
+/* 			var name = prompt("이름 입력하세요.", "홍길동");
+	 		var kor = prompt("국어점수를 입력하세요.", "0")
+	 		var eng = prompt("영어점수를 입력하세요.", "0")
+	 		var math = prompt("수학점수를 입력하세요.", "0")
+	 		var isAvg = confirm("평균출력시는 확인\n총계출력시는 취소")
+		
+	 		document.querySelectorAll("h2")[0].innerHTML = "이름:"+name;
+	 		document.querySelectorAll("h2")[1].innerHTML = "국어:"+kor;
+	 		document.querySelectorAll("h2")[2].innerHTML = "영어:"+eng;
+	 		document.querySelectorAll("h2")[3].innerHTML = "수학:"+math;
+	 		// 입력값은 문자열이기때문에 변환함수 처리해주어야 한다.
+			 var tot = Number(kor)+Number(eng)+Number(math);
+	 	 if(isAvg){
+	 	 	 document.querySelectorAll("h2")[4].innerHTML = "평균:"+tot/3;
+	 	 } else{
+	 		document.querySelectorAll("h2")[4].innerHTML = "총점:"+tot;
+	 	 } */
+ 	 </script>
 </html>
-<!-- 
-
-
-
-[중] 5. 물건명/가격/갯수를 입력받아, 출력형식을 선택하게 하여 1:alert(), 2:console, 3:웹화면 로 하여
-    해당 형식으로 화면에 출력하세요 하세요.
-[하] 6. let/var 변수의 차이를 기본예제를 통해서 기술하세요 -->

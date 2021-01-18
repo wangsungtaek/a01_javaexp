@@ -1,7 +1,7 @@
 /*
 # 데이터 무결성 제약조건
 1. 학습목표
-	1) 데이터의 제약조건에 대한 개념을 이해한ㄴ다.
+	1) 데이터의 제약조건에 대한 개념을 이해한다.
 	2) 테이블의 생성시, 제약조건을 설정해야 하는 경우와
 		실제 코드로 제약조건을 생성할 수 있다.
 	3) 업무에 따라서 제약조건에 대하여 효과적으로 생성한다.
@@ -31,6 +31,16 @@ CREATE TABLE STUDENT01(
 	STUDNO NUMBER CONSTRAINT STUD_STUDNO_PK PRIMARY KEY,
 	NAME VARCHAR2(30)
 );
+CREATE TABLE STUDENT05(
+	STUDNO NUMBER PRIMARY KEY,
+	NANE VARCHAR2(20)
+)
+-- 제약조건 선언형식2
+-- 컬럼명 데이터유형 제약조건
+-- : 제약조건의 이름을 설정하지 않는 제약조건은 oracle 시스템
+-- 에 지정한 네이밍규칙에 의해 자동으로 만들어 진다.
+-- 구조변경에서도 제약조건을 할당하거나 변경이 가능하다.
+-- ex) ALTER TABLE STUDENT05 MODIFY NAME VARCHAR2(20) NOT NULL;
 
 -- 데이터 입력..
 SELECT * FROM STUDENT01;
@@ -55,6 +65,10 @@ INSERT INTO PRODUCT01 VALUES (2, '사과', 5000);
 -- 제약사항에 대한 정보를 확인할 수 있다.
 -- CONSTRAINTS_NAME 컬럼으로 제약사항의 이름을 확인
 -- 사용자 정의 제약이름과 시스템에서 자동으로 생성된 제약이름을 구분할 수 있다.
+SELECT * FROM ALL_CONSTRAINTS;
+-- SYS_C007000 와 같이 제약조건의 이름을 설정하지 않는 경우에 시스템에서 자동으로
+-- 생성을 한다.
+
 SELECT * FROM ALL_CONSTRAINTS
 WHERE TABLE_NAME = 'PRODUCT01';
 /*

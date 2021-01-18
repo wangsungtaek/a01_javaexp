@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+		/* 
+ 
+ 
+		*/
+		//
+
+		</script>
+	</head>
+	<body>
+		
+	</body>
+	<script type="text/javascript">
+		/*
+		[하] 1. if문, if else문,switch문, for문/while 기본형식
+			1) if문 기본형식
+				if(조건문) {
+					
+				} 
+			2) if esle문
+				if(boolean) {
+					해당 프로세스
+				} else {
+					해당 프로세스
+				}
+			3) switch문
+				switch() {
+					case : 조건1
+						조건1 수행;
+					break;
+					case : 조건2
+						조건2 수행;
+					break;
+					befault : 
+						위 조건 아닐때 수행;
+				}
+			4) for문
+	 			for(초기;반복조건;증감연산자)
+	 		5) while문
+	 			while(){
+	 				
+	 			}
+		*/
+//		[하] 3. 3 * 3 테이블을 생성해보세요 
+//		[중] 행과 열의 값을 받아서 테이블을 생성해보세요! 특정한 컬럼(랜덤)은 배경색을 노랑색(3단계)
+		var show3 = "<table width='30%' border><tr>";
+		var cnt = 1;
+		var colrow = prompt("단위 col/row수를 입력하세요",1);
+		var random = Math.round(Math.random()*Number(colrow*colrow))+1;
+		console.log(colrow);
+		console.log(random);
+		
+		for(var i=0; i<colrow; i++){
+			show3 += "<tr>";
+			for(var j=0; j<colrow; j++){
+				if(random == cnt){
+					show3 += "<td style='background-color:yellow'>"+cnt+++"</td>";
+					console.log(true);
+				} else {
+					show3 += "<td>"+cnt+++"</td>";	
+				}
+			}
+			show3 += "</tr>";
+		}
+		show3 += "</tr></table>"
+		document.body.innerHTML += show3;	
+	</script>
+</html>

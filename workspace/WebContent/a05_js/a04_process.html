@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+		/* 
+ 		# 조건문/반복문/배열
+ 		1. if(boolean) 조건문
+ 		2. for(초기;반복조건;증감연산자)
+ 			while(){} do{}while{};
+ 		3. 배열
+ 			1) 선언
+ 			var 배열명 = [];
+ 			배열명[index번호] = 데이터할당;
+ 			배열명.push("추가할데이터"); :
+ 			
+ 			jss에서는 동적 배열을 허용한다.
+ 			
+ 			var 배열명 = [데이터1, 데이터2, 데이터3..];
+		*/
+		//
+
+		</script>
+	</head>
+	<body>
+	<!-- 
+		<h1>Hi</h1>
+   		<h2></h2>
+   		<ul>
+   			<li></li>
+   		</ul> -->
+
+	</body>
+	<script type="text/javascript">
+		for(let cnt=1;cnt<=10;cnt++){
+			document.body.innerHTML+="<h3>번호"+cnt+"</h3>";	
+	
+		}
+		for(let i=10;i>0;i--){
+			document.body.innerHTML+="<h1>카운트다운"+i+"</h1>";
+		}
+		document.body.innerHTML+="<ul>";
+		for(let i=1;i<=5;i++){
+			document.body.innerHTML+=`<li>선택:${i}</li>`;
+		}
+		for(let i=1;i<=5;i++){
+			
+		}
+		document.body.innerHTML+="</ul>";
+		
+	// ex1) h1을 이용해서 카운트다운 10~1까지 출력하세요
+	// ex2) ul lu를 이용해서 List내용 선택1~선택5까지 출력하세요.
+	// ex3) 테이블의 td를 이용해서 1~16까지 출력하세요 if도 들어갈듯
+
+		// 1) table을 출력하는 화면을 구현
+		//	<table border><tr><td>테이블</td></tr></table>
+		/* var show = "<table border><tr><td>테이블</td></tr></table>";
+		
+		document.body.innerHTML += show;
+		// 2) 반복문이 들어 갈 부분 확인..
+		// - 반복하지 않을 부분과 반복할 부분 분리..
+		var colrow = prompt("단위 col/row수를 입력하세요", 1);
+		var show2 = "";
+		show2 = "<table width='30%' border>";
+		// - 1 ~ 16(반복할 부분)
+		//	- 옆으로 나열된 1 ~ 16 셀을 만들어보자.
+		for(var cnt=1; cnt<=16;cnt++){
+			if(cnt%4 == 1) {
+				show2 += "<tr>";
+			}
+			show2 += "<td>"+cnt+"</td>";
+			if(cnt%4 == 0) {
+				show2 += "</tr>";	
+			}
+		}
+		show2 += "</table>";
+		// 3) 조건문으로 tr이 추가될 부분과 tr이 닫아야 할 부분을 구분하여 처리.
+		document.body.innerHTML += show2; */		
+	</script>
+</html>
