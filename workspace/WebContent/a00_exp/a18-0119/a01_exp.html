@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+   		<h2>Ex1)</h2>
+   		<table id="ex1" width="20%" border>
+   			<tr><th>번호</th><th>순위</th><tr>
+   		</table>
+   		
+   		<div id="ex3">
+   		</div>
+   		
+	</body>
+	<script type="text/javascript">
+		/*
+		[하] 1. 배열에 좋아하는 가수이름을 3명 선언하고, 테이블 형식(번호, 이름)으로 출력하세요.
+		*/
+		var singers = ["다비치","볼빨간사춘기","악동뮤지션"];
+		var ex1Show = "";
+		for(var idx in singers) {
+			ex1Show += "<tr><td>"+(Number(idx)+1)+"</td><td>"+singers[idx]+"</td></tr>";
+		}
+		document.querySelector('#ex1').innerHTML += ex1Show;
+		/*
+		[하] 2. js의 for 반복문 형식 3가지를 기술하세요.
+			1) for(초기;반복조건;증감연산자)
+			2) for(인덱스변수 in 배열명)
+			3) 배열명.forEach(function(단위객체, index값, 배열){});
+		*/
+		/*
+		[하] 3. 무지개 보이기 - 배열선언후(한글무지개색상),for in 활용하여 h2(7개가) 무지개 글자로(빨/주/노/초/파/남/보)으로 출력되게 하게요.		
+		*/
+		var rainbow = ["빨","주","노","초","파","남","보"];
+		var ex3Show = "";
+		for(var idx in rainbow) {
+			ex3Show += "<h2>"+rainbow[idx]+"</h2>";
+		}
+		document.querySelector('#ex3').innerHTML=ex3Show;
+		/*
+		[중] 4. 무지개 보이기 - 배열선언후(영문무지개색상)h1을 클릭시, forEach활용하여 보이지 않던 하단의 h2(7개가) 
+		배경색상을 무지개 색상으로 글자는 영문으로 출력되게 하게요.
+		*/
+	</script>
+</html>

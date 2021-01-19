@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+
+	</body>
+	<!-- 
+	document.body.innerHTML : 호출해서 확인할 수도, 수정할 수 도 있다.
+	css에서 사용하는 선택자를 이용해서 DOM객체를 동적으로 값을 변경할 수 있다.
+	document.querySelector("선택자") : 하나일 때
+		ex) document.querySelector("h1").innerHTML = "안녕";
+	document.querySelectorAll("선택자") : 여러개일 때.
+	ex) document.querySelectorAll("input[type=text]")[0].value="himan";
+	ex) document.querySelectorAll("input[type=text]")[1].value="7777";
+	
+	 -->
+	<script type="text/javascript">
+		//	[하] 3. 3 * 3 테이블을 생성해보세요 
+		//	[중] 행과 열의 값을 받아서 테이블을 생성해보세요! 특정한 컬럼(랜덤)은 배경색을 노랑색(3단계)
+		var show ="<table width = '30%' border>";
+		
+		show += "<col width='33%'/><col width='33%'/><col width='33%'/>";
+		for(var cnt=1;cnt<=9;cnt++){
+			if(cnt%3 == 1) {
+				show += "<tr>";
+			}
+			show += "<td>"+cnt+"</td>";
+			if(cnt%3 == 0){
+				show += "</tr>";
+			}
+		}
+		show += "</table>";
+		document.body.innerHTML = show;
+		
+		var show ="<table width = '30%' border>";
+		var col=prompt("열의 값을 입력하세요!", "1");
+		var row=prompt("행의 값을 입력하세요!", "1");
+		var tot=col*row;
+		var ranCell=parseInt(Math.random()*tot+1);
+		
+		var cnt=1;
+		
+		for(var rowCnt=1;rowCnt<=row;rowCnt++){ // 행을 위한 반복처리
+			show += "<tr>";
+			for(var colCnt=1;colCnt<=col;colCnt++){ //열을 위한 반복처리
+				if(ranCell == cnt){
+					show+="<td style='background-color:yellow;'>";	
+				} else {
+					show+="<td>";	
+				}
+				show+=(cnt++)+"</td>";
+			}
+			show += "</tr>";
+		}
+		show += "</table>";
+		document.body.innerHTML = show;
+	</script>
+</html>
