@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+		/* 
+		# js에서 함수의 매개변수
+		1. js에서는 매개변수와 상관없이 호출이 된다.
+		2. 매개변수를 다양하게 입력하더라도 arguments는 배열객체를 통해서
+			입력 받을 수 있다.
+		*/
+			function call(){
+				// js는 이름만 같으면 매개변수 상관없이 호출되고,
+				// 매개변수는 arguments객체를 통해서 배열로 입력이 된다.
+				console.log("매개변수의 갯수:"+arguments.length);
+				console.log(arguments);
+				var tot = 0;
+				for(var idx in arguments){
+					tot += arguments[idx];
+				}
+				console.log("합산값:"+tot);
+			}
+			function call2(){
+				console.log("#문자열 매개변수 - "+arguments.length+"개");
+				for(var idx in arguments) {
+					console.log(arguments[idx]);
+				}
+			}
+			// ex) 함수 call3을 선언하고, 날짜별 지출금액을 매개변수로 전달하여,
+			//		클릭시 마다 총합계를 출력 하세요.
+			function call3(){
+				var tot = 0;
+				for(var idx in arguments){
+					tot += arguments[idx];
+				}
+				alert("총합계:"+tot);
+			}
+		</script>
+	</head>
+	<body>
+   		<h2 onclick="call(1)">매개변수1</h2>
+   		<h2 onclick="call(1,2)">매개변수2</h2>
+   		<h2 onclick="call(1,2,3)">매개변수3</h2>
+   		<h2 onclick="call(1,2,3,4)">매개변수4</h2>
+   		<h2 onclick="call(1,2,3,4,5)">매개변수5</h2>
+   		<h2 onclick="call2('사과')">매개변수1(문자열)</h2>
+   		<h2 onclick="call2('오렌지','수박')">매개변수2(문자열)</h2>
+   		<h2 onclick="call2('키위','바나나','망고')">매개변수3(문자열)</h2>
+   		<h2 onclick="call3(3000,2000)">1/20 지출금액(3000,2000)</h2>
+   		<h2 onclick="call3(3000,2000,4000)">1/21 지출금액(3000,2000,4000)</h2>
+   		<h2 onclick="call3(1000)">1/22 지출금액(1000)</h2>
+	</body>
+	<script type="text/javascript">
+
+	</script>
+</html>

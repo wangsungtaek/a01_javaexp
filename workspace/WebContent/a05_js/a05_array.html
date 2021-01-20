@@ -34,8 +34,8 @@
 	   		<tr><th>순위</th><th>팀명</th></tr>
 	   </table>
 	</body>
-	<!-- <script type="text/javascript">
-		/* 
+	<script type="text/javascript"> 
+		/* /* 
 	 	# 배열과 반복문, 객체와 반복문..
 	 	1. js와 배경의 기본 형식
 	 		1) 기본 배열 선언과 할당.
@@ -43,6 +43,9 @@
 	   	
 		//	선언1
 		var arry01 = [];
+		// [](배열 선언) -json형식
+		// new Array() - api배열 선언 방식
+		// js에서는 배열타입은 없고, 배열도 객체 타입에 소속된다.
 	 	//	할당 : 배열명[index번호] = 데이터
 	 	//		   배열명.push(데이터);
 	 	//	ex) jsp : java server page
@@ -66,6 +69,11 @@
 	 	for(var idx=0;idx<students.length;idx++){
 	 		show+="<h3>"+students[idx]+"</h3>";
 	 	}
+	 	// 배열은 여러가지 형태가 들어갈 수 있다.
+	 	// 배열의 마지막 형태는 객체형 배열이다.
+	 	// var array04 = [{name:"홍길동", age:25},{name:"신길동",age:28}];
+	 	// array04[0] = {name:"홍길동", age:25}
+	 	// array04[0].name, array04[0].age
 	 	/* document.body.innerHTML = show; */
 	 	/*
 	 	2. js의 배열의 특징
@@ -86,10 +94,12 @@
 	 	3. 배열과 여러 형식의 for문
 	 		1) 배열 선언 : var 배열명 = [데이터1, 데이터2]
 	 		2) 배열 호출
-	 			- for(var idx=0;idx<배열명;idx++){}
-	 			- for(var idx in 배열명){
-	 					idx : 배열의 index 값
+	 			- for(var idx=0;idx<배열명;idx++){} : index (숫자형)
+	 			- for(var idx in 배열명){ : index (문자열형) string
+	 					idx : 배열의 index
 	 					배열명[idx] : 배열의 값
+	 					for in 구문 안에 있는 idx를 연산 처리할 때는
+	 					형변환(parseInt(idx), Number(idx))를 처리하여야 한다.
 	 			}
 	 	*/
 	 	console.log("#배열의 2번째 for")
@@ -124,5 +134,42 @@
 	 		show3+="</tr>";
 	 	});
 	 	document.querySelector(".kbo").innerHTML=show3;
-	</script> -->
+	 	/*
+	 	# DOM을 활용한 화면 처리.
+	 	1. 전체화면변경 : body로 처리.
+	 		- document.body.innerHTML = "전체화면에 변경/추가할 태그 삽입";
+	 	2. 화면의 특정한 구성요소의 내용을 변경처리
+	 		1) 단일 구성요소
+	 			- document.querySelector("css의 선택자").innerHTML="출력할내용"
+	 				ex) 하나만 있는 h1의 타이틀 내용 변경.
+	 				document.querySelector("h1").innerHTML="안녕하세요";
+	 				<h1>안녕하세요</h1>처리한 효과..
+	 			- document.querySelector("css의 선택자").style.스타일속성
+	 				= "스타일의 속성값"
+	 				ex) 특정 요소객체의 css 속성 처리 id가 h01인 h1의 배경색상변경
+	 				document.querySelector("#h01").style.backgroundColor
+	 					= "orange";
+	 			- document.querySelector("css의 선택자").일반속성="고유 속성값"
+	 				ex) 요소객체의 기본 속성값 변경. 클래스 cls01의 정렬 변경
+	 				document.querySelectr(".cls01").align="center";
+	 				<table class="cls01" align="center">
+	 		2) 여러개의 구성요소 
+	 			- document.querySelectAll("h2") : 배열로 정의가 된다.
+	 				ex) var arr=['홍길동']; arr[0]
+	 					var h2 = document.querySelectorAll("h2");
+	 					h2[0].innerHTML = "좋은 날";
+	 					h2[0].style.backgroundColor="yellow";
+	 	*/
+	 	
+	 	// ex) 2020 kbo 순위를 테이블로 출력하세요.
+	 	// ECMA6에서 처리하는 for문
+	 	// for(const 단위데이터 of 배열) vs java for(단위데이터 : 배열)
+		var arry10 = [1000,2000,3000];
+	 	for(const element of arry10){
+	 		console.log(element);
+	 	}
+	 	
+	 	
+	 	
+	</script> 
 </html>

@@ -9,7 +9,7 @@
    		<table id="ex1" width="20%" border>
    			<tr><th>번호</th><th>순위</th><tr>
    		</table>
-   		
+   		<h1 align="center" onclick="display01()">무지개 보이기</h1>
    		<div id="ex3">
    		</div>
    		
@@ -43,5 +43,13 @@
 		[중] 4. 무지개 보이기 - 배열선언후(영문무지개색상)h1을 클릭시, forEach활용하여 보이지 않던 하단의 h2(7개가) 
 		배경색상을 무지개 색상으로 글자는 영문으로 출력되게 하게요.
 		*/
+		function display01(){
+			var rainbow2 = ["red", "orange", "yellow", "green", "blue", "navy", "purple"];
+			var show3="";
+			rainbow2.forEach(function(color,idx,arr){
+				show3 += "<h2 align='center' "+ "style='background:"+color+"'>'"+color+"</h2>";
+			});
+			document.querySelector("#ex3").innerHTML=show3;
+		}
 	</script>
 </html>

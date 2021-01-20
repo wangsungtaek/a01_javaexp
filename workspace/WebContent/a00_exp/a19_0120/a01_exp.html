@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+		/* 
+		[하] 1. 익명함수와 선언적 함수의 차이점을 기술하세요.
+			1) 익명함수
+				- 이름이 없는 함수이며, 변수에 넣어서 사용을 한다.
+					ex) var 변수명 = function(){실행코드}
+				
+			2) 선언적 함수
+				- 함수의 이름이 있다.
+					ex) function 함수이름 (){실행코드}
+			
+			3) 차이점
+				- 웹 브라우저는 위에서부터 한 라인씩 읽는다. 익명함수는 변수에 함수가
+					할당되지 않으면 호출 시 에러가 발생하는 반면 선언적 함수는 브라우저가
+					한줄 씩 읽기 전에 선언적 함수를 먼저 메모리에 할당을 하기 때문에
+					호출하는 코드가 먼저 나와도 에러를 발생하지 않는다.
+		*/
+		
+		/* 
+		[하] 2. h3로 구매할 3개를 물건으로 선언하고 각 h3 클릭시,
+			익명함수를 호출하여 구매할 물건을 누적시켜 alert()에 출력 처리하세요. 
+		*/
+			var basket="";
+			var shopping = function(product){
+					basket += product;
+					alert(basket);
+			}
+		/* 
+		[하] 4. 3X3테이블에 각각 물건명과 물건 가격이 표기되어 있고,
+		클릭시 마다 선언적 함수를 통해 물건명을 alert()을 통해 출력하세요.
+		*/
+			function choice(choice){
+				alert(choice);
+			}
+		/* 
+		[중] 5. 3X3테이블에 각각 물건명과 물건 가격이 표기되어 있고, 
+		클릭시 마다 선언적 함수를 통해 아래 table에 추가하여 출력하게 하세요.
+        테이블
+        no 물건명 가격 갯수 계
+
+        h3 총계 @@ 형식으로 
+		*/		
+		
+		</script>
+	</head>
+	<body>
+		<h2>ex2</h2>
+		<h3 onclick="shopping('사과,')">사과</h3>
+   		<h3 onclick="shopping('바나나,')">바나나</h3>
+   		<h3 onclick="shopping('복숭아,')">복숭아</h3>
+   		<hr>
+   		<h2>ex4</h2>
+		<table border width="60%">
+			<tr><th>no</th><th>물건명</th><th>물건가격</th></tr>
+			<tr onclick="choice('사과')"><td>1</td><td>사과</td><td>1,500</td>
+			<tr onclick="choice('바나나')"><td>2</td><td>바나나</td><td>3,000</td>
+			<tr onclick="choice('복숭아')"><td>3</td><td>복숭아</td><td>3,500</td>
+		</table>
+	</body>
+</html>
