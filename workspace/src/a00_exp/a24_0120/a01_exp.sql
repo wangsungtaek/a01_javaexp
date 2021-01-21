@@ -15,6 +15,7 @@
 			등의 권한을 상세 부여한다.
 	2.권한 부여 기본형식
 		grant 권한명 to 계정명;
+		grant 권한1명, 권한2.. on 테이블 등 객체 to 사용자(스키마단위)
 */
 /*
 --[하] 2. goodman/9999 계정을 생성하고 테이블생성/활용 권한을 부여하고
@@ -23,6 +24,7 @@
 SQL> conn system/1111;
 SQL> CREATE USER goodman identified BY 9999;
 SQL> GRANT resource, CREATE SESSION, CREATE TABLE TO goodman; -- 접근권한 부여
+-- resource : 객체권한 및 자원을 활용할 수 있는 권한 포함.
 SQL> conn goodman/9999;
 SQL> CREATE TABLE goodTable (col1 number); -- 테이블 생성
 SQL> INSERT INTO goodTable values(1); -- 데이터 입력

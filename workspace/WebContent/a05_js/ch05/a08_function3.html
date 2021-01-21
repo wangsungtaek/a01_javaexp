@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+		/* 
+ 		# 함수사용 목적
+ 		1. 정의된 기능으로 공통내용을 처리하기 위한 것이다.
+ 		2. 처리형태.
+ 			1) 필요하는 기능함수 선언
+ 				- 선언적함수, 익명함수
+ 				- 매개변수
+ 				- 내용처리
+ 			2) 함수호출
+ 				함수명(입력할 데이터1, 입력할 데이터2)
+ 				
+ 
+		*/
+		// 1. 익명 함수 선언과 호출.
+		var fun01 = function(){
+ 			// 데이터를 입력받아 alert으로 출력
+ 			var num01 = prompt("구매할 갯수를 입력?","0");
+ 			alert("구매한 물건의 갯수:"+num01);
+ 		};
+		// 이후 라인에서 익명함수 호출;
+		// fun01();
+		// ex1) 주문할 물건을 입력해서, alert과 console에 출력
+		//		되는 함수정의 하고, 바로 호출되게 하세요.
+		var fun02 = function(){
+			var input = prompt("주문할 물건은?","입력");
+			alert("주문한 물건:"+input);
+			console.log("주문한 물건:"+input);
+		}
+		// fun02();
+		
+		// 이벤트를 통한 함수 호출
+		// body에서 특정한 요소객체(태그)의 속성으로 onclick="함수명()"
+		// 으로 하면 정의된 함수가 호출될 수 있다.
+		
+		// ex2) h4에 구매물건과 갯수를 입력 받아서 alert()/console에 출력
+		//		<div id="show"></div>에도 출력.
+		var fun03 = function(product, cnt){
+			alert("구매물건 : "+product+" 갯수 : "+cnt);
+			console.log("구매물건 : "+product+" 갯수 : "+cnt);
+			var a = document.querySelector("#show").innerHTML;
+			document.querySelector("#show").innerHTML = 
+				"구매물건 : "+product+" 갯수 : "+cnt;
+		}
+		
+		</script>
+	</head>
+	<body>
+   		<h2></h2>
+   		<h3 onclick="fun02()">구매물건 클릭</h3>
+   		<h4 onclick="fun03('사과',10)">물건구매</h4>
+   		<div id="show"></div>
+	</body>
+	<script type="text/javascript">
+	/* 
+ 
+ 
+	*/
+   	document.querySelector("h2").innerHTML="js 시작^^";
+	//
+	</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+
+		/* 
+		[중] 5. 3X3테이블에 각각 물건명과 물건 가격이 표기되어 있고, 
+		클릭시 마다 선언적 함수를 통해 아래 table에 추가하여 출력하게 하세요.
+        테이블
+        no 물건명 가격 갯수 계
+
+        h3 총계 @@ 형식으로 
+		*/
+			var tot = 0;
+		 	var no = 1;
+			function buy(pname, price, cnt){
+				// 최하단에 보여줄 총계 처리..
+				tot += price*cnt;
+				var buylist = document.querySelector("#buylist");
+				buylist.innerHTML += "<tr><th>"+(no++)+"</th><td>"+
+					pname+"</td><td>"+price+"</td><td>"+cnt+
+					"</td><td>"+price*cnt+"</td></tr>";
+				document.querySelector("#totShow").innerHTML="총계:"+tot;
+			}
+		</script>
+	</head>
+	<body>
+		<h2 align="center"></h2>
+		<table align="center" wdith="400" height="300" border>
+			<tr><td onclick="buy('사과',3000,5)">사과(3000원, 5개)</td>
+   				<td onclick="buy('바나나',4000,2)">바나나(4000원, 2개)</td>
+   				<td onclick="buy('딸기',12000,3)">딸기(12000원, 3개)</td></tr>
+   			<tr><td onclick="buy('수박',15000,4)">수박(15000원, 4개)</td>
+   				<td onclick="buy('오렌지',2000,1)">오렌지(2000원, 1개)</td>
+   				<td onclick="buy('키위',5000,3)">키위(5000원, 3개)</td></tr>
+   			<tr><td onclick="buy('포도',15000,2)">포도(15000원, 2개)</td>
+   				<td onclick="buy('단감',5000,1)">단감(5000원, 1개)</td>
+   				<td onclick="buy('멜론',12000,3)">멜론(12000원, 3개)</td></tr>
+		</table>
+		<table id="buylist" align="center" width="500" border>
+			<tr><th>no</th><th>물건명</th><th>가격</th><th>갯수</th><th>계</th></tr>
+		</table>
+		<h3 align="center" id="totShow"></h3>
+	</body>
+</html>

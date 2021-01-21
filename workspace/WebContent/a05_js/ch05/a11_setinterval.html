@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+		/* 
+ 		1. 기본형식.
+ 			setInterval(function()){ 해당마다 수행할 내용. }, 1/1000);
+ 			clearInterval(변수); 메모리해제..
+ 
+		*/
+		//
+			function start01(){
+ 				var obh4 = document.querySelector("h4");
+ 				var cnt = 1;
+ 				var set01 = setInterval(function(){
+ 					obh4.innerHTML=cnt;
+ 					if(cnt==1000){ // 1000일때, 반복종료..
+ 						clearInterval(set01);
+ 					}
+ 					cnt++
+ 				},10); // 0.1초 마다 번호
+ 			}
+ 			// ex) 카운트 다운 10~0 까지 카운트다운 클릭시, 출력..0이 될때, 발사~
+			function start02(){
+ 				var obj=document.querySelector("#countDown");
+ 				cnt = 10;
+ 				var set02 = setInterval(function(){
+ 					obj.innerHTML = cnt;
+					if(cnt < 0){
+						obj.innerHTML = "발사";
+						clearInterval(set02);
+					}
+					cnt--;
+ 				},1000);
+ 			}
+ 			
+		</script>
+	</head>
+	<body>
+   		<h2></h2>
+   		<h3 onclick="start01()">시작!!</h3>
+   		<h4>0</h4>
+   		<h3 onclick="start02()">카운트 다운</h3>
+   		<div id="countDown"></div>
+	</body>
+	<script type="text/javascript">
+	/* 
+ 
+ 
+	*/
+   	document.querySelector("h2").innerHTML="js 시작^^";
+	//
+	</script>
+</html>

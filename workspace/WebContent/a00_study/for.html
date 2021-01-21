@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+		/* 
+ 
+ 
+		*/
+		//
+
+		</script>
+	</head>
+	<body>
+   		<ol id="ex1" type="i"></ol>
+   		<div class="test">
+  
+   		</div>
+	</body>
+	<script type="text/javascript">
+		var foods = ["피자","치킨"];
+		var foods2 = ["피자","치킨","쟁짜"];
+		var foods3 = ["피자","치킨","쟁짜","회"];
+		var foods4 = ["피자","치킨","쟁짜","회","방어회"];
+		// 기본 for
+		var show = "";
+		
+		for(var i=0;i<foods.length;i++){
+			show += "<li>"+foods[i]+"</li>";
+		}
+		document.querySelector("#ex1").innerHTML = show;
+		
+		var show2 = "";
+		for(var i in foods2){
+			show2 += "<li>"+foods2[i]+"</li>";
+		}
+		document.querySelector("#ex1").innerHTML = show2;
+		
+		// forEach 장점 : 배열안에 요소를 뽑아낼때 배열.[인덱스]할 필요가 없다.
+		var show3 ="";
+		foods3.forEach(function(food,i,arry){
+			show3 += "<li>"+food+"</li>";
+		});
+		document.querySelector("#ex1").innerHTML = show3;
+		
+		var show4 ="";
+		
+		show4 += "<ol>";
+		foods4.forEach(function(food,i,arry){
+			show4 += "<li>"+food+"</li>";
+		});
+		show4 += "</ol>";
+		document.querySelector("div").innerHTML = show4;
+		
+	</script>
+</html>

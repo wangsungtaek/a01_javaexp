@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+		/* 
+ 
+ 
+		*/
+		//
+			function call(num,str){
+				// call(25)를 통해 넘겨온 데이터를 num이라는 변수에 할당하고
+				// num을 다시 하단에 출력 처리한다.
+				alert("호출된다!:"+num+":"+str);
+			}
+			// var obj = document.querySelector("h3");
+			// 모든 h3를 넘기는것이 아니고 클릭한 h3를 함수를 통해 전달
+			function call2(obj){
+				alert(obj+"객체 전달됨");
+				obj.innerHTML = "성공 클릭하셨습니다. ^^";
+				obj.align = "center";
+				obj.style.backgroundColor="yellow";
+			}
+			var addPname="";
+			function prodshow(pname){
+				addPname+=pname+" "; // addPname에 누적처리
+				alert(addPname);
+			}
+			function prodshow2(obj){
+				alert(obj.innerHTML);
+			}
+		</script>
+	</head>
+	<body>
+   		<h2></h2>
+   		<h3 align="center">화면에 있는 태그 내용입니다!!</h3>
+   		<!-- onclick="함수()" : 클릭이라는 이벤트를 처리하고
+   		클릭이라는 이벤트에 연결된 정의 함수(이벤트핸들러)를 호출 -->
+   		<h3 onclick="call(25,'홍길동')">클릭해볼까요?(변수)</h3>
+   		<!-- this : 클릭한 현재 객체를 전달 -->
+   		<h3 onclick="call2(this)">클릭해볼까요?(h3객체)</h3>
+   		<h3 onclick="prodshow('사과')">사과</h3>
+   		<h3 onclick="prodshow('바나나')">바나나</h3>
+   		<h3 onclick="prodshow('딸기')">딸기</h3>
+   		
+   		<!-- 
+		[하] 4. 3X3테이블에 각각 물건명과 물건 가격이 표기되어 있고,
+		클릭시 마다 선언적 함수를 통해 물건명을 alert()을 통해 출력하세요.
+		-->
+   		<table width="500" height="200" border>
+   			<tr><td onclick="prodshow2(this)">사과(3000원)</td>
+   				<td onclick="prodshow2(this)">바나나(4000원)</td>
+   				<td onclick="prodshow2(this)">딸기(12000원)</td></tr>
+   			<tr><td onclick="prodshow2(this)">수박(15000원)</td>
+   				<td onclick="prodshow2(this)">오렌지(2000원)</td>
+   				<td onclick="prodshow2(this)">키위(5000원)</td></tr>
+   			<tr><td onclick="prodshow2(this)">포도(15000원)</td>
+   				<td onclick="prodshow2(this)">단감(5000원)</td>
+   				<td onclick="prodshow2(this)">멜론(12000원)</td></tr>
+   		</table>
+	</body>
+	<script type="text/javascript">
+		/*
+		# css나 태그로 구성된 내용을 js는 각 태그들을 DOM(document object model)을
+			통해서 객체화하여 이벤트 등을 통하여 동적으로 변경할 수 있게 해준다.
+		
+		*/
+		// h2 태그를 선택해서 h2Obj라는 변수에 할당. 객체 변수 선언.
+		var h2Obj = document.querySelector("h2");
+		// 객체는 속성
+		// .innerHTML : 출력내용이 있는 부분을 태그로 랜더링해준다.
+		h2Obj.innerHTML = "js시작";
+		// .align="속성값" : 기본 속성, 정렬속성을 할당한다.
+		h2Obj.align="center";
+		// .style.css속성="css속성값"
+		// <h2 style="background-color:pink;">
+		h2Obj.style.backgroundColor="pink";	
+	</script>
+</html>

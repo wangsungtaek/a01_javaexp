@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+		/* 
+ 		# 여러가지 편한 내장 함수..
+ 		1. 시간관련
+ 			setTimeout(function(){ 2번째 매개값의 시간 이후에 처리할 내용 }, 1/1000초 시간)
+ 
+		2. 메모리 해제..
+			var set01 = setTimeout();
+			clearTimeout(set01);
+		*/
+		//
+			function fun3_sec(){
+				setTimeout(function(){
+					alert("time out 3초 후입니다!!^^");
+					document.querySelector("h2").innerHTML
+						= "time out";
+				},3000);
+			}
+			
+			function fun10_sec() {
+				var testObj = document.querySelector("#test");
+				var show="";
+				for(var cnt=1;cnt<=10;cnt++){
+					var ran1 = parseInt(Math.random()*8+2);
+					var ran2 = parseInt(Math.random()*9+1);
+					show+=cnt+") "+ran1+" X "+ran2+" = <input size='10'/><br>";
+				}
+				testObj.innerHTML = show;
+				setTimeout(function(){
+					alert("시험종료!");
+					testObj.innerHTML="";
+					document.querySelector("h3").innerHTML="시험 종료(다시 시작)";
+					//지정된 변수의 메모리 해제
+					clearTimeout(fun10_sec);
+				},5000);
+				
+			}
+			// ex) h3 시험시작(10초후 종료) ==> 클릭시, 10초후에 alert 시험 종료
+			//		처리되게 하고, h3에도 시험종료됨 출력되게 하세요.
+		</script>
+	</head>
+	<body>
+   		<h2 onclick="fun3_sec()"></h2>
+   		<h3 onclick="fun10_sec()">시험시작(10초후 종료)</h3>
+   		<div id="test"></div>
+   		
+	</body>
+	<script type="text/javascript">
+	/* 
+ 
+ 
+	*/
+   	document.querySelector("h2").innerHTML
+   		="3초 후^^";
+	//
+	</script>
+</html>
