@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			table{ border: 1px solid black; width: 300; height: 300;}
+			td{text-align:center;font-size:20px;height:33%;}
+		</style>
+		<script type="text/javascript">
+		/* 
+ 
+ 
+		*/
+		//
+
+		</script>
+	</head>
+	<body>
+   		<h2></h2>
+   		<table>
+   			<col width="33%"><col width="33%"><col width="33%">
+   			<tr><td></td><td></td><td></td></tr>
+   			<tr><td></td><td></td><td></td></tr>
+   			<tr><td></td><td></td><td></td></tr>
+   		</table>
+   		<h3>변신은 무죄</h3>
+   		<h3>변신은 무죄</h3>
+   		<h3>변신은 무죄</h3>
+   		<h3>변신은 무죄</h3>
+   		<h3>변신은 무죄</h3>
+   		<h3>변신은 무죄</h3>
+   		<h3>변신은 무죄</h3>
+	</body>
+	<script type="text/javascript">
+   	document.querySelector("h2").innerHTML="테이블 색상변경";
+	// td가 여러개 있을 때, document.querySelectorAll
+   	var tds = document.querySelectorAll("td");
+	tds[0].innerHTML="안녕1";
+	tds[1].style.backgroundColor="yellow";
+	tds[5].innerHTML="안녕2";
+	// ex) for문을 이용해서 1~9까지 번호를 입력 처리.
+	for(var idx=0;idx<tds.length;idx++){
+		tds[idx].innerHTML=(idx+1);
+	}
+
+/* 	var idx=0;
+	var set = setInterval(function(){
+		tds[idx++].style.backgroundColor="orange";
+		if(idx==10){
+			clearInterval(set);
+		}
+	},1000);
+	var set1 = setInterval(function(){
+		for(var idx=0; idx<tds.length;idx++){
+			tds[idx].style.backgrounColor="white";
+			tds[idx].style.color="black";
+		}
+		var ridx = parseInt(Math.random()*tds.length);
+		tds[ridx].style.backgoundColor="blue";
+		tds[ridx].style.color="yellow";
+	},1000);
+	
+	for(var idx=0;idx<tds.length;idx++){
+		tds[idx].innerHTML=(idx+1);
+	} */
+	/* var idx=0;
+	var set=setInterval(function(){
+		tds[idx++].style.backgroundColor="orange";
+		if(idx==10){
+			clearInterval(set);
+		}
+	},1000);
+	
+	var set1 = setInterval(function(){
+		for(var idx=0;idx<tds.length;idx++){
+			tds[idx].style.backgroundColor="white";
+			tds[idx].style.color="black";
+		}
+		var ridx = parseInt(Math.random()*tds.length);
+		tds[ridx].style.backgroundColor="blue";
+		tds[ridx].style.color="yellow";
+	},100); */
+	/*
+	ex) h3 7개를 만들고, 1초마다 1번째 h3의 배경색상이 변경되어
+		마지막까지 배경색상이 하나씩 변경되게 하세요.
+	*/
+	var h3s = document.querySelectorAll("h3");
+	var index=0;
+	var set2 = setInterval(function(){
+		h3s[index++].style.backgroundColor="yellow";
+		if(index==h3s.length){
+			clearInterval(set2);
+		}
+	}, 1000);
+	</script>
+</html>

@@ -15,30 +15,77 @@
 --    higirl    8888 	  신미나  	사과       	 2     		 3000     25
 
 -- 테이블 생성
-CREATE TABLE marketuser (
-	ID VARCHAR2(20),
-	PW VARCHAR2(20),
-	NAME VARCHAR2(20),
-	PRODUCT VARCHAR2(20),
-	CNT NUMBER,
-	PRICE NUMBER,
-	STOCK NUMBER
+CREATE TABLE member_buy (
+	id VARCHAR2(50),
+	pass VARCHAR2(30),
+	name VARCHAR2(50),
+	pname VARCHAR2(50),
+	pcnt NUMBER,
+	price  NUMBER,
+	stock NUMBER
 );
 
 -- 데이터 삽입
-INSERT INTO marketuser VALUES('himan','7777','홍길동','사과',3,3000,27);
-INSERT INTO marketuser VALUES('higirl','8888','신미나','사과',2,3000,25);
+INSERT INTO member_buy VALUES('himan','7777','홍길동','사과',3,3000,27);
+INSERT INTO member_buy VALUES('himan','7777','홍길동','바나나',4,4000,50);
+INSERT INTO member_buy VALUES('higirl','8888','신미나','사과',2,3000,25);
+INSERT INTO member_buy VALUES('higirl','8888','신미나','오렌지',3,2000,30);
 
--- 정규화 테이블 생성
-CREATE TABLE USER_INFO AS
-	(SELECT ID, PW, NAME, PRODUCT
-  		FROM marketuser);
-CREATE TABLE PRODUCT AS
-	(SELECT PRODUCT, CNT, PRICE, STOCK
-	   FROM marketuser);
+-- # 이상현상을 방지를 위해 3개의 테이블 분리
+-- shop_member : id, pass, name
+-- shop_product : pid, pname, price, stock
+-- shop_buy : id, pid, pcnt
 
--- 확인
-SELECT * FROM marketuser;
-SELECT * FROM USER_INFO;
-SELECT * FROM PRODUCT;
+CREATE TABLE shop_member
+AS SELECT DISTINCT id, pass, name FROM member_buy; 
+SELECT * FROM shop_member;
+SELECT * FROM member_buy;
+SELECT pname, min(stock)
+FROM member_buy
+GROUP BY pname;
+-- 물건테이블 pid(key 컬럼이 필요하다)
+-- 재고량이 최종 내용이기에 group by로 설정해서
+-- 테이블 적용시 sql을 사용하여야 한다.
+SELECT 1111 pid, pname, price, stock
+FROM member_buy
+WHERE (pname, stock)
+   IN (SELECT pname, min(stock)
+ 		 FROM member_buy
+	 GROUP BY pname);
+-- 최종 복사테이블 생성 
+CREATE TABLE shop_product
+AS SELECT 1111 pid, pname, price, stock
+FROM member_buy
+WHERE (pname, stock)
+   IN (SELECT pname, min(stock)
+ 		 FROM member_buy
+	 GROUP BY pname);
+-- pid 값 업데이트
+UPDATE shop_product SET PID = 1001 WHERE pname = '바나나';
+UPDATE shop_product SET PID = 1002 WHERE pname = '사과';
+UPDATE shop_product SET PID = 1003 WHERE pname = '오렌지';
 
+CREATE TABLE shop_buy(
+	id VARCHAR2(50),
+	pid NUMBER,
+	pcnt NUMBER
+);
+-- 1001 바나나
+-- 1002 사과
+-- 1003 오렌지
+-- show_buy : id, pid, pcnt
+SELECT id, pname, pcnt FROM member_buy;
+INSERT INTO shop_buy VALUES('higirl',1002,2);
+INSERT INTO shop_buy VALUES('higirl',1003,3);
+INSERT INTO shop_buy VALUES('himan',1002,3);
+INSERT INTO shop_buy VALUES('himan',1001,4);
+  
+SELECT a.name, b.pname, c.pcnt, b.stock
+  FROM shop_member a, shop_product b, shop_buy c
+ WHERE a.id = c.id
+   AND b.pid = c.pid;
+
+SELECT * FROM member_buy;
+SELECT * FROM shop_member;
+SELECT * FROM shop_product;
+SELECT * FROM shop_buy;

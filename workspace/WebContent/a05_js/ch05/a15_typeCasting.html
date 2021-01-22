@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+		/* 
+ 		# 형변환
+ 		1. parseInt(), parseFloat()	문자열을 숫자로 변환해주되,
+ 			뒤에 문자열을 상관없이 전환처리해준다.
+ 			
+ 		2. Number() : 문자열을 정수/실수다 처리해준다.
+ 			문자열이 포함되면 에러발생.
+ 		
+ 		3. NaN : Nor a Number - 숫자형이 필요할 때, 숫자가 입력되지 않으면 나오는
+ 			js에러..
+		*/
+		//
+		var won = '1000원';
+		var dollar = '1.5$';
+		alert(Number(won)+':'+Number(dollar));
+		var won = '1000원';
+		var dollar = '1.5$';
+		alert(parseInt(won)+' + '+parseInt(dollar)+' = '+(parseInt(won)+parseInt(dollar)));
+		alert(parseFloat(won)+' + '+parseFloat(dollar)+' = '+(parseFloat(won)+parseFloat(dollar)));	
+		</script>
+	</head>
+	<body>
+   		<h2></h2>
+	</body>
+	<script type="text/javascript">
+	/* 
+ 
+ 
+	*/
+   	document.querySelector("h2").innerHTML="js 시작^^";
+	//
+	</script>
+</html>

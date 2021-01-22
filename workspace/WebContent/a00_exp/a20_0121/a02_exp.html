@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+		/* 
+	 	[하] 1. 함수의 기본형식과 호출방법을 기술하세요.
+	 		1) 익명함수
+		 		var 함수명 = function(매개1, 매개2){};
+	 		2) 선언적 함수
+		 		function 함수명(매개1, 매개2){
+		 			
+		 		}
+	 		3) 호출 : 함수명(데이터1, 데이터2);
+	 			- 익명함수는 하단에 선언 후 호출,
+	 			- 선언적함수는 앞에도 가능
+		[하] 2. 1~9숫자 3X3테이블에 해당 셀을 클릭시, 하단 h4 에 클릭시마다,
+		       합산한 결과가 출력되게 함수를 정의하고 처리하세요.
+		       예를 들어 1, 3 클릭시 4 출력
+		       
+		[하] 3. setTimeout, clearTimeout의 기본 생성 코드, 자원해제 코드를 기술하세요.
+				var 변수명 = setTimeout(function(){
+					시간이후에 처리한 내용.
+				},1/1000초)
+				clearTimeout(변수명); // 해당 처리 중단 - 메모리 해제.
+
+		*/
+		//
+			var tot=0;
+	 		function calTot(num){
+	 			tot+=Number(num);
+	 			console.log(tot);
+	 			var totObj = document.querySelector('#tot');
+	 			totObj.innerHTML="총계:"+tot;
+	 		}
+/* 			[중] 4. 시작버튼 클릭시, h2 화면에 구구단 임의의 문제가 출력되고, 10문제 출력시, 끝나게
+	        하세요. */
+	        var no = 1;
+	        function start01(){
+				var h2Obj = document.querySelector("h2");
+				var set01 = setInterval(function(){
+					var grade = parseInt(Math.random()*8+2);
+					var cnt = parseInt(Math.random()*9+1);
+					h2Obj.innerHTML = no+") "+ grade + 'X' + cnt;
+					if(no>10){
+						clearInterval(set01);
+						alert("종료!");
+						h2Obj.innerHTML = "종료/다시하시겠습니까?";
+						no=0;
+					}
+					no++
+				}, 1000);
+			}
+	 	
+		</script>
+	</head>
+	<body>
+		<input type="button" value="시작" onclick="start01()"/>
+   		<h2></h2>
+   		<table width="300" height="300" border>
+   			<!-- calTot(this.innerHTML) : 매개변수로
+   				this.innerHTML (현재 클릭한 td)의 레이블 내용을 전달
+   				즉, 각 숫자를 전달 처리.
+   			 -->
+   			<tr><td onclick="calTot(this.innerHTML)">1</td>
+   				<td onclick="calTot(this.innerHTML)">2</td>
+   				<td onclick="calTot(this.innerHTML)">3</td></tr>
+   			<tr><td onclick="calTot(this.innerHTML)">4</td>
+   				<td onclick="calTot(this.innerHTML)">5</td>
+   				<td onclick="calTot(this.innerHTML)">6</td></tr>
+   			<tr><td onclick="calTot(this.innerHTML)">7</td>
+   				<td onclick="calTot(this.innerHTML)">8</td>
+   				<td onclick="calTot(this.innerHTML)">9</td></tr>
+   		</table>
+   		
+   		<h4 id="tot"></h4>
+   		<table id="tab" width="300" height="300" border></table>
+   		</table>
+	</body>
+	<script type="text/javascript">
+		var tabObj = document.querySelector("#tab");
+		var addHtml = "";
+		for(var cnt=1;cnt<=9;cnt++){
+			if(cnt%3==1) addHtml += "<tr>";
+			addHtml+="<td onclick='calTot(this.innerHTML)'>"+cnt+"</td>";
+			if(cnt%3==0) addHtml += "</tr>";
+		}
+		tabObj.innerHTML=addHtml;
+	/* 
+ 
+ 
+	*/
+   	document.querySelector("h2").innerHTML="js 시작^^";
+	//
+	</script>
+</html>
