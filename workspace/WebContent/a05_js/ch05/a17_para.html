@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+function test(...numbers) {
+	numbers.forEach(function(num,idx){
+		console.log(idx + ":" + num);
+	});
+}
+/* test(1, 2, 3);
+test("사과", "바나나");
+test("사과", 3000, 2); */
+// 가변형과 고정의 혼합
+function test2(a, b, ...numbers){
+	alert(numbers);
+}
+test2(1, 2, 3, 4, 5, 6);
+// # 매개변수의 배열 처리.
+// 1. 넘길데이터를 배열로 선언.
+// 2. 선언된 배열을 ...을 이용하여 매개변수로 전달
+// 3. ...으로 전달한 데이터를 매개변수로 받아서 처리한다.
+function test3(a, b, c, d) {
+	console.log(`${a}:${b}:${c}:${d}`);
+}
+var array = [1, 2, 3, 4];
+test3(...array);
+/*
+혼합형 배열형 매개변수 전달..
+ */
+	// 함수를 선언합니다.
+	function test4(a, b, c, d){
+		console.log(`${a}:${b}:${c}:${d}`);
+	}
+	// 배열을 선언합니다.
+	var array = [1, 2];
+	// 열에 다른 매개변수를 넣고 뒤를 배열로 채우기
+	test4(273, 52, ...array);
+	// 배열을 병합해서 매개변수로 전달하기
+	test4(...array, ...array);
+	/*
+	# default 매개변수 값 설정.
+	1. 매개변수값으로 데이터가 설정되면 그 데이터할당하고,
+	매개변수값으로 전달하지 않으면 default값이 전달 된다.
+	*/
+	// 함수를 선언합니다.
+	function test5(a, b = 52, c = 273){
+		// 출력합니다.
+		console.log(a + ':' + b + ':' + c);
+	}
+	// 함수를 호출합니다.
+	test5(1, 2);
+	test5(1);
+	// ex) id, pass가 입력되는 login함수를 정의 하되, 입력되지 않을 때,
+	//		id만 입력될 때, id, pass를 다 입력되었을 때를 처리하세요.
+	//		default : id-아이디입력없음 pass-패스워드입력없음
+	function login(id = "아이디입력없음", pass = "패스워드입력없음"){
+		console.log("#로그인 정보#");
+		console.log("id : "+ id);
+		console.log("pass : "+ pass);
+	}
+	login();
+	login("gun5032");
+	login("gun5032", "see01111");
+	
+	/*
+	# 숫자형 데이터에 대한 error와 함수 validation 처리
+	1. NaN(not a number) : 숫자형이 필요할 때, 숫자가 아닌 데이터가 입력된 경우
+		나타나는 에러..
+	2. isNaN(변수/데이터) : 숫자형인지 여부를 boolean값으로 check 하는 함수..
+		Is not a number?로 해석하며 숫자형이 아닐 때, true
+	*/
+	var str1 = '25';
+	if(isNaN('25')){
+		console.log(str1+"은 숫자형이 아님!");
+	} else {
+		console.log(str1+"은 숫자형 임!");
+	}
+	if(isNaN(NaN)){ // NaN변수 자체가 없기에 바로 true로 처리된다.
+		console.log('NaN == NaN');
+	} else {
+		console.log('NaN != NaN');
+	}
+	// ex) prompt()로 두개의 숫자를 입력받아서 합산을 처리하되,
+	//		숫자형이 아닐 때는 숫자형 데이터를 입력하세요 메시지 출력,
+	//		그외에는 합산 결과를 출력처리하세요.
+	
+	var num01 = prompt("첫번째 숫자 입력:", "숫자입력");
+	var num02 = prompt("첫번째 숫자 입력:", "숫자입력");
+	if(!isNaN(num01) && !isNaN(num02)){
+		// 덧셈 연산의 경우에는 형변화 함수를 반드시 활용하여야 한다.
+		var sum = Number(num01) + Number(num02);
+		console.log(num01 + "+" + num02 + " = " + sum);
+	} else {
+		console.log("숫자형을 입력하셔야 합니다!!");
+	}
+	
+</script>
+</head>
+<body>
+	<h2></h2>
+	<h3></h3>
+	<h3></h3>
+	<h3></h3>
+</body>
+<script type="text/javascript">
+/* 
+# 가변형 매개변수.
+1. 기본형식
+	function 함수명(...매개변수){
+	
+	}
+2. ...매개변수 : 배열형으로 가변적으로 매개변수를
+	배열로 받아서 처리할 수 있다.
+*/
+	document.querySelector("h2").innerHTML="가변 매개변수 활용";
+	
+	// ex) 가변함수 정의 : 물건명을 가변적으로 받아서, 물건명과 갯수를 함수당 h3에 출력하세요.
+	// 		prod("사과", "딸기", "바나나") ==> h3 사과/바나나/딸기 총 3개
+	//		prod("딸기", "오렌지") ==> h3 딸기/오렌지 총2개
+	//		선언한 h3 3개에 가변함수 호출 3개에 대하여 출력처리하세요.
+	var h3Arry = document.querySelectorAll("h3");
+	var idx=0;
+	function prod(...pname){
+		var show="";
+		pname.forEach(function(ele,idx){
+			show += ele+"/"
+		});
+		h3Arry[idx++].innerHTML = show;
+	}
+	prod("사과", "딸기", "바나나");
+	prod("딸기", "오렌지");
+	prod("망고", "키위", "수박", "오렌지");
+</script>
+</html>
