@@ -4,16 +4,35 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-
-function test(...numbers) {
+/*
+# 가변형 매개변수처리.
+1. js는 매개변수를 가변적으로 처리할 수 있는 keyword(객체)를
+	제공하고 있다. 여러가지 형식으로 초기에 선언한 함수의 매개변수를
+	가변적으로 받아서 처리할 수 있다.
+	1) arguments : 매개변수의 갯수만큼 배열의 크기로 매개변수를
+	입력받아서 처리한다.
+		선언 : call(){ arguments }
+		호출1 : call(1,2); arguments = [1,2]
+		호출2 : call(1,2,5); arguments = [1,2,5]
+		호출3 : call('사과','바나나'); arguments = ['사과', '바나나']
+	2) ...배열명 (ecam6)
+		선언 : call2(...arry){}
+		호출1 : call2(1); arry = [1]
+		호출2 : call2(3,5); arry = [3,5]
+		호출3 : call2('사과','오렌지'); arry = ['사과','오렌지']
+		
+		
+*/
+/* function test(...numbers) {
 	numbers.forEach(function(num,idx){
 		console.log(idx + ":" + num);
 	});
 }
-/* test(1, 2, 3);
+test(1, 2, 3);
 test("사과", "바나나");
-test("사과", 3000, 2); */
-// 가변형과 고정의 혼합
+test("사과", 3000, 2); // 하나의 배열에 js 여러유형의 데이터 type을 할당 가능*/
+// # 가변형과 고정의 혼합
+//	 매개변수 2개는 고정, 나머지는 가변적으로 데이터할당.
 function test2(a, b, ...numbers){
 	alert(numbers);
 }
@@ -23,12 +42,13 @@ test2(1, 2, 3, 4, 5, 6);
 // 2. 선언된 배열을 ...을 이용하여 매개변수로 전달
 // 3. ...으로 전달한 데이터를 매개변수로 받아서 처리한다.
 function test3(a, b, c, d) {
-	console.log(`${a}:${b}:${c}:${d}`);
+	console.log(`${a}:${b}:${c}:${d}`); 
 }
 var array = [1, 2, 3, 4];
 test3(...array);
 /*
 혼합형 배열형 매개변수 전달..
+1. 배열은 ...배열명으로 매개변수로 전달이 가능하다.
  */
 	// 함수를 선언합니다.
 	function test4(a, b, c, d){
@@ -43,7 +63,10 @@ test3(...array);
 	/*
 	# default 매개변수 값 설정.
 	1. 매개변수값으로 데이터가 설정되면 그 데이터할당하고,
-	매개변수값으로 전달하지 않으면 default값이 전달 된다.
+	매개변수값으로 전달하지 않으므로 default값이 전달 된다.
+		매개변수로 default를 선언해 놓으면(b = 25),
+		해당 순서 위치에 전달데이터가 있으면, 전달데이터로 할당이되고,
+		전달데이터가 없으면 default데이터가 할당되는 것을 말한다. 
 	*/
 	// 함수를 선언합니다.
 	function test5(a, b = 52, c = 273){
@@ -51,8 +74,10 @@ test3(...array);
 		console.log(a + ':' + b + ':' + c);
 	}
 	// 함수를 호출합니다.
-	test5(1, 2);
+	test5(1, 2); // 세번째값이 default데이터로 273일 할당된다.
+	// 그 외에 데이터는 전달된 데로 그대로 할당이 된다.
 	test5(1);
+	
 	// ex) id, pass가 입력되는 login함수를 정의 하되, 입력되지 않을 때,
 	//		id만 입력될 때, id, pass를 다 입력되었을 때를 처리하세요.
 	//		default : id-아이디입력없음 pass-패스워드입력없음
@@ -69,6 +94,7 @@ test3(...array);
 	# 숫자형 데이터에 대한 error와 함수 validation 처리
 	1. NaN(not a number) : 숫자형이 필요할 때, 숫자가 아닌 데이터가 입력된 경우
 		나타나는 에러..
+		// Number('이십오') ==> NaN
 	2. isNaN(변수/데이터) : 숫자형인지 여부를 boolean값으로 check 하는 함수..
 		Is not a number?로 해석하며 숫자형이 아닐 때, true
 	*/
@@ -89,8 +115,13 @@ test3(...array);
 	
 	var num01 = prompt("첫번째 숫자 입력:", "숫자입력");
 	var num02 = prompt("첫번째 숫자 입력:", "숫자입력");
+	// !isNaN(데이터) : 해당데이터가 숫자형일 때, true로 처리 된다.
 	if(!isNaN(num01) && !isNaN(num02)){
 		// 덧셈 연산의 경우에는 형변화 함수를 반드시 활용하여야 한다.
+		// '2' * '2' ==> 4
+		// '2' + '2' ==> 22
+		// 사칙연산자 가운데 +연산자만 형변환을 해서 연산처리 하여야 한다.
+		// 하나라도 숫자형이 아니면 concat(문자열 연결)처리 된다.
 		var sum = Number(num01) + Number(num02);
 		console.log(num01 + "+" + num02 + " = " + sum);
 	} else {

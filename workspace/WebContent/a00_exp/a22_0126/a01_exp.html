@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	
+	/*
+	[하] 1. 가변인가 물건명,갯수 2개단위  총물건 구매 내역을 출력하세요.
+        buy1("사과",3, "바나나",5,"오렌지,3); 
+            사과  3
+            바나나 5
+            오렌지 3
+            총 11 구매
+	*/
+	buy1(["사과",3],["바나나",5],["오렌지",3]);
+	
+	var sum1 = 0;
+	function buy1(...pro) {
+		pro.forEach(function(item, idx){
+			console.log(item[0], item[1]);
+			sum1 += item[1];
+		});
+		console.log(sum1);
+	}
+	/*
+[중] 1. 가변인자를 활용하여  물건명과 가격, 갯수 3개 단위로 입력하게 하여, 총물건 구매 내역을 출력하세요.
+        buy2("수박",3000,2,"컴퓨터",1500000,1)
+            수박 3000 2  6000
+            컴퓨터 1500000 1 1500000
+            총 1506000
+	*/
+	buy2(["수박",3000,2],["컴퓨터",150000,1]);
+	
+	var sum2 = 0;
+	var mul = 0;
+	function buy2(...pro) {
+		pro.forEach(function(item, idx){
+			console.log(item[0], item[1], item[2], (item[1]*item[2]));
+			mul = item[1]*item[2];
+			console.log(typeof(mul));
+			console.log(mul);
+			sum2 += mul;
+			console.log(sum2);
+		});
+		console.log(sum2);
+	}
+	/*
+	[하] 2. addPlayer()라는 선수등록 함수를 정의하되, default로 선수명 :입력되지 않음, 소속사:소속상 없음,
+    성적 : 0으로 처리되게 하세요.
+		*/
+	function addPlayer(선수명="입력되지 않음", 소속사="소속사 없음", 성적=0) {
+    	console.log("선수명 = "+ 선수명);
+    	console.log("소속사 = "+ 소속사);
+    	console.log("성적 = "+ 성적);
+    }
+	addPlayer();
+	
+
+
+
+</script>
+</head>
+<body>
+	<h2></h2>
+	<table>
+	   <tr><th>no</th><th>물건명</th><th>갯수</th></tr>
+	   <tr><td ></td><td></td><td></td></tr>
+	   <tr><td></td><td></td><td></td></tr>
+	   <tr><td></td><td></td><td></td></tr></table>
+</body>
+<script type="text/javascript">
+/* 
+
+ 
+*/
+	document.querySelector("h2").innerHTML="js 시작^^";
+	
+	/*
+	[중] 3. while()과 prompt()를 이용하여, 물건명과 갯수를 2개단위로 입력하여, 총 3개의 데이터를 아래와 같은 
+	테이블에 출력하되,  두번째 데이터는 반드시 숫자형일 때까지 입력되게 처리하세요.
+	    no   물건명  갯수
+	    1    사과    3
+	    2    바나나   5
+	    3    오렌지   3
+		*/
+	var tdObj = document.querySelectorAll("td");	
+	console.log(tdObj);
+	var no = 0;
+	var idx = 0;
+	while(no < 3){
+		pname = prompt("물건명을 입력하세요.","물건명");
+		tdObj[idx++].innerHTML = (no+1);
+		tdObj[idx++].innerHTML = pname;
+		/* var exit = false; */
+		
+		while(true){
+			cnt = prompt("갯수를 입력하세요.","갯수");	
+			if(isNaN(cnt)){
+				alert("숫자를입력하세요.");
+			} else {
+				tdObj[idx++].innerHTML = cnt;	
+				break;
+			}	
+		}
+		no++;
+	}
+	/*
+	[하] 4. json형식으로 음악명, 가수, 발매연도로 초기 선언하고, 추가 속성으로 판매량으로 지정하여, 처리하고
+        for in 구문의 통해서 출력하세요.
+		*/
+	var music = {음악명:"어른",가수:"김다미",발매연도:2018};
+	music.판매량="25만장";
+	for(var mus in music){
+		console.log(music[mus]);
+	}
+//
+</script>
+</html>

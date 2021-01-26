@@ -6,7 +6,6 @@
 <script type="text/javascript">
 /* 
  
- 
 */
 //
 
@@ -17,6 +16,37 @@
 </body>
 <script type="text/javascript">
 /* 
+# js의 객체를 사용하기 위한 3가지 형식
+1. json(js object notation)선언과 동시에 할당하여 사용하는 것
+	cvs(콤마, 구분자) ==> xml(태그,속성,속성값) ==> json
+	{속성1:속성1값,속성2:속성2값,속성3:function(){} 속성(필드형), 속성(메서드)}
+	속성할당/삭제가 자유롭다.
+2. 생성자형 객체(함수형 생성자 객체)
+	// 1. 선언
+	function Person(매개변수1, 매개변수){ // 함수와 차이는 일단 대문자로 선언한다.
+		this.속성 = 속성값; // 객체는 속성은 반드시 this키워드를 이용해서 할당하여야 한다.
+		this.속성 = 매개변수1;
+		this.속성 = function(){} // 속성가운데 함수를 할당하여 메서드로 사용할 수 있다.
+	}
+	// 2. 호출
+	var p01 = new Person('홍길동',25);
+	p01.속성; // 선언된 필드 사용
+	p01.속성(); // 선언된 메서드 사용
+
+3. class 객체(클래스로 선언하여 호출 사용)ecma6
+	// 1. 선언
+	class Person {
+		constructor(매개변수, 매개변수){
+			this.속성 = 매개변수;
+		}
+		메서드명(){
+			this.속성
+		}
+	}
+	// 2. 호출
+	var p01 = Person("홍길동",28);
+
+
 # 객체의 배열의 구성요소와 타입..
 
  
@@ -27,9 +57,13 @@
 	console.log("객체의 type : " + typeof({})+
 			", 배열의 type:"+ typeof([]));
 // 2. 객체의 속성 접근 방법
-	var array = ["오렌지", "수박", "바나나"];
+	var array = ["오렌지", "수박", "바나나"]; // 배열에서 구분되는 속성은 index
 	var product = { name: "사과", price: 3000, cnt: 5};
+	// 객체에서 구분되는 속성을 지정.
 	product.seller = "홍길동";
+	// for(var 구분속성 in 객체/배열){
+	//		구분속성 객체/배열[구분속성] : 속성값
+	// }
 	for(var idx in array) {
 		console.log("idx의 데이터 유형:"+typeof(idx));
 		console.log("번호:"+(idx+1)); // String형이기에 형변환 필요

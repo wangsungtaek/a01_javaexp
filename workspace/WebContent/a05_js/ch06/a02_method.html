@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/* 
+# json객체의 메서드 선언.
+var 객체명 = {속성:속성값, 속성:function(){}};
+객체명.속성();
+속성에 할당되는 값이 function(){}이면 함수로 사용된다.
+
+ 
+*/
+//
+
+</script>
+</head>
+<body>
+<h2></h2>
+</body>
+<script type="text/javascript">
+/* 
+ 
+ 
+*/
+	document.querySelector("h2").innerHTML="js 시작^^";
+	var prod = {pname:"사과",price:2000,
+				buy:function(cnt,price,pname){
+					// 두번째, 세번째 매개변수가 있을 때는 필드를 변경 처리.
+					if(price!=null)this.price=price;
+					if(pname!=null)this.pname=pname;
+					console.log("#구매정보#");
+					// js에서는 객체안에 모든 구성요소를 접근할 때, this
+					// 를 활용하여야 한다.
+					console.log("물건명:"+this.pname);
+					console.log("가격:"+this.price);
+					console.log("갯수:"+cnt);
+					console.log("총계:"+this.price*cnt);
+				}}
+	prod.buy(3);
+	prod.buy(2);
+	prod.buy(2,5000);
+	prod.buy(2,4000,'바나나');
+//
+</script>
+</html>
