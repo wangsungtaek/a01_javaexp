@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/* 
+# 변수와 객체의 할당
+1. 자바와 동일하게 일반변수는 stack을 활용하고,
+	객체는 heap영역의 주소값을 stack에 할당하여 사용한다.
+2. 일반변수의 할당 해당값을 직접적으로 변경해준다.
+3. 객체의 할당의 주소값을 할당하기에, 할당 이후 같은 주소값을
+	사용하는 이상 속성의 변경은 할당해준 객체에도 영향을 미친다.
+*/
+//
+	// 변수를 선언합니다.
+	var originalValue = 10;
+	var newValue = originalValue;
+	// 원본 값을 변경합니다.
+	originalValue = 273;
+	// 출력합니다.
+	console.log(originalValue);
+	console.log(newValue);
+	
+	// 변수를 선언합니다.
+	var originalArray = [1,2,3,4];
+	var newArray = originalArray;
+	// 원본 배열의 값을 변경합니다.
+	originalArray[0] = 273;
+	// 출력합니다.
+	console.log(originalArray);
+	console.log(newArray);	
+// ex) var p01(이름/나이/사는곳)로 var p02에 할당한 후에 데이터
+//		속성값 변경시, 두개의 객체 데이터 비교하세요.
+	var p01 = {이름:'왕성택', 나이:31, 사는곳:'청주'};
+	var p02 = p01
+	console.log(p01);
+	console.log(p02);
+	p01.사는곳 = '서울';
+	console.log(p01);
+	console.log(p02);
+	
+/*
+# 새로운 메모리를 만들어 복사해서
+다른 객체로 처리 : cloned(객체)
+ */
+	// 객체를 복제하는 함수입니다.
+	function clone(obj) {
+		// 새로운 객체를 생성.
+		var output = {};
+		for(var i in obj) {
+			output[i] = obj[i];
+		}
+		// 새로운 객체(새로운 주소에서 만들어진 객체)에
+		// 속성을 할당 후, return
+		return output;
+	}
+	// 테스트합니다.
+	var original = {a:10, b:20}; // 원본 객체
+	var referenced = original;	//	얕은 복사 객체(주소 복사)
+	var cloned = clone(original); // 깊은 복사 객체(새로운 객체 생성)
+	// 원본의 값 변경
+	original.a = 20;
+	// 확인
+	// JSON.stringify : 객체를 문자형태의 json데이터로 출력..
+	console.log(JSON.stringify(referenced, null, 2));
+	console.log(JSON.stringify(cloned, null, 2));
+</script>
+</head>
+<body>
+<h2></h2>
+</body>
+<script type="text/javascript">
+/* 
+ 
+ 
+*/
+document.querySelector("h2").innerHTML="js 시작^^";
+//
+</script>
+</html>
