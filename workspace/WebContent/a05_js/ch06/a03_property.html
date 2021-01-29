@@ -23,7 +23,7 @@
 	// 출력합니다.
 	var output = '';
 	for(var key in product){
-		// key:속성, product[key]: 속성값
+		// key:속성, product['key']: 속성값
 		output += '.' + key + ':' + product[key] + '\n';
 	}
 	console.log(output);

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// # 배열의 구성요소 내용 복사 (deep 복사.)
+	// 배열을 선언합니다.
+	var originalArray = [1,2,3,4,5];
+	var originalArray2 = originalArray;
+	// 배열을 복제합니다..
+	var newArray = [];
+	for(var i=0;i<originalArray.length;i++){
+		newArray[i] = originalArray[i];
+	}
+	// ecma6 지원되는 복사 (deep 복사)
+	const newArray2 = [...originalArray];
+	originalArray[0] = 30;
+	console.log("#originalArray#");
+	console.log(originalArray);
+	console.log("#originalArray2#");
+	console.log(originalArray2);
+	console.log("#newArray#");
+	console.log(newArray);
+	console.log("#newArray2#");
+	console.log(newArray2);
+
+</script>
+</head>
+<body>
+	<h2></h2>
+	<h3></h3>
+	<h3></h3>
+</body>
+	<script type="text/javascript">
+	// ex) fruits로 사과/바나나/딸기로 설정하여, fruits로 ecma6로 깊은 복사를
+	//		처리하고 fruits의 첫번째 값을 변경 후, 두개의 배열의 데이터를
+	//		비교 출력하세요.
+	var fruits = ['사과','바나나','딸기'];
+	const fruits2 = [...fruits];
+	fruits[0] = '수박';
+	var h3Obj = document.querySelectorAll("h3");
+
+	h3Obj[0].innerHTML = fruits;
+	h3Obj[1].innerHTML = fruits2;
+</script>
+</html>

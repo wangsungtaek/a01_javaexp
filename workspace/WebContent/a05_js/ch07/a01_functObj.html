@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/* 
+ 
+ 
+*/
+//
+
+</script>
+</head>
+<body>
+	<h2></h2>
+	<table border><tr><th>물건명</th><th>가격</th><th>갯수</th><th>총계</th></tr>
+	</table>
+</body>
+<script type="text/javascript">
+/* 
+# 생성자 객체
+1. 함수모양의 객체를 말한다.
+	this.@@로 현재객체의 멤버변수 설정한다.
+2. 기본형식
+	function Object01(param1, param2){
+		this.속성1 = param1
+		this.속성2 = param2
+		this.메서드명 = function(){ 동작처리 할 내용 };
+	}
+	var obj01 = new Object01('데이터1', '데이터2');
+	obj01.속성1;
+	obj01.속성2;
+	obj01.메서드명();
+*/
+function Student(name, korean, math, english, science) {
+	// 속성
+	this.이름 = name;
+	this.국어 = korean;
+	this.수학 = math;
+	this.영어 = english;
+	this.과학 = science;
+	// 메서드
+	this.getSum = function(){
+		return this.국어 + this.수학 + this.영어 + this.과학;
+	};
+	this.getAverage = function(){
+		return this.getSum()/4;
+	};
+	this.toString = function(){
+		return this.이름 + ', ' + this.getSum() + ', ' + this.getAverage();
+	};
+}
+	var stud = new Student('구자연', 76, 80, 90, 92);
+	
+	document.querySelector("h2").innerHTML = stud;
+// ex) 생성자형 객체를 product로 물건명 가격 갯수로 선언하고, 추가함수로 tot()총계, 
+//		toString()함수로 테이블 tr로 출력처리되게 하여, 화면에 table객체에 출력하게 하세요.
+	function Product(pname, price, cnt){
+		this.pname = pname;
+		this.price = price;
+		this.cnt = cnt;
+		this.tot = function() {
+			return this.price * this.cnt;
+		};
+		this.toString = function() {
+			return '<tr><td>'+this.pname+'</td><td>'+this.price+'</td><td>'+this.cnt+'</td><td>'+this.tot()+'</td><tr>'; 
+		};
+	}
+	var pro = new Product('사과',1000,3);
+	var tabObj = document.querySelector("table");
+	tabObj.innerHTML += pro;
+</script>
+</html>
