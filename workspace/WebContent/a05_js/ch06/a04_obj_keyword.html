@@ -63,7 +63,7 @@
 	console.log(show);
 	
 	var show = "";
-	with(computer){
+	with(computer){ // with(객체명){}
 		show += 'cpu : '+cpu+'\n';
 		show += 'ram : '+ram+'\n';
 		show += 'hdd : '+hdd+'\n';
@@ -87,7 +87,11 @@
 	student.취미 = '악기';
 	student.특기 = '프로그래밍';
 	student.장래희망 = '생명공학자';
+	// # toString
+	// 1. 객체의 참조변수로만 어떤 가능적인 처리를 해야할 필요성이 있을 때,
+	// 		선언하면, 해당 참조변수로도 toString()에 선언한 내용이 처리된다.
 	// toString() 메서드를 만듭니다.
+	//
 	// 객체명.메서드명 = function(){ this } 
 	//		this는 정의된 메서드가 속해 있는 객체를 지정.
 	//		this.을 통해서 이 객체가 가지고 있는 모든 멤버(필드, 메서드)

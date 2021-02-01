@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/* 
+   # Object
+      자바스크립트의 최상위 객체
+         1. 생성
+            var object = {};
+            var obj01 = new Object();
+         2. 속성과 메서드
+            constructor() : 생성자 함수
+            hasOwnProperty(name) : name 속성이 있는지 확인
+            isPrototypeof(object) : object 프로토타입인지 검사
+            propertyIsEnumerable(name) : 반복문으로 열거할 수 있는지 확인
+            toLocaleString() : 객체를 호스트 환경에 맞는 언어의 문자열 변환
+            toString() : 문자열 변환
+            valueOf() : 객체 값 리턴
+         3. 자료형 구분
+            typeof() : number, string
+            typeof( 25), typeof('하이맨')
+            .constructor() : Number
+            기본 자료형과 객체형의 실제 데이터의 구분
+         4. 메서드 추가
+            Object.prototype.메서드명 = function(){}
+   
+   # Number
+      가장 단순한 객체로 숫자를 표현할 때 사용한다
+         1. 메서드
+            toExponential() : 숫자를 지수 표시로 나타낸 문자열
+            toFixed ( 소숫점자리수 ) : 숫자를 고정 소수점 표시로 나타낸 문자열
+            toPrecision() : 숫자를 길이에 따라 지수 표시 또는 고정 소수점 표시 문자열
+         2. 생성자 함수의 속성
+            MAX_VALUE : 숫자가 나타낼 수 있는 최대의 숫자
+            MIN_VALUE : 숫자가 나타낼 수 있는 최소의 숫자
+            NaN : 숫자로 나타낼 수 없는 숫자
+            POSITIVE_INFINITY, NEGATIVE_INFINITY : 양/음의 무한대 숫자
+*/
+// 변수 선언
+var primitiveNumber = 273;
+var objectNumber = new Number(273);
+// 출력
+var output='';
+output += typeof(primitiveNumber) + ' : ' + primitiveNumber + '\n';
+output += typeof(objectNumber) + ' : ' + objectNumber;
+console.log(output);
+
+// 변수를 만듭니다.
+var object = {property : 273};
+// 출력합니다.
+var output = '';
+output += "HOP('property'): "
+	+ object.hasOwnProperty('property') + '\n';
+output += "HOP('constructor'): "
+	+ object.hasOwnProperty('constructor') + '\n';
+output += "PIE('property'): "
+	+ object.propertyIsEnumerable('property') + '\n';
+output += "PIE('constructor'): "
+	+ object.propertyIsEnumerable('constructor');
+console.log(output);
+// for in 반복문을 사용합니다.
+for(var key in object){
+	console.log(object[key]);
+}
+
+// ex) person 객체로 이름(name), 나이(age), 사는 곳(loc)를 선언하고,
+//	속성값 이름과 주민번호(civilcode)
+//	가 있는지, 사는곳은 읽을 수 있는지 여부를 처리하는 메서도를 호출하여
+//	확인해보세요.
+var p01 = {name:"홍길동", age:25, loc:"서울 방배동"};
+console.log(p01);
+console.log("이름이 속성값:"+p01.hasOwnProperty("name"));
+console.log("주민번호가 속성값:"+p01.hasOwnProperty("civilCode"));
+console.log("사는 곳에 접근 여부:"+p01.propertyIsEnumerable("loc"));
+
+/*
+# 프로토타입
+생성자 함수로 생성된 객체가 공통으로 가지는 공간
+객체는 참조변수로 여러 개의 객체를 생성할 수 있다.
+이러한 참조 객체들 같에 공통으로 처리할 공간이 필요할 때가 있다.
+이때, 만들어지는 공통 공간을 말한다.
+메모리 효율성으로 만든다.
+ */
+function Student(name, korean, math, english, science) {
+	this.이름 = name;
+	this.국어 = korean;
+	this.수학 = math;
+	this.영어 = english;
+	this.과학 = science;
+}
+Student.prototype.getSum = function() {
+	return this.국어 + this.수학 + this.영어 + this.과학;
+};
+Student.prototype.getAverage = function() {
+	return this.getSum()/4;
+};
+Student.prototype.toString = function() {
+	return this.이름 + "\t" + this.국어 + "\t" + this.수학 + "\t"
+		+ this.영어 + "\t" + this.과학 + "\t" + this.getSum() + "\t"
+		+ this.getAverage();
+}
+var stu = new Student("홍길동",80,90,100,90);
+console.log("## Student ##");
+console.log("합산 : " + stu.getSum());
+console.log("평균:" + stu.getAverage());
+console.log(stu.toString());
+// 객체형 배열이나 상속을 사용할 때,
+// 배열의 경우 메서드는 선언한 만큼 메모리가 만들어져야 하지만,
+// prototype은 해당 내용을 선언하지 않아도 된다.
+// prototype은 해당 객체의 공유메모리 영역으로 활용된다.
+var studList = [];
+studList.push(new Student("홍길동",80,90,100,90));
+studList.push(new Student("홍길동",80,90,100,90));
+studList.push(new Student("홍길동",80,90,100,90));
+studList.push(new Student("홍길동",80,90,100,90));
+// 로 선언하면 각 멤버들은 *4개 메모리를 만들고,
+// 일반 메서드(this.show)도 *4개의 메모리를 이용하여 치리되지만,
+// prototype은 하나의 메모리를 이용하기에 많은 배열을 만들거나
+// 여러가지 형태로 사용할 때, 효과적으로 사용할 수 있다.
+
+// ex) 물건명, 가격, 갯수를 가지는 Product 생성자형 객체를 선언하고,
+// prototype으로 가격*갯수를 처리하는 tot()로 선언하고,
+// 물건 3개를 list로 만들고 출력 처리하세요.
+function Product(pname, price, cnt){
+	this.pname = pname,
+	this.price = price,
+	this.cnt = cnt
+}
+Product.prototype.tot = function(){
+	return this.price * this.cnt;
+}
+var list = [];
+list.push(new Product("사과", 3, 1500));
+list.push(new Product("바나나", 2, 4000));
+list.push(new Product("딸기", 1, 1200));
+for(var idx in list){
+	var prod = list[idx];
+	console.log(prod.pname + " : " + prod.price + " : "
+				+ prod.cnt + " : " + prod.tot());
+}
+// Object 객체의 프로토타입에 메서드를 추가합니다.
+Object.prototype.test = function () {
+	console.log(this);
+}
+// 최상위 객체에 선언하였기 때문에 하위에 사용하는 모든 기능 메서드로
+// 사용할 수 있다.
+// Number 객체의 test() 메서드를 호출합니다.
+var number = 273;
+number.test();
+// 변수를 선언합니다.
+var number = 273.5210332;
+// 출력합니다.
+// toFixed(소숫점이하 자리수 설정)
+var output = '';
+output += number.toFixed(1) + '\n';
+output += number.toFixed(4);
+console.log(output);
+
+</script>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+/* 
+ 
+ 
+*/
+   
+//
+
+</script>

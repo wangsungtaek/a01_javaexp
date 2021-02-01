@@ -21,15 +21,32 @@
  
 */
 class Ractangle {
+	// _필드명 : get/set 메서드와 식별하고, 직접적인 접근을 방지하기 위하여 사용된다.
 	constructor(width, height){
-		this.width = width;
-		this.height = height;
+		this._width = width; // this.변수명 : 필드(객체변수)
+		this._height = height;
 	}
 	getArea(){
 		return this.width*this.height;
 	}
+	// 필드에 대한 호출가 저장 메서드..
+	// width의 게터와 세터
+	get width(){
+		return this._width;
+	}
+	set width(input) {
+		this._height = input;
+	}
+	// height와 게터와 세터
+	get height() {
+		return this._height;
+	}
+	set height(input) {
+		this._width = input;
+	}
 }
 const rectangle = new Ractangle(100,200);
+rectangle.width = 50; // 위에 선언한 set 메서드() 처리
 document.querySelector("h2").innerHTML="사각형의 면적:" + rectangle.getArea();
 //
 </script>
