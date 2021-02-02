@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/* 
+# 배열
+1. 배열 처리 객체
+	1) 배열명 = []
+	2) 생성자 함수
+	Array() : 빈 배열
+	Array(크기)
+	Array(데이터1, 데이터2, 데이터3, ..)
+ 
+2. 속성과 메서드
+length : 배열 요소의 갯수
+concat() : 배열 요소를 이어줌
+join() : 모든 요소 문자열로
+pop() : 마지막 요소 제거, 리턴
+push() : 마지막에 추가
+reverse() : 순서 뒤집기
+slice() : 지정부분 리턴
+sort() : 정렬
+splice() : 지정 부분 삭제, 삭제한 요소 리턴
+
+3. 배열정렬 처리
+	1) 기본형식 : 배열.sort(function(left, right()){});
+	2) 오름차순
+		function(left, right){ return left - right }
+	3) 내림차순
+		function(left, rigth){ return right - left }
+
+4. 요소 제거
+특정 요소 제거 메서드 없음
+	프로토타입 추가
+	Array.prototype.remove = function(index){
+		return this.splice(index-1);
+	}
+*/
+// 변수를 선언합니다.
+var array1 = [52, 273, 103, 57, 32];
+var array2 = new Array();
+var array3 = new Array(10); // 배열의 크기
+var array4 = new Array(52, 273, 103, 57, 32); // 구성요소
+console.log(array1);
+console.log(array2);
+console.log(array3);
+console.log(array4);
+// 변수를 선언합니다
+var array = ['A', 'B', 'C', 'D'];
+// 출력합니다.
+var output = '';
+for(var i=0; i<array.length; i++) {
+	output += i + ':' + array[i] + '\n';
+}
+console.log(output);
+console.log(array);
+// 변수를 선언하고 정렬합니다.
+var array = [52, 273, 103, 32];
+array.sort();
+// 출력합니다. 배열 정렬처리의 한계
+console.log("# 정렬1 #");
+console.log(array);
+// 변수를 선언하고 정렬합니다.
+var array = [52, 273, 103, 32];
+array.sort(function(left, right){
+	return left - right;
+});
+// 출력합니다.
+console.log(array);
+console.log("# 정렬2(오름 차순) #");
+console.log(array);
+// 변수를 선언하고 정렬합니다.
+var array = [52, 273, 103, 32];
+array.sort(function(left, right){
+	return right - left;
+});
+// 출력합니다.
+console.log("# 정렬3(내림 차순) #");
+console.log(array);
+
+// ex1) 임의로 과일가격 3000,2000,5000을 선언하고, 내림차순으로 처리하세요.
+// ex2) 1~100까지 임의의 값이 배열로 5개로 들어가게 하고, 오름차순으로 정렬해보세요. 
+var fruits = [3000,2000,5000]
+fruits.sort(function(left, right){
+	return right - left;
+});
+console.log("#과일 내림차순#");
+console.log(fruits);
+var ranArry = [];
+for(cnt=1; cnt<=5; cnt++) {
+	ranArry.push(Math.floor(Math.random()*100+1));
+}
+console.log("#임의값 오름차순");
+ranArry.sort(function(left, right){
+	return left - right;
+});
+console.log(ranArry);
+
+/*
+# 객체형 배열에서 특정 속성으로 비교해서 정렬처리
+1. 학생이름 국어, 영어, 수학을 가진 객체가 배열로 리스팅될 때,
+	학생의 속성값인 국어점수를 기준으로 정렬,
+	학생의 속성값인 영어점수를 기준으로 정렬,
+	
+2. 배열의 구성요소기준으로 정렬
+	배열명.sort(function(left, right){
+		left.속성 - right.속성;
+	}); ==> 특정 속성기준으로 전체배열의 오름차순으로 처리된다.
+	ex)
+	stulist.sort(function(left, right){
+		left.국어 - right.국어; // 학생배열의 국어점수 기준으로 내림차순 처리.
+	});
+	
+*/
+	function Student(name, korean, math, english, science) {
+		this.이름 = name;
+		this.국어 = korean;
+		this.수학 = math;
+		this.영어 = english;
+		this.과학 = science;
+		this.show = function(){}
+	}
+	Student.prototype.getSum = function() {
+		return this.국어 + this.수학 + this.영어 + this.과학;
+	};
+	Student.prototype.getAverage = function() {
+		return this.getSum()/4;
+	};
+	Student.prototype.toString = function() {
+		return this.이름 + "\t" + this.국어 + "\t" + this.수학 + "\t"
+			+ this.영어 + "\t" + this.과학 + "\t" + this.getSum() + "\t"
+			+ this.getAverage();
+	};
+	// 학생 정보 배열을 만듭니다.
+	var students = [];
+	students.push(new Student("김길동",60,90,100,30));
+	students.push(new Student("이길동",70,88,100,90));
+	students.push(new Student("송길동",80,66,170,25));
+	students.push(new Student("왕길동",40,95,100,44));
+	students.push(new Student("조길동",100,100,91,23));
+	students.push(new Student("홍길동",65,70,70,70));
+	// 1. 총점 기준으로 내림차순 정렬처리.
+	// 2. slice(index, 순서1부터) : 해당 인덱스로 부터 갯수 호출.
+	// 학생의 1~3등까지 추출
+	students = students.sort(function (left, right){
+		return right.getSum() - left.getSum();
+	}).slice(0,3);
+	// 출력합니다.
+	var output = '이름\t총점\t평균\n';
+	for(var i in students) {
+		output += students[i].toString() + '\n';
+	}
+	console.log(output);
+	// ex1) 국어점수 기준으로 끝에서 3명을 출력하세요.
+	// ex2) 영어점수 기준으로 4~7등까지 출력하세요
+	var korlist = students.sort(function(left, right){
+		return left.국어 - right.국어;
+	}).slice(0, 3);
+	var output = '이름\t국어\n';
+	for(var i in korlist) {
+		output += korlist[i].이름+"\t"+korlist[i].국어 + '\n';
+	}
+	console.log(output);
+	
+	var englist = students.sort(function(left, right){
+		return right.영어 - left.영어;
+	}).slice(3, 7); // 4등 ~ 7등
+	var output = '이름\t영어\n';
+	for(var i in englist) {
+		output += englist[i].이름+"\t"+englist[i].영어 + '\n';
+	}
+	console.log(output);
+	
+	
+</script>
+</head>
+<body>
+<h2></h2>
+</body>
+<script type="text/javascript">
+/* 
+
+ 
+*/
+
+document.querySelector("h2").innerHTML="js 시작^^";
+//
+</script>
+</html>

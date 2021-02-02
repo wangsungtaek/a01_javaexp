@@ -32,6 +32,21 @@
 	obj01.속성1;
 	obj01.속성2;
 	obj01.메서드명();
+3. 생선자(함수형) 객체의 배열 사용
+	1) 생성자 객체 선언
+	2) 배열 선언과 할당
+	ex)
+	function Person(name, age, loc){
+		this.name = name;
+		this.age = age;
+		this.loc = loc;
+	}
+	var plist = [new Person("홍길동",25,"제주")];
+	plist[1] = new Person("김길동",27,"광주");
+	plist.push(new Person("마길동",26,"부산"));
+	plist.forEach(function(p01, idx, arry)){
+		console.log(idx+1+"\t"+p01.name+"\t"+p01.age+"\t"+p01.loc);
+	});
 */
 function Student(name, korean, math, english, science) {
 	// 속성
