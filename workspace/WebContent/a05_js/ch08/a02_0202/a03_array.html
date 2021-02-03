@@ -8,27 +8,30 @@
 # 배열
 1. 배열 처리 객체
 	1) 배열명 = []
-	2) 생성자 함수
+	2) 생성자 함수 : var arr = new Array();
 	Array() : 빈 배열
 	Array(크기)
 	Array(데이터1, 데이터2, 데이터3, ..)
  
 2. 속성과 메서드
-length : 배열 요소의 갯수
-concat() : 배열 요소를 이어줌
-join() : 모든 요소 문자열로
-pop() : 마지막 요소 제거, 리턴
-push() : 마지막에 추가
-reverse() : 순서 뒤집기
-slice() : 지정부분 리턴
-sort() : 정렬
-splice() : 지정 부분 삭제, 삭제한 요소 리턴
-
+	length : 배열 요소의 갯수
+	concat() : 배열 요소를 이어줌
+	join() : 모든 요소 문자열로
+	pop() : 마지막 요소 제거, 삭제할 요소 리턴
+	push() : 마지막에 추가
+	reverse() : 순서 뒤집기
+	slice() : 지정부분 리턴
+	sort() : 정렬 ex) 배열.sort(function(left, right) { return left-right });
+	splice() : 지정 부분 삭제, 삭제한 요소 리턴
+		ex) splice(삭제할시작위치, 갯수)
+		반복적으로 삭제할 때는 해당 위치에서 갯수가 삭제가 되기에 구조가 변경이
+		된다. 마지막 index 위치부터 삭제하여야 정상적으로 처리가 된다.
+		
 3. 배열정렬 처리
 	1) 기본형식 : 배열.sort(function(left, right()){});
-	2) 오름차순
+	2) 오름차순 1, 2, 3, 4 (번호순)
 		function(left, right){ return left - right }
-	3) 내림차순
+	3) 내림차순 4, 3, 2, 1 (성적순)
 		function(left, rigth){ return right - left }
 
 4. 요소 제거
@@ -143,7 +146,12 @@ console.log(ranArry);
 	students.push(new Student("홍길동",65,70,70,70));
 	// 1. 총점 기준으로 내림차순 정렬처리.
 	// 2. slice(index, 순서1부터) : 해당 인덱스로 부터 갯수 호출.
+	// 		slice(0부터, 1부터) : 특정 추출해서 배열을 return
+	//		['사과','바나나','딸기','오렌지',].slice(0,1) ==> ['사과']
+	//		['사과','바나나','딸기','오렌지',].slice(1,3) ==> ['바나나','딸기']
 	// 학생의 1~3등까지 추출
+	// # 주의 : 기존의 배열에서 return하여 새로운 배열을 만들기 때문에 새로운 변수에
+	//		할당하면 기존 배열에 영향을 미치지 않는다.
 	students = students.sort(function (left, right){
 		return right.getSum() - left.getSum();
 	}).slice(0,3);

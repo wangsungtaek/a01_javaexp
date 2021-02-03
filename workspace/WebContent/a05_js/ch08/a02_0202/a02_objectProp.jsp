@@ -37,6 +37,15 @@ var stringFromLiteral = 'Hello World..'; // string type
 var stringFromConstructor = new String('Hello World..');
 // object type
 // 변수의 자료형을 출력합니다.
+// js에서 문자열 유형(string)과 object 유형의 구분..
+/*
+# js의 type (typeof()내장함수를 통해 확인)
+1. number
+2. string
+3. boolean
+4. function
+5. object
+ */
 var output = '';
 output += "1. " + typeof(stringFromLiteral) + '\n';
 output += "2. " + typeof(stringFromConstructor);
@@ -49,20 +58,27 @@ console.log(output);
 
 2. 기본 속성과 메서드
 	length : 문자열의 길이 // cf) java에서는 length()
-	charAt(위치) : 위치의 문자
+	charAt(위치) : 특정한 index 위치의 문자
 	charCodeAt(위치) : 위치의 유니코드 번호
 	concat(연결문자)
 	indexOf("검색문자", 위치) : 특정한 문자열을 검색해서 해당 위치를 index로 리턴
+	// 매개변수 : 1-검색문자, 2-검색시작위치
 	lastIndexOf("검색문자", 위치)
 	match(정규식표현) : 있는지 여부
 	replace(정규식표현, 대체문자)
 	search(정규식표현) : 위치
 	slice(시작, 마지막) : 배열의 내용을 차용해서 활용 특정한 index위치 추출
+		배열에서 지원하는 특정 위치에 있는 내용을 추출할 때, 사용된다.
+		문자열(문자의 배열) 개념으로 사용하여 추출을 할 수 있다.
 	split("구분자", 제한) : 구분자를 통해서 배열을 만듦
-	substr(시작, 문자갯수)
-	substring(시작, 마지막)
+		ex) var arry = "사과, 바나나, 딸기".split(",")
+			 == > arry = ["사과","바나나","딸기"];
+	substr(시작, 문자갯수) : 문자열의 특정 위치 추출
+	substring(시작, 마지막) : 문자열의 특정 위치 추출
 	toLowerCase("변형문자열") : 소문자로 변경
+		문자열.toLowerCase()
 	toUpperCase("변형문자열")  : 대문자로 변경
+		문자열.toUpperCase()
  */
  /*
 ex1) 물건명 [  ] [검색]
@@ -126,7 +142,7 @@ ex2) 등록할 데이터[3000,4000,5000][입력]
 	var output1 = '';
 	output1 += 'anchor: ' + string.anchor() + '<br/>';
 	output1 += 'big: ' + string.big() + '<br/>';
-	
+	output1 += 'blink: ' + string.blink() + '<br/>';	
 	output1 += 'bold: ' + string.bold() + '<br/>';
 	output1 += 'fixed: ' + string.fixed() + '<br/>';
 	output1 += 'string: ' + string.fontcolor('red') + '<br/>';

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/* 
+# Date
+1. 날짜와 시간을 표시하는 객체
+2. 생성
+	1) 현재일자
+	var 변수명 = new Date()
+	2) 특정일자
+	Date("영문월 날짜")
+	Date("영문월 날짜, 년도")
+	Date("영문월 날짜, 년도 시:분:초")
+	Date(년도, 월index, 날짜)
+	Date(년도, 월index, 날짜, 시, 분, 초)
+	Date(년도, 월index, 날짜, 시, 분, 초, 1/1000초)
+	
+3. 메서드
+	getXXX() : 호출
+	setXXX(저장데이터)
+	XXX : Date, Day, FullYear, Hours, Milliseconds, Minutes, Month,
+		Seconds, Time
+	ex) 일주일 후 : date.setDate( date.getDate() + 7 )
+	toOOOString()
+	OOO : Date, GMT, ISO, JSON, LocalDate, Locale, LocaleTime, Time
+*/
+// 변수를 선언합니다.
+var date = new Date();
+// 출력합니다. 현재 날짜 표기.
+console.log(date);
+// 영문으로 선언한 특정 날짜와 시간 표기
+var date1 = new Date('December 9, 1991');
+var date2 = new Date('December 9, 1991 02:24:23');
+console.log(date1);
+console.log(date2);
+// 매개변수에 의한 날짜 표현..
+var date3 = new Date(1991, 11, 9); // 1991년 12월 9일
+var date4 = new Date(1991, 11, 9, 2, 24, 23);
+var date5 = new Date(1991, 11, 9, 2, 24, 23, 1);
+console.log(date3);
+console.log(date4);
+console.log(date5);
+// 변수를 선언합니다.
+var date = new Date();
+// 현재 시각에서 7일을 더합니다.
+date.setDate(date.getDate() + 7);
+// 출력합니다.
+console.log('## 7일후 ##');
+console.log(date);
+// 변수를 생성합니다.
+var date = new Date(2021, 4, 29);
+// 출력합니다.
+var output = '';
+// 날짜 형식에 따른 출력내용
+output += '-toDateString: ' + date.toDateString() + '\n';
+output += '-toGMTString: ' + date.toGMTString() + '\n';
+output += '-toLocaleDateString: ' + date.toLocaleDateString() + '\n';
+output += '-toLocaleString: ' + date.toLocaleString() + '\n';
+output += '-toLocaleTimeString: ' + date.toLocaleTimeString() + '\n';
+output += '-toString: ' + date.toString() + '\n';
+output += '-toTimeString: ' + date.toTimeString() + '\n';
+output += '-toUTCString: ' + date.toUTCString() + '\n';
+console.log(output);
+// ex1) 기념일 출력 : 오늘 이후 [100] [기념일확인] ==> 클릭시, 해당 날짜를
+//			현재 위에 적절한 형식으로 출력하세요.
+	function calcuDate(){
+		var date01 = Number(document.querySelector("[name=date01]").value);
+		var todate = new Date();
+		todate.setDate(todate.getDate()+date01);
+		var show1 = document.querySelector("#show1");
+		show1.innerHTML = todate.toLocaleDateString();
+	}
+	
+// ex2) 특정일 기념일 처리 : [] 년 []월 []일 []일 [이전/이후]
+
+</script>
+</head>
+<body>
+	<h2></h2>
+	<h3></h3>
+	오늘 이후 : <input type="text" name="date01"/>
+				<input type="button" value="기념일확인" onclick="calcuDate()"/>
+	<h4 id="show1"></h4>
+	<h2>특정 기념일</h2>
+	<input type="text" name="year"/> 년
+	<input type="text" name="month"/> 월 
+	<input type="text" name="date"/> 일 
+	<input type="text" name="cnt"/> 일
+	<select id="sel" onchange="dateCalc()">
+		<option value="">선택</option>
+		<option value="0">이전</option>
+		<option value="1">이후</option>
+	</select>
+	<h4 id="show2"></h4>
+	<script type="text/javascript">
+		function dateCalc(){
+			var year = Number(document.querySelector("[name=year]").value);
+			var month = Number(document.querySelector("[name=month]").value);
+			var date = Number(document.querySelector("[name=date]").value);
+			var cnt = Number(document.querySelector("[name=cnt]").value);
+			var sel = document.querySelector("#sel").value;
+			if(sel == '0') cnt =-(cnt);
+			if(sel == '1') cnt = cnt;
+			if(sel == '') cnt = 0;
+			// new Date(연도, month index, 일)
+			var calDate = new Date(year, month-1, date);
+			// 날짜기준으로 날의 변경..
+			calDate.setDate(calDate.getDate()+cnt);
+			document.querySelector('#show2').innerHTML = calDate.toLocaleDateString();
+		}
+	</script>
+</body>
+<script type="text/javascript">
+// 변수를 선언합니다.
+var now = new Date();
+var before = new Date('December 9, 1991');
+// 날짜 간격을 구합니다.
+// getTime() : 1970.1.1 기준으로 1/1000초 단위로 할당하여 처리함.
+var interval = now.getTime() - before.getTime();
+// 오늘과 특정기준일의 차이를 계산하고
+// (1000 * 60 * 60 * 24) 1일단위로 변경처리.
+interval = Math.floor(interval / (1000*60*60*24));
+// 출력합니다.
+console.log('Interval: ' + interval+'일');
+
+// ex1) 영문으로 2021년 02월 01일을 입력하여 화면h2에 출력하세요
+// ex2) 매개변수에 의해서 오늘 오후 17:50 15초를 입력하고 h3에 출력하세요
+	var date6 = new Date('February 1, 2021');
+	document.querySelector("h2").innerHTML = date6;
+	var date7 = new Date(2021, 1, 3, 17, 50, 15);
+	document.querySelector("h3").innerHTML = date7;
+</script>
+</html>
