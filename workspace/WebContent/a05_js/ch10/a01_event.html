@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/* 
+1. 이벤트 기본 개념.
+	window.onload=function(){ 처리내용 };
+	load : 이벤트 이름/이벤트 타입
+	onload : 이벤트 속성
+	function(){} : 이벤트 리스트, 이벤트 핸들러
+2. 이벤트 설정과 해제
+	이벤트 연결
+	이벤트객체.onXXX = function(){}
+	이벤트 삭제
+	이벤트 객체.onXXX = null;
+3. 이벤트 강제 설정
+	객체.onClick();
+	객체.onClick=function() { 정의된 내용 };
+	 인라인 이벤트 모델
+	<태그 onclick="함수">레이블</태그>
+	디폴트 이벤트 제거
+	submit 등 지정된 이벤트에 대한 변경
+	해당 객체.onsubmit=function(){ return false; }
+	인라인 모델
+	function whenSubmit(){ return false; }
+	<form onsubmit="return whenSubmit()">
+4. 이벤트 전달
+	중첩적 이벤트 전달
+	전달을 막는 방법
+	인터넷 익스플로어 : 이벤트 객체의 cancelBubble속성을 true
+	그 외의 브라우저 : 이벤트 객체의 stopPropagation() 메서드 사용 */
+	
+	window.onload = function(){ // 화면이 다 로딩된 이후로 처리할 이벤트
+		// 변수를 선언합니다.
+		var header = document.getElementById('header');
+		// 이벤트를 연결합니다.
+		header.onclick = function() {
+			alert('클릭');
+			// this : 현재 handler 함수에 연결되어 있는 객체를 지정.
+			this.style.color = 'orange';
+			this.style.backgroundColor = 'red';
+			
+			// 이벤트를 제거합니다.
+			header.onclick = null;
+		};
+// ex) h2로 id값을 설정하여, 해당 id의 h2를 클릭했을 때, 안녕하세요라고 alert창을 띄우고,
+//		배경색상을 노랑색응로 변경하세요.. 그리고, 더 이상 이벤트가 발생하지 않게 처리
+		var show = document.getElementById('show');
+		
+		show.onclick = function() {
+			alert('안녕하세요');
+			this.style.backgroundColor = 'yellow';
+			this.onclick = null;
+		};
+	};
+</script>
+</head>
+<body>
+	<h1 id="header">Click</h1>
+	<h2 id="show">클릭연습!!</h2>
+</body>
+</html>
