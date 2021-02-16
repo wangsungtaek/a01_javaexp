@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/* 
+ 
+ 
+*/
+//
+   window.onload=function(){
+         document.querySelector("h2").innerHTML="form 요청 유효체크^^";
+         //이벤트를 연결합니다.
+         document.getElementById('my-form').onsubmit=function(){
+            var name = document.getElementById("name").value;
+            if(name==""){
+               alert("이름을 입력하세요");
+               return false;
+            }
+            //변수를 선언합니다.
+            var pass = document.getElementById('pass').value;
+            var passCheck = document.getElementById('pass-check').value;
+            //비밀번호가 같은지 확인합니다.
+            if(pass=passCheck){
+               alert('성공');
+            }else{
+               alert('다시 입력해주세요.');
+               return false;
+            }
+         };
+         //ex)
+         //회원가입 유효성 check 처리
+         //id : [    ] 8~16
+         //포인트 : [    ] 숫자로 등록
+         //   [등록]==>a06_mem_success.jsp
+         document.getElementById('ex-form').onsubmit=function(){
+            var idCk = document.querySelector("#idCk");
+            var id = document.getElementById("id").value;
+            //var id = document.querySelector("#id").value;
+            var point = document.getElementById("point").value;
+            var ptCk = document.querySelector("#ptCk");
+          //var point = document.querySelector("#point").value;
+            var isValid=true;
+            if(id="" || id.length>16 || id.length<8){
+               idCk.innerText = "아이디를 8~16글자로 입력해주세요";
+               idCk.style.color="red";
+               isValid = false;
+            }else{
+               idCk.innerText = "정상 입력";
+               idCk.style.color="blue";
+            }
+            if(isNaN(point) || point==""){
+               ptCk.innerText = "숫자를 입력해주세요.";
+               ptCk.style.color="red";               
+               isValid = false;
+            }else{
+               ptCk.innerText = "정상 입력";
+               ptCk.style.color="blue";                              
+            }
+            return isValid;
+         };
+   };
+   /*
+   function(){
+      
+      return false; 를 하면 그 다음 라인에 대하여 수행하지 않는다.
+      //유효성 check에 메시지가 있으면 마지막에 처리하는 것이 좋다.
+      
+      return false; //submit() 즉 전송처리하지않음.
+      return ture; // submit() 즉 전송처리.
+   }
+   */
+
+</script>
+</head>
+<body>
+   <h2></h2>
+      <form id="my-form" action="a05_success.jsp">
+      <label for="name">이름</label><br/>
+      <input type="text" name="name" id="name"/><br/>   
+      <label for="pass">비밀번호</label><br/>
+      <input type="password" name="pass" id="pass"/><br/>
+      <label for="pass-check">비밀번호 확인</label><br/>
+      <input type="password"id="pass-check"/><br/>
+      <input type="submit" value="제출"/>         
+      </form>
+      <form id="ex-form" action="a06_mem_success.jsp">
+         <label for="id">id</label><br/>
+      <input type="text" name="id" id="id"/><span id="idCk"></span><br/>   
+      <label for="point">point</label><br/>
+      <input type="text" name="point" id="point"/><span id="ptCk"></span><br/>
+      <input type="submit" value="제출"/>   
+      </form>
+</body>

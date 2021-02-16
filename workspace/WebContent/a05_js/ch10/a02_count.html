@@ -4,12 +4,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-/* 
- 
- 
-*/
-//
 	window.onload = function(){
+		// 화면이 다 로딩된 이후로 처리할 이벤트
+		// window.onload이벤트는 js가 하단에 선언되거와 동일한 효과를 준다.
 		document.querySelector("h2").innerHTML="카운트 이벤트";		
 		
 		// 문서 객체를 가져옵니다.
@@ -19,6 +16,8 @@
 		var counterB = document.getElementById('counter-b');
 		// 이벤트를 연결합니다.
 		buttonA.onclick = function() {
+			// js에서 +(덧셈) 연산자는 반드시 형변환하여야 한다.
+			// -, *, /, % 연산자는 자동 형변환되어 처리된다.
 			counterA.innerHTML = Number(counterA.innerHTML) + 1;
 		};
 		buttonB.onclick = function() {
