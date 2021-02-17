@@ -12,6 +12,25 @@
    window.onload=function(){
          document.querySelector("h2").innerHTML="form 요청 유효체크^^";
          //이벤트를 연결합니다.
+/*
+# form하위 요소객체 데이터 전송 전 유효성 체크 이벤트
+1. 대상객체 : form객체
+	document.querySelector("폼선택자")
+2. 이벤트명 : submit
+3. 이벤트 속성 : onsubmit
+4. 이벤트 핸들러 할당
+	document.querySelector("폼선택자").onsubmit=function() {
+	
+	}
+5. return 값 처리
+	1) return 없거나 return true일때는 정상적으로 서버에 form 하위
+		요소의 값이 전송된다.
+	2) 조건문에 의해 return값이 false일때, 해당 라인에서 더 이상
+		진행을 하지 않는다.
+	3) 이런 특성으로 전체적인 유효성 메시지를 처리할 때는 마지막 라인에서
+		return에 대한 처리를 하여야 한다.
+ 
+ */
          document.getElementById('my-form').onsubmit=function(){
             var name = document.getElementById("name").value;
             if(name==""){
@@ -37,10 +56,8 @@
          document.getElementById('ex-form').onsubmit=function(){
             var idCk = document.querySelector("#idCk");
             var id = document.getElementById("id").value;
-            //var id = document.querySelector("#id").value;
             var point = document.getElementById("point").value;
             var ptCk = document.querySelector("#ptCk");
-          //var point = document.querySelector("#point").value;
             var isValid=true;
             if(id="" || id.length>16 || id.length<8){
                idCk.innerText = "아이디를 8~16글자로 입력해주세요";
@@ -75,21 +92,18 @@
 </script>
 </head>
 <body>
-   <h2></h2>
-      <form id="my-form" action="a05_success.jsp">
-      <label for="name">이름</label><br/>
-      <input type="text" name="name" id="name"/><br/>   
-      <label for="pass">비밀번호</label><br/>
-      <input type="password" name="pass" id="pass"/><br/>
-      <label for="pass-check">비밀번호 확인</label><br/>
-      <input type="password"id="pass-check"/><br/>
-      <input type="submit" value="제출"/>         
-      </form>
-      <form id="ex-form" action="a06_mem_success.jsp">
-         <label for="id">id</label><br/>
-      <input type="text" name="id" id="id"/><span id="idCk"></span><br/>   
-      <label for="point">point</label><br/>
-      <input type="text" name="point" id="point"/><span id="ptCk"></span><br/>
-      <input type="submit" value="제출"/>   
-      </form>
+	<h2></h2>
+	<form id="my-form" action="a05_success.jsp">
+		<label for="name">이름</label><br /> <input type="text" name="name"
+			id="name" /><br /> <label for="pass">비밀번호</label><br /> <input
+			type="password" name="pass" id="pass" /><br /> <label
+			for="pass-check">비밀번호 확인</label><br /> <input type="password"
+			id="pass-check" /><br /> <input type="submit" value="제출" />
+	</form>
+	<form id="ex-form" action="a06_mem_success.jsp">
+		<label for="id">id</label><br /> <input type="text" name="id" id="id" /><span
+			id="idCk"></span><br /> <label for="point">point</label><br /> <input
+			type="text" name="point" id="point" /><span id="ptCk"></span><br /> <input
+			type="submit" value="제출" />
+	</form>
 </body>

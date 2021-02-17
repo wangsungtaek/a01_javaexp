@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/* 
+ 
+ 
+*/
+//
+	window.onload = function(){
+		document.querySelector("h2").innerHTML="js 시작^^";		
+		var btn01 = document.querySelector("#btn01");
+		var win01 = window.open("","","width=300, height=300");
+		win01.document.write("<h3>크기가 변하는 창!</h3>");
+		this.onkeyup=function(){
+			if(event.keyCode==38) {
+				win01.document.body.innerHTML = ("<h3>커져라!</h3>");
+				win01.resizeBy(10,10);
+			}
+			if(event.keyCode==40) {
+				win01.document.body.innerHTML = ("<h3>작아져라!</h3>");
+				win01.resizeBy(-10,-10);
+			}
+		}
+	};
+	
+</script>
+</head>
+<body>
+	<h2></h2>
+	<input type="button" id="btn01" value="커졌다작아졌다 원창"/>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/* 
+ 
+ 
+*/
+//
+	window.onload = function(){
+		document.querySelector("h2").innerHTML="js 시작^^";		
+		// 변수를 선언합니다.
+// 		var child = window.open('','','width=300, height=200');
+// 		child.document.write("<h3>이동하는창</h3>");
+// 		child.moveTo(0,0); // 절대적위치, x, y 왼쪽 상단
+// 		// 1초마다 함수를 실행합니다.
+// 		setInterval(function(){
+// 			child.moveBy(10, 10); // 1초마다 상대적 위치로 이동
+// 		}, 1000);
+		// 	ex1) 왼쪽 이동 버튼, 아래로 이동 버튼을 클릭시, 윈도우 창이 뜨고,
+		//		하나는 왼쪽으로 이동, 하나는 아래로 이동하게 처리하세요.
+	};
+	function goLeft(){
+		var child1 = window.open('','','width=300, height=200');
+		child1.document.write("<h3>왼쪽으로 이동하는 창</h3>");
+		child1.moveTo(600,0);
+		setInterval(function(){
+			child1.moveBy(-10,0);
+		},1000);
+	}
+	
+	function goDown(){
+		var child2 = window.open('','','width=300, height=200');
+		child2.document.write("<h3>아래로 이동하는 창</h3>");
+		child2.moveTo(0,0);
+		setInterval(function(){
+			child2.moveBy(0,10);
+		},1000);
+	}
+</script>
+</head>
+<body>
+	<h2></h2>
+	<input type="button" value="왼쪽이동 버튼" onclick="goLeft()"/>
+	<input type="button" value="아래이동 버튼" onclick="goDown()"/>
+</body>
+</html>

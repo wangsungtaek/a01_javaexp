@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/* 
+# js에서 예외 처리.
+1. 기본 형식
+	try{
+		예외가 발생할 구문..
+	} catch(exception) {
+		에러발생시 처리할 구문..
+	} finally {
+		예외 상관없이 발생하는 구문
+	}
+2. 강제 예외 발생
+	throw = "예외내용 전송"
+	catch의 exception에서 예외 내용을 받아서 처리한다.
+	
+*/
+//
+	window.onload = function(){
+		document.querySelector("h2").innerHTML="js 시작^^";	
+		try {
+			willExcept.byeBye(); // 강제예외발생
+			alert('try 구문 종료');
+		} catch(exception) {
+			alert('예외가 발생했습니다.');
+		}
+		try {
+			throw 'DivideByZeroException';
+		} catch(exception) {
+			if(exception == 'DivideByZeroException') {
+				console.log('예외발생');
+			}
+		}
+	};
+</script>
+</head>
+<body>
+<h2></h2>
+</body>
+</html>
