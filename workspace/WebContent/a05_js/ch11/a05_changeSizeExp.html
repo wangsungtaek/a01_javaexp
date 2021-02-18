@@ -12,16 +12,21 @@
 	window.onload = function(){
 		document.querySelector("h2").innerHTML="js 시작^^";		
 		var btn01 = document.querySelector("#btn01");
-		var win01 = window.open("","","width=300, height=300");
-		win01.document.write("<h3>크기가 변하는 창!</h3>");
-		this.onkeyup=function(){
-			if(event.keyCode==38) {
-				win01.document.body.innerHTML = ("<h3>커져라!</h3>");
-				win01.resizeBy(10,10);
-			}
-			if(event.keyCode==40) {
-				win01.document.body.innerHTML = ("<h3>작아져라!</h3>");
-				win01.resizeBy(-10,-10);
+		btn01.onclick = function(){
+			var win01 = window.open("","","width=300, height=300");
+			//  win01.document.body.innerHTML = "<h3>크기가 변하는 창!</h3>"
+			win01.document.write("<h3>크기가 변하는 창!</h3>");
+			// 로딩된 window에서 key를 입력했을 때, 화살표 위와 화살표 아래로
+			// key이벤트에 따라서, text내용도 변경하고, 크기도 변경할 수 있게 처리.
+			win01.onkeyup=function(){
+				if(event.keyCode==38) {
+					win01.document.body.innerHTML = ("<h3>커져라!</h3>");
+					win01.resizeBy(10,10);
+				}
+				if(event.keyCode==40) {
+					win01.document.body.innerHTML = ("<h3>작아져라!</h3>");
+					win01.resizeBy(-10,-10);
+				}
 			}
 		}
 	};
